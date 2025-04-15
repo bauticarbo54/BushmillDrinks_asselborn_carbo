@@ -93,7 +93,9 @@
         </section>
 
         <footer>
-         © 2025 Mi Sitio Web
-        </footer></h1>
+            <h1>
+                © 2025 Mi Sitio Web
+            </h1>
+        </footer>
     </body>
 </html>
