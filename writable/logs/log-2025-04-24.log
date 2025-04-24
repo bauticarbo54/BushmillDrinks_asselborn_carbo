@@ -1,0 +1,95 @@
+CRITICAL - 2025-04-24 12:42:41 --> ErrorException: Undefined variable $navbar
+[Method: GET, Route: /]
+in APPPATH\Views\nueva_plantilla.php on line 13.
+ 1 APPPATH\Views\nueva_plantilla.php(13): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $navbar', 'C:\\xampp\\htdocs\\BushmillDrinks_asselborn_carbo\\app\\Views\\nueva_plantilla.php', 13)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\xampp\\htdocs\\BushmillDrinks_asselborn_carbo\\app\\Views\\nueva_plantilla.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('nueva_plantilla.php', [], true)
+ 5 APPPATH\Controllers\Home.php(9): view('nueva_plantilla.php')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-04-24 12:50:47 --> ValueError: Path cannot be empty
+[Method: GET, Route: Nosotros]
+in APPPATH\Views\layout\footer.php on line 13.
+ 1 SYSTEMPATH\View\View.php(224): include()
+ 2 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('layout/footer', [], true)
+ 4 APPPATH\Controllers\quienesSomos.php(9): view('layout/footer')
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\quienesSomos->index()
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\quienesSomos))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(55): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-04-24 12:50:47 --> [Caused by] ErrorException: Undefined variable $content
+in APPPATH\Views\layout\footer.php on line 13.
+ 1 APPPATH\Views\layout\footer.php(13): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $content', 'C:\\xampp\\htdocs\\BushmillDrinks_asselborn_carbo\\app\\Views\\layout\\footer.php', 13)
+ 2 APPPATH\Views\layout\footer.php(13): include()
+ 3 SYSTEMPATH\View\View.php(224): include('C:\\xampp\\htdocs\\BushmillDrinks_asselborn_carbo\\app\\Views\\layout\\footer.php')
+ 4 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 5 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('layout/footer', [], true)
+ 6 APPPATH\Controllers\quienesSomos.php(9): view('layout/footer')
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\quienesSomos->index()
+ 8 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\quienesSomos))
+ 9 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(55): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-04-24 12:52:47 --> ValueError: Path cannot be empty
+[Method: GET, Route: Nosotros]
+in APPPATH\Views\layout\footer.php on line 13.
+ 1 SYSTEMPATH\View\View.php(224): include()
+ 2 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('layout/footer', [], true)
+ 4 APPPATH\Controllers\quienesSomos.php(9): view('layout/footer')
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\quienesSomos->index()
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\quienesSomos))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(55): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-04-24 12:52:47 --> [Caused by] ErrorException: Undefined variable $footer
+in APPPATH\Views\layout\footer.php on line 13.
+ 1 APPPATH\Views\layout\footer.php(13): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $footer', 'C:\\xampp\\htdocs\\BushmillDrinks_asselborn_carbo\\app\\Views\\layout\\footer.php', 13)
+ 2 APPPATH\Views\layout\footer.php(13): include()
+ 3 SYSTEMPATH\View\View.php(224): include('C:\\xampp\\htdocs\\BushmillDrinks_asselborn_carbo\\app\\Views\\layout\\footer.php')
+ 4 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 5 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('layout/footer', [], true)
+ 6 APPPATH\Controllers\quienesSomos.php(9): view('layout/footer')
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\quienesSomos->index()
+ 8 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\quienesSomos))
+ 9 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(55): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-04-24 12:53:39 --> ValueError: Path cannot be empty
+[Method: GET, Route: Nosotros]
+in APPPATH\Views\layout\footer.php on line 13.
+ 1 SYSTEMPATH\View\View.php(224): include()
+ 2 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('layout/footer', [], true)
+ 4 APPPATH\Controllers\quienesSomos.php(9): view('layout/footer')
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\quienesSomos->index()
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\quienesSomos))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(55): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-04-24 12:53:39 --> [Caused by] ErrorException: Undefined variable $content
+in APPPATH\Views\layout\footer.php on line 13.
+ 1 APPPATH\Views\layout\footer.php(13): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $content', 'C:\\xampp\\htdocs\\BushmillDrinks_asselborn_carbo\\app\\Views\\layout\\footer.php', 13)
+ 2 APPPATH\Views\layout\footer.php(13): include()
+ 3 SYSTEMPATH\View\View.php(224): include('C:\\xampp\\htdocs\\BushmillDrinks_asselborn_carbo\\app\\Views\\layout\\footer.php')
+ 4 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 5 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('layout/footer', [], true)
+ 6 APPPATH\Controllers\quienesSomos.php(9): view('layout/footer')
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\quienesSomos->index()
+ 8 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\quienesSomos))
+ 9 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(55): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
