@@ -6,5 +6,6 @@ use CodeIgniter\Router\RouteCollection;
  * @var RouteCollection $routes
  */
 $routes->get('/', 'Home::index');
-$routes->get('public/Nosotros', 'quienesSomos::index');
-$routes->get('public/Inicio', 'inicio::index');
+$routes->get('Nosotros', 'quienesSomos::index');
+$routes->get('Inicio', 'inicio::index');
+$routes->get('Comercializacion', 'comercializacion::index');
