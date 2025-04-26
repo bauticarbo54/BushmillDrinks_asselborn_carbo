@@ -10,64 +10,8 @@
         <script src = "assets/js/bootstrap.bundle.min.js" integrity ="" crossorigin =""></script>
     </head>
     <body>
-       <section>
-            <nav class="navbar navbar-expand-lg bg-body-tertiary">
-                <div class="container-fluid">
-                    <a class="navbar-brand" href="#">
-                        <img src = "assets/img/Logo.png" alt = "Bootstrap" width="50" height="50">
-                    </a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                            <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="#">Nosotros</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Ofertas</a>
-                            </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Categorias
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#">Whiskys</a></li>
-                                    <li><a class="dropdown-item" href="#">Cervezas</a></li>
-                                    <li><a class="dropdown-item" href="#">Vinos</a></li>
-                                    <li><a class="dropdown-item" href="#">Aperitivos</a></li>
-                                    <li><a class="dropdown-item" href="#">Espumantes</a></li>
-                                    <li><a class="dropdown-item" href="#">Gins</a></li>
-                                    <li><a class="dropdown-item" href="#">Vodkas</a></li>
-                                    <li><a class="dropdown-item" href="#">Tekilas</a></li>
-                                    <li><a class="dropdown-item" href="#">Sin alcohol</a></li>
-                                    <li><hr class="dropdown-divider"></li>
-                                    <li><a class="dropdown-item" href="#">Tabaco</a></li>
-                                    <li><a class="dropdown-item" href="#">Accesorios</a></li>
-                                    <li><a class="dropdown-item" href="#">Cristalería</a></li>
-                                </ul>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Comercialización</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Términos y Usos</a>
-                            </li>
-                            <li class = "nav-item">
-                                <a class = "nav-link" href = "#">Contactos</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link disabled" aria-disabled="true"></a>
-                            </li>
-                        </ul>
-                        <form class="d-flex" role="search">
-                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                            <button class="btn btn-outline-success" type="submit">Search</button>
-                        </form>
-                    </div>
-                </div>
-            </nav>
-        </section>
+
+        <?php include('layout/navbar.php'); ?>
 
         <section style="margin-bottom: 50px">
             <div class="container-md">
@@ -116,15 +60,7 @@
         </section>
 
 
-        <footer class="footer">
-            <div class="footer-container">
-                    <p class="footer-text">© 2025 Bushmills Drinks. Todos los derechos reservados.</p>
-                    <div class="footer-links">
-                        <a href="https://github.com/tu_usuario" target="_blank">GitHub</a>
-                        <a href="https://linkedin.com/in/tu_usuario" target="_blank">LinkedIn</a>
-                        <a href="/contacto">Contacto</a>
-                    </div>
-            </div>
-        </footer>
+        <?php include('layout/footer.php'); ?>
+        
     </body>
 </html>

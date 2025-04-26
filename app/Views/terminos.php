@@ -5,126 +5,98 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Terminos y condiciones</title>
 
-        <link rel="stylesheet" href="/bushmillDrinks_asselborn_carbo/public/assets/css/estilos.css">
-        <link href = "assets/css/bootstrap.min.css" rel = "stylesheet" integrity ="" crossorigin ="">
-        <script src = "assets/js/bootstrap.bundle.min.js" integrity ="" crossorigin =""></script>
+        
+        <link href="assets/css/bootstrap.min.css" rel="stylesheet" integrity="" crossorigin="">
+        <script src="assets/js/bootstrap.bundle.min.js" integrity="" crossorigin=""></script>
+        <link rel="stylesheet" href="assets/css/estilos.css">
     </head>
 
     <body>
-        <section>
-            <nav class="navbar navbar-expand-lg bg-body-tertiary">
-                <div class="container-fluid">
-                    <a class="navbar-brand" href="#">
-                        <img src = "assets/img/Logo.png" alt = "Bootstrap" width="50" height="50">
-                    </a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                            <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="#">Nosotros</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Ofertas</a>
-                            </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Categorias
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#">Whiskys</a></li>
-                                    <li><a class="dropdown-item" href="#">Cervezas</a></li>
-                                    <li><a class="dropdown-item" href="#">Vinos</a></li>
-                                    <li><a class="dropdown-item" href="#">Aperitivos</a></li>
-                                    <li><a class="dropdown-item" href="#">Espumantes</a></li>
-                                    <li><a class="dropdown-item" href="#">Gins</a></li>
-                                    <li><a class="dropdown-item" href="#">Vodkas</a></li>
-                                    <li><a class="dropdown-item" href="#">Tekilas</a></li>
-                                    <li><a class="dropdown-item" href="#">Sin alcohol</a></li>
-                                    <li><hr class="dropdown-divider"></li>
-                                    <li><a class="dropdown-item" href="#">Tabaco</a></li>
-                                    <li><a class="dropdown-item" href="#">Accesorios</a></li>
-                                    <li><a class="dropdown-item" href="#">Cristalería</a></li>
-                                </ul>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Comercialización</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Términos y Usos</a>
-                            </li>
-                            <li class = "nav-item">
-                                <a class = "nav-link" href = "#">Contactos</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link disabled" aria-disabled="true"></a>
-                            </li>
-                        </ul>
-                        <form class="d-flex" role="search">
-                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                            <button class="btn btn-outline-success" type="submit">Search</button>
-                        </form>
-                    </div>
-                </div>
-            </nav>
-        </section>
 
-        <section>
-            <div class="container">
-                <h1 class="text-center">Terminos y condiciones de uso</h1>
-            </div>
-        </section>
+        <?php include('layout/navbar.php'); ?>
 
-        <section>
-            <div class="container">
-                <p>Este sitio web es operado por Bushmills Drinks SA. Al acceder o utilizar nuestro sitio web, aceptas cumplir con los presentes Términos y Condiciones de uso, así como con todas las leyes y regulaciones aplicables. Si no estás de acuerdo con alguno de estos términos, no deberás usar este sitio.
-                    
+        <!-- Contenedor principal -->
+        <div class="container mt-5">
+            <h1 class="text-center mb-5">Términos y Condiciones de Uso</h1>
+            
+            <div class="mb-5">
+                <p>
+                    Este sitio web es operado por <strong>Bushmills Drinks SA</strong>. Al acceder o utilizar nuestro sitio web, aceptas cumplir con los presentes Términos y Condiciones de uso, así como con todas las leyes y regulaciones aplicables. Si no estás de acuerdo con alguno de estos términos, no deberás usar este sitio.
+                </p>
+                <p>
                     La venta de bebidas alcohólicas está dirigida únicamente a mayores de edad. Al utilizar este sitio, declaras ser mayor de 18 años.
                 </p>
             </div>
 
-            <div class="container">
-                <div class="accordion" id="accordionExample">
-                    <div class="accordion-item">
-                        <h2 class="accordion-header">
-                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                            Servicios Ofrecidos
-                        </button>
-                        </h2>
-                        <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
-                        <div class="accordion-body">
-                            It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-                        </div>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <h2 class="accordion-header">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                            Accordion Item #2
-                        </button>
-                        </h2>
-                        <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-                        <div class="accordion-body">
-                            <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-                        </div>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <h2 class="accordion-header">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                            Accordion Item #3
-                        </button>
-                        </h2>
-                        <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-                        <div class="accordion-body">
-                            <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-                        </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="mb-5">
+                <h4>Servicios ofrecidos</h4>
+                <p>
+                    La web ofrece la venta en línea de bebidas alcohólicas, productos relacionados y servicios asociados tales como promociones, entrega a domicilio, atención al cliente, entre otros.
+                </p>
             </div>
-        </section>
+
+            <div class="mb-5">
+                <h4>Políticas de Privacidad</h4>
+                <p>
+                    Nos comprometemos a proteger tu privacidad. Toda la información personal proporcionada será tratada conforme a nuestra Política de Privacidad, la cual forma parte de estos Términos y Condiciones. Utilizamos tus datos exclusivamente para procesar pedidos, realizar entregas, brindar atención al cliente y enviarte información promocional solo si das tu consentimiento.
+                </p>
+            </div>
+
+            <div class="mb-5">
+                <h4>Proceso de Compra</h4>
+                <ol>
+                    <li><strong>Selección de productos:</strong> El cliente puede navegar por el catálogo y añadir productos al carrito.</li>
+                    <li><strong>Confirmación del pedido:</strong> Antes de confirmar, se mostrará un resumen del pedido, precios, costos de envío y adicionales.</li>
+                    <li><strong>Pago:</strong> El cliente deberá seleccionar una forma de pago disponible y confirmar la compra.</li>
+                    <li><strong>Confirmación:</strong> Se enviará un correo electrónico con el detalle del pedido una vez aprobado el pago.</li>
+                </ol>
+            </div>
+
+            <div class="mb-5">
+                <h4>Formas de Entrega</h4>
+                <ul>
+                    <li><strong>Envíos a domicilio:</strong> Realizamos entregas en Corrientes Capital, provincia de Corrientes. El tiempo estimado de entrega es de 1 a 3 horas desde confirmado el pago.</li>
+                    <li><strong>Costo de envío:</strong> El costo varía según la ubicación del cliente y el monto de la compra. Puede haber promociones con envío gratuito a partir de cierto monto.</li>
+                    <li><strong>Requisitos:</strong> El receptor del pedido deberá ser mayor de edad y presentar identificación válida.</li>
+                </ul>
+            </div>
+
+            <div class="mb-5">
+                <h4>Soporte Postventa</h4>
+                <p>
+                    Nuestro equipo de atención al cliente está disponible para ayudarte ante cualquier duda o inconveniente. Puedes contactarnos por:
+                    <br>Email: <a href="mail: soporte@bushmill.com">soporte@bushmill.com</a>
+                    <br>Teléfono: +54 11 1234-5678
+                    <br>Horario de atención: Lunes a Viernes, de 17 a 00 hs
+                </p>
+            </div>
+
+            <div class="mb-5">
+                <h4>Garantías y Devoluciones</h4>
+                <ul>
+                    <li><strong>Productos dañados:</strong> Si un producto llega dañado o defectuoso, debes comunicarte con nosotros via whatsapp hasta 30 minutos posteriores luego de entregado el pedido.</li>
+                    <li><strong>Errores en el pedido:</strong> En caso de recibir un producto incorrecto, nos comprometemos a reemplazarlo sin costo adicional, el reclamo debe ser realizado hasta 30 minutos posteriores de entregado el pedido, via whatsapp.</li>
+                    <li><strong>Devoluciones:</strong> No se aceptarán devoluciones de pedidos que fueran correctamente entregados.</li>
+                </ul>
+            </div>
+
+            <div class="mb-5">
+                <h4>Uso del Sitio</h4>
+                <p>
+                    Está prohibido el uso del sitio con fines ilegales, fraudulentos o que perjudiquen la operación del mismo. Nos reservamos el derecho de restringir o cancelar el acceso a usuarios que no cumplan con los términos aquí expuestos.
+                </p>
+            </div>
+
+            <div class="mb-5">
+                <h4>Modificaciones</h4>
+                <p>
+                    Nos reservamos el derecho de modificar estos Términos y Condiciones en cualquier momento. Las modificaciones serán publicadas en el sitio y entrarán en vigor desde su publicación. El uso continuado del sitio implica la aceptación de los cambios.
+                </p>
+            </div>
+        </div>
+
+        
+        <?php include('layout/footer.php'); ?>
 
     </body>
 </html>

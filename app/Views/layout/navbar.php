@@ -39,11 +39,11 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="Comercializacion">Comercialización</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Términos y Usos</a>
-                            </li>
                             <li class = "nav-item">
-                                <a class = "nav-link" href = "#">Contactos</a>
+                                <a class = "nav-link" href = "Contacto">Contactos</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="Terminos">Términos y Condiciones</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link disabled" aria-disabled="true"></a>
