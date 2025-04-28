@@ -90,14 +90,6 @@ body{
   align-items: stretch; /* Asegura que las columnas tengan la misma altura */
 }
 
-/* Barra vertical de separación */
-.separator {
-  width: 2px; /* Grosor de la barra */
-  background-color: #333; /* Color de la barra */
-  height: 100%; /* Ocupa toda la altura de la fila */
-  margin: 0 20px; /* Espaciado horizontal alrededor de la barra */
-
-}
 
 
 
