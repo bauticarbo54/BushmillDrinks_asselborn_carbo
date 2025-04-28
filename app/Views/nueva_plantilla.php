@@ -39,9 +39,9 @@
         <div class="container py-5">
             <div class="row">
                 <div class="col-12 text-center">
-                    <h3>Bienvenidos a BushmillsDrinks, tu tienda online de bebidas alcohólicas premium.</h3>
+                    <h3>Bienvenidos a BushmillsDrinks, tu tienda online de bebidas favorita.</h3>
                     <p class="lead mt-4 fs-6">
-                    En nuestro sitio encontrarás una amplia variedad de licores, vinos, cervezas y destilados de las mejores marcas, ideales para cada ocasión. Ya sea que busques el trago perfecto para una celebración, una reunión o simplemente disfrutar de un buen momento, tenemos lo que necesitas.
+                    En nuestro sitio encontrarás una amplia variedad de licores, vinos, cervezas y destilados de las mejores marcas (y aquellas no tan buenas), ideales para cada ocasión. Ya sea que busques el trago perfecto para una celebración, una reunión o simplemente disfrutar de un buen momento, tenemos lo que necesitas.
                     </p>
                 </div>
             </div>
