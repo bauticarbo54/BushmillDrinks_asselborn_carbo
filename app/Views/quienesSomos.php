@@ -4,20 +4,46 @@
         <meta charset = "utf-8">
         <meta name = "viewport" content = "width= device-width, initial-scale = 1">
         <title>Quienes Somos</title>
-        <link rel="stylesheet" href="/bushmillDrinks_asselborn_carbo/public/assets/css/estilos.css">
         <link href = "assets/css/bootstrap.min.css" rel = "stylesheet" integrity ="" crossorigin ="">
         <script src = "assets/js/bootstrap.bundle.min.js" integrity ="" crossorigin =""></script>
+        <link rel="stylesheet" href="/bushmillDrinks_asselborn_carbo/public/assets/css/estilos.css">
     </head>
 
     <body>
         <?php include('layout/navbar.php'); ?>
 
-        <div class = "position-relative">
-            <img src="assets/img/Nosotros.png" class="img-fluid" alt="...">
-            <div class = "position-absolute top-50 start-50 translate-middle text-white fs-1 fw-bold bg-dark bg-opacity-10">
-                NOSOTROS
+        <div class="container-md">
+            <img src="assets/img/fondoNosotros.jpg" alt="fondo nosotros" srcset=""style="width: 100%; height: auto;">
+        </div>
+
+        <section>
+            <div class="container text-center">
+                <div class="row">
+                    <div class="col">
+                        <h1 class= "secciones">
+                            MISIÓN
+                        </h1>
+                        <p class= "textoDesc">
+                        Nuestra misión es ofrecer una amplia variedad de bebidas alcohólicas de alta calidad, creando experiencias memorables para nuestros clientes. Nos comprometemos a ser un referente en el mercado, proporcionando productos que sean tanto innovadores como accesibles, y asegurándonos de que cada persona disfrute de sus momentos con responsabilidad y buen gusto.
+                        </p>
+                    </div>
+                    <div class="separator"></div>
+                <div class="col">
+                    <h1 class= "secciones">
+                        VISIÓN
+                    </h1>
+                    <p class= "textoDesc">
+                    Ser la empresa líder en la distribución de bebidas alcohólicas a nivel nacional e internacional, reconocida por su excelente servicio al cliente, su compromiso con la calidad y su capacidad para adaptarse a las tendencias del mercado. Aspiramos a crear una comunidad de consumidores apasionados por los productos que ofrecemos, siempre promoviendo un consumo responsable y consciente.
+                    </p>
+                </div>
             </div>
-            <p class = "textoDesc">Todo comenzó en una noche cualquiera, entre copas de vino, buenas charlas y muchas risas. Fue en ese ambiente distendido donde nació una idea simple pero poderosa: crear un espacio donde los amantes de las bebidas alcohólicas pudieran encontrar la mayor variedad de productos de la región, con precios accesibles y una experiencia de compra sin complicaciones.
+        </section>
+
+        <div class= "container-md">
+            <h2 class = "secciones">
+                QUIENES SOMOS
+            </h2>
+            <p class = "textoCentrado">Todo comenzó en una noche cualquiera, entre copas de vino, buenas charlas y muchas risas. Fue en ese ambiente distendido donde nació una idea simple pero poderosa: crear un espacio donde los amantes de las bebidas alcohólicas pudieran encontrar la mayor variedad de productos de la región, con precios accesibles y una experiencia de compra sin complicaciones.
                Lo que empezó como una conversación entre amigos se transformó en un proyecto con propósito. Hoy, nuestro sitio reúne una cuidada selección de vinos, cervezas, destilados y mucho más, pensado para quienes valoran la calidad, la diversidad y el placer de compartir.
                Porque creemos que cada brindis cuenta una historia, y estamos acá para acompañarte en todas ellas.</p>
         </div>

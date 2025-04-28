@@ -1,5 +1,3 @@
-<link href = "assets/css/bootstrap.min.css" rel = "stylesheet" integrity ="" crossorigin ="">
-<script src = "assets/js/bootstrap.bundle.min.js" integrity ="" crossorigin =""></script>
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
                 <div class="container-fluid">
                     <a class="navbar-brand" href= "Inicio">
@@ -17,10 +15,10 @@
                                 <a class="nav-link" href="#">Ofertas</a>
                             </li>
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <a class="nav-link dropdown-toggle" href="#" id= "categoriasDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     Categorias
                                 </a>
-                                <ul class="dropdown-menu">
+                                <ul class="dropdown-menu" aria-labelledby="categoriasDropdown">
                                     <li><a class="dropdown-item" href="#">Whiskys</a></li>
                                     <li><a class="dropdown-item" href="#">Cervezas</a></li>
                                     <li><a class="dropdown-item" href="#">Vinos</a></li>

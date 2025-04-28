@@ -2,14 +2,47 @@ body{
   background-color: #FAF4EF;
 }
 
+.colorFondo{
+  background-color: #535151;
+}
+
 .textoDesc{
-  color: #aaa;
-  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #141212;
   text-align: justify;
-  font-size: 1.1rem; /* más chico */
+  font-size: 15px; /* más chico */
   margin: 2rem 8rem;  /* menos margen */
 }
 
+.secciones{
+  font-family:Arial, Helvetica, sans-serif;
+  font-size: 26px;
+  color: #2c2c2c; /* Gris oscuro para un tono sobrio */
+  font-weight: 600;
+  padding-left: 12px;
+  margin-top: 40px;
+  margin-bottom: 20px;
+  letter-spacing: 0.5px;
+  text-align: center;
+  transition: border-color 0.3s ease, color 0.3s ease;
+}
+
+.textoCentrado{
+  color: black;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 15px;
+  text-align: center;
+}
+
+.linkPersonalizado{
+  text-decoration: none; /*Eliminamos el subrayado*/
+  color: #535151;
+}
+
+.linkPersonalizado:hover{
+  color: #4d0c1a;          
+  text-decoration: underline;
+}
 
 .footer {
   background: #111;
@@ -51,3 +84,21 @@ body{
 .footer-links a:hover {
   color: #d2007e;
 }
+
+.row {
+  display: flex;
+  align-items: stretch; /* Asegura que las columnas tengan la misma altura */
+}
+
+/* Barra vertical de separación */
+.separator {
+  width: 2px; /* Grosor de la barra */
+  background-color: #333; /* Color de la barra */
+  height: 100%; /* Ocupa toda la altura de la fila */
+  margin: 0 20px; /* Espaciado horizontal alrededor de la barra */
+
+}
+
+
+
+
