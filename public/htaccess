@@ -1,7 +1,12 @@
+# public/.htaccess
+
 <IfModule mod_rewrite.c>
     RewriteEngine On
-    RewriteBase /BushmillDrinks_asselborn_carbo/public/
+
+    # Si la solicitud es a un archivo o directorio existente, no hacer nada
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
+
+    # Redirigir todo al index.php
     RewriteRule ^(.*)$ index.php/$1 [L]
 </IfModule>
