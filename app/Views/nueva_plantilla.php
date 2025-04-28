@@ -16,13 +16,13 @@
             <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img src="assets/img/Whisky.png" class="d-block w-100" alt="...">
+                        <img src="assets/img/Whiskys.jpeg" class="d-block w-100" alt="...">
                     </div>
                 <div class="carousel-item">
-                    <img src="assets/img/Vino.png" class="d-block w-100" alt="...">
+                    <img src="assets/img/Vinos.jpeg" class="d-block w-100" alt="...">
                 </div>
                 <div class="carousel-item">
-                    <img src="assets/img/Cervezas.png" class="d-block w-100" alt="...">
+                    <img src="assets/img/Cerveza.jpeg" class="d-block w-100" alt="...">
                 </div>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
@@ -36,15 +36,50 @@
             </div>
         </section>
 
-        <footer class="footer">
-            <div class="footer-container">
-                    <p class="footer-text">© 2025 Bushmills Drinks. Todos los derechos reservados.</p>
-                    <div class="footer-links">
-                        <a href="https://github.com/tu_usuario" target="_blank">GitHub</a>
-                        <a href="https://linkedin.com/in/tu_usuario" target="_blank">LinkedIn</a>
-                        <a href="/contacto">Contacto</a>
+        <div class="container py-5">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <h3>Bienvenidos a BushmillsDrinks, tu tienda online de bebidas alcohólicas premium.</h3>
+                    <p class="lead mt-4 fs-6">
+                    En nuestro sitio encontrarás una amplia variedad de licores, vinos, cervezas y destilados de las mejores marcas, ideales para cada ocasión. Ya sea que busques el trago perfecto para una celebración, una reunión o simplemente disfrutar de un buen momento, tenemos lo que necesitas.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    <section class="border border-5 p-5" id= "Ofertas">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <h1 class="text-center text-dark fw-bold" style="font-family: 'Bebas Neue', sans-serif;">
+        OFERTAS
+    </h1>
+        <div class="card-group">
+            <div class="card">
+                <img src="assets/img/Heineken.jpeg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Cerveza Heineken 355cc x6</h5>
+                        <p class="card-text">El suave y único sabor de la Heineken original. Elaborada con ingredientes naturales como 100% malta europea, agua y lúpulo. Su presentación es perfecta para disfrutarla fría.</p>
+                        <p class="card-text"><small class="text-body-secondary">$8990,45</small></p>
                     </div>
             </div>
-        </footer>
+            <div class="card">
+                <img src="assets/img/LuigiBoscaReserva.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Luigi Bosca Cabernet Sauvignon 750cc</h5>
+                    <p class="card-text">Tinto de color rojo rubí profundo y brillante. Sus aromas son sutiles y equi­librados, con notas de frutos negros, especias y cuero. En boca es jugoso y expresivo, con taninos finos y firmes que se agarran.</p>
+                    <p class="card-text"><small class="text-body-secondary">$97855,32</small></p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="assets/img/BlackLabel.jpeg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Johnnie Walker Black Label 750cc</h5>
+                        <p class="card-text">Mezclado exclusivamente con whiskies madurados por al menos 12 años, reúne sabores de los 4 rincones de Escocia para crear una experiencia compleja, profunda y enriquecedora. El final es increíblemente suave y equilibrado, rico en humo, turba y malta.</p>
+                        <p class="card-text"><small class="text-body-secondary">$65800,00</small></p>
+                    </div>
+            </div>
+        </div>
+    </section>
+
+        <?php include('layout/footer.php'); ?>
     </body>
 </html>
