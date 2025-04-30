@@ -16,7 +16,7 @@
             <img src="assets/img/fondoNosotros.jpg" alt="fondo nosotros" srcset=""style="width: 100%; height: auto;">
         </div>
 
-        <div class= "container w-50 text-center">
+        <div class= "container w-100 w-lg-50 text-center">
             <h2 class = "secciones">
                 QUIENES SOMOS
             </h2>
@@ -26,9 +26,9 @@
         </div>
 
         <section>
-            <div class="container text-center">
+            <div class="container w-100 w-lg-50 text-center">
                 <div class="row">
-                    <div class="col">
+                    <div class="col-md-6">
                         <h1 class= "secciones">
                             MISIÓN
                         </h1>
@@ -36,13 +36,14 @@
                         Nuestra misión es ofrecer una amplia variedad de bebidas alcohólicas de alta calidad, creando experiencias memorables para nuestros clientes. Nos comprometemos a ser un referente en el mercado, proporcionando productos que sean tanto innovadores como accesibles, y asegurándonos de que cada persona disfrute de sus momentos con responsabilidad y buen gusto.
                         </p>
                     </div>
-                <div class="col">
-                    <h1 class= "secciones">
-                        VISIÓN
-                    </h1>
-                    <p class= "textoDesc">
-                    Ser la empresa líder en la distribución de bebidas alcohólicas a nivel nacional e internacional, reconocida por su excelente servicio al cliente, su compromiso con la calidad y su capacidad para adaptarse a las tendencias del mercado. Aspiramos a crear una comunidad de consumidores apasionados por los productos que ofrecemos, siempre promoviendo un consumo responsable y consciente.
-                    </p>
+                    <div class="col-md-6">
+                        <h1 class= "secciones">
+                            VISIÓN
+                        </h1>
+                        <p class= "textoDesc">
+                        Ser la empresa líder en la distribución de bebidas alcohólicas a nivel nacional e internacional, reconocida por su excelente servicio al cliente, su compromiso con la calidad y su capacidad para adaptarse a las tendencias del mercado. Aspiramos a crear una comunidad de consumidores apasionados por los productos que ofrecemos, siempre promoviendo un consumo responsable y consciente.
+                        </p>
+                    </div>
                 </div>
             </div>
         </section>
