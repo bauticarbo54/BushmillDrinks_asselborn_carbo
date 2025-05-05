@@ -67,6 +67,45 @@
                 Comunícate con <a class= "linkPersonalizado" href= "Contacto">nosotros</a> para realizar tu pedido y coordinar la entrega. Contamos con envío gratuito dentro de las 4 avenidas. 
             </p>
         </section>
+
+        <section>
+            <h2 class= "secciones">
+                MÉTODOS DE PAGO
+            </h2>
+            <div class = "container mt-5 mb-3">
+                <div class = "row">
+                    <div class = "col-md-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="tituloCentrado">Billeteras Virtuales</h5>
+                                <p class="card-text">Aceptamos <a class = "linkPersonalizado" href = "https://link.mercadopago.com.ar/bushmillsdrinks" target="_blank">Mercado Pago</a>, MODO, NaranjaX, Ualá.</p>
+                            </div>
+                            <img src="assets/img/MercadoPago.png" class="card-img-bottom" alt="...">
+                        </div>
+                    </div>
+
+                    <div class = "col-md-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="tituloCentrado">Efectivo</h5>
+                                <p class="card-text">Podés aprovechar los descuentos en efectivo.</p>
+                            </div>
+                            <img src="assets/img/Efectivo.png" class="card-img-bottom" alt="...">
+                        </div>
+                    </div>
+
+                    <div class = "col-md-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="tituloCentrado">Tarjetas de Crédito y Débito</h5>
+                                <p class="card-text">Aceptamos BBVA, Naranja, ICBC, Galicia y mucho más.</p>
+                            </div>
+                            <img src="assets/img/TarjetaC-D.png" class="card-img-bottom" alt="...">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
         <?php include('layout/footer.php'); ?>
     </body>
 </html>

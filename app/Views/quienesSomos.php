@@ -17,6 +17,7 @@
         </div>
 
         <div class= "container w-100 w-lg-50 text-center ">
+
             <h2 class = "secciones">
                 QUIENES SOMOS
             </h2>
@@ -26,9 +27,11 @@
         </div>
 
         <section>
-            <div class="container text-center">
+            <div class="container w-100 w-lg-50 text-center">
                 <div class="row">
-                    <div class="col-12 col-lg-6 px-lg-5">
+
+
+                    <div class="col-md-6">
                         <h1 class= "secciones">
                             MISIÓN
                         </h1>
@@ -36,7 +39,8 @@
                         Nuestra misión es ofrecer una amplia variedad de bebidas alcohólicas de alta calidad, creando experiencias memorables para nuestros clientes. Nos comprometemos a ser un referente en el mercado, proporcionando productos que sean tanto innovadores como accesibles, y asegurándonos de que cada persona disfrute de sus momentos con responsabilidad y buen gusto.
                         </p>
                     </div>
-                    <div class="col-12 col-lg-6 px-lg-5">
+
+                    <div class="col-md-6">
                         <h1 class= "secciones">
                             VISIÓN
                         </h1>

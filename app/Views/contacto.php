@@ -53,7 +53,8 @@
                         <p><strong>Horario de atención</strong></p>
                         <p> Lunes a Viernes, de 17 a 00 hs</p>
                         <p><strong>Dirección</strong></p>
-                        <p> Av. 3 de Abril 567, Corrientes Capital</p>
+                        <p> 9 de Julio 745, Corrientes Capital</p>
+                        <p> Lavalle 1534, Corrientes Capital</p>
                     </div>
                 </div>    
             </div>
