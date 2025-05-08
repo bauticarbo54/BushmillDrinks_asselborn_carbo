@@ -15,7 +15,6 @@
 
         <?php include('layout/navbar.php'); ?>
 
-        
         <!-- Contenedor principal -->
         <div class="container mt-5">
             <h1 class="text-center mb-5">Términos y Condiciones de Uso</h1>

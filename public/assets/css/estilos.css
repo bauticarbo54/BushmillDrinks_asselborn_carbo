@@ -114,16 +114,14 @@ body{
 
 /* Cambia el color cuando el botón está expandido */
 .accordion-button[aria-expanded="true"] {
-  background-color: #535151;  /* Color azul */
-  color: white;               /* Texto blanco */
+  background-color: #f8f9fa;  /* Color azul */
+  color: rgb(0, 0, 0);               /* Texto blanco */
+  font-weight:400;
 }
 
-/* Cambia el color cuando el botón está colapsado */
-.accordion-button.collapsed {
-  background-color: #f8f9fa; /* Color claro */
-  color: #212529;            /* Texto oscuro */
+.accordion-button{
+  font-weight: lighter;
 }
-
 
 /* Estilos para el cartel de promociones */
 .promo-banner {
@@ -150,4 +148,9 @@ body{
   100% {
       transform: translateX(-100vw);
   }
+}
+
+.img-carrusel-inicio{
+  max-height: 15rem; 
+  object-fit: cover;
 }
