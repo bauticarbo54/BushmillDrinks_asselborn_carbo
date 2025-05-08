@@ -1,24 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NavBar</title>
-
-    
-    <link href="assets/css/bootstrap.min.css" rel="stylesheet" integrity="" crossorigin="">
-    <script src="assets/js/bootstrap.bundle.min.js" integrity="" crossorigin=""></script>
-    <link rel="stylesheet" href="assets/css/estilos.css">
-</head>
-<body>
-
-<!-- Navbar -->
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
         <a class="navbar-brand" href="Inicio">
             <img src="assets/img/Logo.png" alt="Bootstrap" width="50" height="50">
         </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -63,6 +48,3 @@
         🚚 Envío gratis en pedidos mayores a $20.000    |    🍻 2x1 en cervezas artesanales esta semana    |    🥃 10% de descuento abonando en efectivo o por transferencia 
     </div> 
 </div>
-
-</body>
-</html>
