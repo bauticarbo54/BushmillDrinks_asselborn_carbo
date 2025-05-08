@@ -72,22 +72,22 @@
         <section>
             <div class="container my-5">
                 <div class="row align-items-center">
-                    <div class="col-md-6 text-center text-md-start">
+                    <div class="col-12 col-md-6 text-center text-md-start">
                         <h1 class="secciones">CONFIABILIDAD</h1>
                         <p class="textoDesc">Tu seguridad es nuestra prioridad. Contamos con un servicio confiable y verificado para que tu compra llegue en tiempo y forma.</p>
                     </div>
-                    <div class="col-md-6 text-center">
-                        <img src="assets/img/Confiabilidad.png" alt="Confianza y seguridad" class="img-fluid" style="max-width: 500px; height: auto;">
+                    <div class="col-12 col-md-6 text-center">
+                        <img src="assets/img/Confiabilidad.png" alt="Confianza y seguridad" class="img-fluid" style="width: 100%; max-width: 500px;">
                     </div>
                 </div>
             </div>
 
             <div class = "container my-5">
                 <div class = "row align-items-center">
-                    <div class="col-md-6 text-center">
-                        <img src="assets/img/Precios.png" alt="Confianza y seguridad" class="img-fluid" style="max-width: 500px; height: auto;">
+                    <div class="col-12 col-md-6 text-center">
+                        <img src="assets/img/Precios.png" alt="Confianza y seguridad" class="img-fluid" style="width: 100%; max-width: 500px;">
                     </div>
-                    <div class="col-md-6 text-center text-md-start">
+                    <div class="col-12 col-md-6 text-center text-md-start">
                         <h1 class="secciones">PRECIOS BAJOS</h2>
                         <p class="textoDesc">Contamos con los mejores precios de la zona y una amplia variedad de <a class= "linkPersonalizado" href= "Comercializacion">opciones de pago</a>.</p>
                     </div>
