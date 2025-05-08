@@ -13,6 +13,8 @@
 
         <?php include('layout/navbar.php'); ?>
 
+        
+
         <section style="margin-bottom: 50px">
             <div class="container-md">
                 <img src="assets/img/fondoContacto.png" alt="fondo contactanos" srcset=""style="width: 100%; height: auto;">
