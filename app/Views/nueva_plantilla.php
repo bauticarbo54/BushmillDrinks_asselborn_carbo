@@ -16,13 +16,13 @@
             <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img src="assets/img/Whiskys.jpeg" class="d-block w-100" alt="...">
+                        <img src="assets/img/Whisky.png" class="d-block w-100" alt="...">
                     </div>
                 <div class="carousel-item">
-                    <img src="assets/img/Vinos.jpeg" class="d-block w-100" alt="...">
+                    <img src="assets/img/Vino.png" class="d-block w-100" alt="...">
                 </div>
                 <div class="carousel-item">
-                    <img src="assets/img/Cerveza.jpeg" class="d-block w-100" alt="...">
+                    <img src="assets/img/Cerveza.png" class="d-block w-100" alt="...">
                 </div>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
@@ -48,10 +48,10 @@
         </div>
 
     <section class="border border-5 p-5" id= "Ofertas">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
-    <h1 class="text-center text-dark fw-bold" style="font-family: 'Bebas Neue', sans-serif;">
-        OFERTAS
-    </h1>
+        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+        <h1 class="text-center text-dark fw-bold" style="font-family: 'Bebas Neue', sans-serif;">
+            OFERTAS
+        </h1>
         <div class="card-group">
             <div class="card">
                 <img src="assets/img/Heineken.jpeg" class="card-img-top" alt="...">
