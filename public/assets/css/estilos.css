@@ -104,7 +104,42 @@ body{
   align-items: stretch; /* Asegura que las columnas tengan la misma altura */
 }
 
+/* Cambia el color cuando el botón está expandido */
+.accordion-button[aria-expanded="true"] {
+  background-color: #535151;  /* Color azul */
+  color: white;               /* Texto blanco */
+}
+
+/* Cambia el color cuando el botón está colapsado */
+.accordion-button.collapsed {
+  background-color: #f8f9fa; /* Color claro */
+  color: #212529;            /* Texto oscuro */
+}
 
 
+/* Estilos para el cartel de promociones */
+.promo-banner {
+  background-color: #FAF4EF;  /* Fondo amarillo */
+  color: #212529;             /* Texto oscuro */
+  white-space: nowrap;        /* No permite saltos de línea */
+  overflow: hidden;           /* Oculta el desbordamiento */
+  position: relative;
+  font-size: 0.7rem;
+  height: 1.1rem;               /* Altura ajustada */
+  line-height: 1.1rem;          /* Centrado vertical */
+}
 
+.promo-text {
+  display: inline-block;
+  position: absolute;
+  animation: scrollText 15s linear infinite;
+}
 
+@keyframes scrollText {
+  0% {
+      transform: translateX(100vw);
+  }
+  100% {
+      transform: translateX(-100vw);
+  }
+}
