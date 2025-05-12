@@ -1,0 +1,42 @@
+# Logs y cachés
+application/logs/*
+!application/logs/index.html
+application/cache/*
+!application/cache/index.html
+
+# Archivos de configuración sensibles
+application/config/database.php
+application/config/email.php
+application/config/encryption_key.php
+
+# Archivos temporales y sesiones
+writable/sessions/*
+writable/cache/*
+writable/logs/*
+
+# Archivos de XAMPP
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*.bak
+
+# Composer
+/vendor/
+composer.lock
+
+# Node Modules
+/node_modules/
+
+# IDEs
+.idea/
+.vscode/
+
+# Sistema operativo
+*.DS_Store
+*.env
+.env.*
+.env.local
+.env.production
+.env.backup
+.env.*.backup

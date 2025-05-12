@@ -1,0 +1,174 @@
+body{
+  background-color: #FAF4EF;
+}
+
+.colorFondo{
+  background-color: #535151;
+}
+
+.textoDesc{
+  font-family: Arial, Helvetica, sans-serif;
+  color: #141212;
+  text-align: justify;
+  font-size: 15px; /* más chico */
+  margin: 1rem 4rem;  /* menos margen */
+
+}
+
+.textoFrase{
+  font-family: Arial, Helvetica, sans-serif;
+  color: #2a2828;
+  text-align: center;
+  font-size: 15px;
+  font-style: italic;
+}
+
+.secciones{
+  font-family:Arial, Helvetica, sans-serif;
+  font-size: 26px;
+  color: #2c2c2c; /* Gris oscuro para un tono sobrio */
+  font-weight: 600;
+  padding-left: 12px;
+  margin-top: 40px;
+  margin-bottom: 20px;
+  letter-spacing: 0.5px;
+  text-align: center;
+  transition: border-color 0.3s ease, color 0.3s ease;
+}
+
+.textoCentrado{
+  color: black;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 15px;
+  text-align: center;
+  margin: 1rem 4rem;
+}
+
+.tituloCentrado{
+  color: black;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 22px;
+  text-align: center;
+}
+
+.linkPersonalizado{
+  text-decoration: none; /*Eliminamos el subrayado*/
+  color: #535151;
+}
+
+.linkPersonalizado:hover{
+  color: #4d0c1a;          
+  text-decoration: underline;
+}
+
+.footer {
+  background: #111;
+  color: #ddd;
+  padding: 2rem 1rem;
+  text-align: center;
+  font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.footer-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.footer-text {
+  font-size: 0.9rem;
+  color: #aaa;
+  margin-bottom: 1rem;
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.footer-links a {
+  color: #ddd;
+  text-decoration: none;
+  margin: 0 1rem;
+  transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: #d2007e;
+}
+
+.footer-logo{
+  width: 100px; /* ajusta el tamaño del logo */
+  margin-bottom: 10px;
+}
+
+.row {
+  display: flex;
+  align-items: stretch; /* Asegura que las columnas tengan la misma altura */
+}
+
+/* Cambia el color cuando el botón está expandido */
+.accordion-button[aria-expanded="true"] {
+  background-color: #f8f9fa;  /* Color azul */
+  color: rgb(0, 0, 0);               /* Texto blanco */
+  font-weight:400;
+}
+
+.accordion-button{
+  font-weight: lighter;
+}
+
+/* Estilos para el cartel de promociones */
+.promo-banner {
+  background-color: #FAF4EF;  /* Fondo amarillo */
+  color: #212529;             /* Texto oscuro */
+  white-space: nowrap;        /* No permite saltos de línea */
+  overflow: hidden;           /* Oculta el desbordamiento */
+  position: relative;
+  font-size: 0.7rem;
+  height: 1.1rem;               /* Altura ajustada */
+  line-height: 1.1rem;          /* Centrado vertical */
+}
+
+.promo-text {
+  display: inline-block;
+  position: absolute;
+  animation: scrollText 15s linear infinite;
+}
+
+@keyframes scrollText {
+  0% {
+      transform: translateX(100vw);
+  }
+  100% {
+      transform: translateX(-100vw);
+  }
+}
+
+.img-carrusel-inicio{
+  max-height: 15rem; 
+  object-fit: cover;
+}
+
+.map-container {
+  position: relative;
+  overflow: hidden;
+  padding-top: 56.25%; /* Relación 16:9 */
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  margin-bottom: 30px;
+}
+
+.map-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
