@@ -26,7 +26,7 @@
                         <li class="nav-item"><a class="nav-link" href="inicio#Ofertas">Ofertas</a></li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="categoriasDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Categorias
+                                Productos
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="categoriasDropdown">
                                 <li><a class="dropdown-item" href="#">Whiskys</a></li>
@@ -50,8 +50,12 @@
                     </ul>
                     <form class="d-flex" role="search">
                         <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
-                        <button class="btn btn-outline-success" type="submit">Buscar</button>
+                        <button class="btn btn-outline-success me-2" type="submit">Buscar</button>
                     </form>
+                    <div class="d-flex">
+                        <a href="login" class="btn btn-outline-secondary me-2" style="border-color: black; color: black;">Iniciar sesión</a>
+                        <a href="registro" class="btn btn-dark">Registrarse</a>
+                    </div>
                 </div>
             </div>
         </nav>
