@@ -43,7 +43,7 @@
                     <!-- Card 1 -->
                     <div class="col-md-4">
                         <div class="card">
-                            <img src="assets/img/Logo.png" class="card-img-top img-fluid" alt="Producto 1">
+                            <img src="assets/img/WhiskyCat.png" class="card-img-top img-fluid" alt="Producto 1">
                             <div class="card-body">
                                 <h5 class="card-title">Whiskys</h5>
                                 <p class="card-text">Tenemos las mejores opciones de whiskys nacionales e importados</p>
@@ -55,7 +55,7 @@
                     <!-- Card 2 -->
                     <div class="col-md-4">
                         <div class="card">
-                            <img src="assets/img/Logo.png" class="card-img-top img-fluid" alt="Producto 2">
+                            <img src="assets/img/CervezaCat.png" class="card-img-top img-fluid" alt="Producto 2">
                             <div class="card-body">
                                 <h5 class="card-title">Cervezas</h5>
                                 <p class="card-text">Contamos con amplia variedad en cervezas industriales y artesanales</p>
@@ -67,7 +67,7 @@
                     <!-- Card 3 -->
                     <div class="col-md-4">
                         <div class="card">
-                            <img src="assets/img/Logo.png" class="card-img-top img-fluid" alt="Producto 3">
+                            <img src="assets/img/VinoCat.png" class="card-img-top img-fluid" alt="Producto 3">
                             <div class="card-body">
                                 <h5 class="card-title">Vinos</h5>
                                 <p class="card-text">Explora la gran variedad de vinos que te estan esperando</p>
@@ -81,7 +81,7 @@
                     <!-- Card 4 -->
                     <div class="col-md-4">
                         <div class="card">
-                            <img src="assets/img/Logo.png" class="card-img-top img-fluid" alt="Producto 4">
+                            <img src="assets/img/AperitivoCat.png" class="card-img-top img-fluid" alt="Producto 4">
                             <div class="card-body">
                                 <h5 class="card-title">Aperitivos</h5>
                                 <p class="card-text">Encontra el aperitivo que mas te guste</p>
@@ -93,7 +93,7 @@
                     <!-- Card 5 -->
                     <div class="col-md-4">
                         <div class="card">
-                            <img src="assets/img/Logo.png" class="card-img-top img-fluid" alt="Producto 5">
+                            <img src="assets/img/EspumanteCat.png" class="card-img-top img-fluid" alt="Producto 5">
                             <div class="card-body">
                                 <h5 class="card-title">Espumantes</h5>
                                 <p class="card-text">Brinda donde sea con nuestros espumantes</p>
@@ -105,7 +105,7 @@
                     <!-- Card 6 -->
                     <div class="col-md-4">
                         <div class="card">
-                            <img src="assets/img/Logo.png" class="card-img-top img-fluid" alt="Producto 6">
+                            <img src="assets/img/GinCat.png" class="card-img-top img-fluid" alt="Producto 6">
                             <div class="card-body">
                                 <h5 class="card-title">Gin</h5>
                                 <p class="card-text">Disfruta de un buen trago con los Gines que tenemos para vos</p>
