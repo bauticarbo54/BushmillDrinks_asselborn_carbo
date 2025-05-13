@@ -45,5 +45,10 @@ class Home extends BaseController
         return view('layout/navbar').view('registro').view('layout/footer');
     }
 
+    public function productos(): string
+    {
+        return view('layout/navbar').view('productos').view('layout/footer');
+    }
+
 }
 

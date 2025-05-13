@@ -117,7 +117,7 @@
             </div>
 
             <h2 class="m-5">
-                <a href="#" class="text-decoration-none linkPersonalizado">
+                <a href="productos" class="text-decoration-none linkPersonalizado">
                     Ver todas las categorias>>
                 </a>
             </h2>

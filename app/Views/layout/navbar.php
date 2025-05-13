@@ -24,10 +24,9 @@
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item"><a class="nav-link" aria-current="page" href="nosotros">Nosotros</a></li>
                         <li class="nav-item"><a class="nav-link" href="inicio#Ofertas">Ofertas</a></li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="categoriasDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Productos
-                            </a>
+                        <li class="nav-item dropdown d-flex align-items-center">
+                            <a class= "nav-link" href = "productos">Productos</a>
+                            <a class="nav-link dropdown-toggle" href="#" id="categoriasDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"></a>
                             <ul class="dropdown-menu" aria-labelledby="categoriasDropdown">
                                 <li><a class="dropdown-item" href="#">Whiskys</a></li>
                                 <li><a class="dropdown-item" href="#">Cervezas</a></li>
