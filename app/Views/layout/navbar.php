@@ -28,15 +28,15 @@
                             <a class= "nav-link" href = "productos">Productos</a>
                             <a class="nav-link dropdown-toggle" href="#" id="categoriasDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"></a>
                             <ul class="dropdown-menu" aria-labelledby="categoriasDropdown">
-                                <li><a class="dropdown-item" href="#">Whiskys</a></li>
-                                <li><a class="dropdown-item" href="#">Cervezas</a></li>
-                                <li><a class="dropdown-item" href="#">Vinos</a></li>
-                                <li><a class="dropdown-item" href="#">Aperitivos</a></li>
-                                <li><a class="dropdown-item" href="#">Espumantes</a></li>
-                                <li><a class="dropdown-item" href="#">Gins</a></li>
-                                <li><a class="dropdown-item" href="#">Vodkas</a></li>
-                                <li><a class="dropdown-item" href="#">Tekilas</a></li>
-                                <li><a class="dropdown-item" href="#">Sin alcohol</a></li>
+                                <li><a class="dropdown-item" href="productos#Whiskys">Whiskys</a></li>
+                                <li><a class="dropdown-item" href="productos#Cervezas">Cervezas</a></li>
+                                <li><a class="dropdown-item" href="productos#Vinos">Vinos</a></li>
+                                <li><a class="dropdown-item" href="productos#Aperitivos">Aperitivos</a></li>
+                                <li><a class="dropdown-item" href="productos#Espumantes">Espumantes</a></li>
+                                <li><a class="dropdown-item" href="productos#Gins">Gins</a></li>
+                                <li><a class="dropdown-item" href="productos#Vodkas">Vodkas</a></li>
+                                <li><a class="dropdown-item" href="productos#Tekilas">Tekilas</a></li>
+                                <li><a class="dropdown-item" href="productos#SinAlcohol">Sin alcohol</a></li>
                                 <li><hr class="dropdown-divider"></li>
                                 <li><a class="dropdown-item" href="#">Tabaco</a></li>
                                 <li><a class="dropdown-item" href="#">Accesorios</a></li>
