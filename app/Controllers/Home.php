@@ -24,7 +24,6 @@ class Home extends BaseController
         return view('layout/navbar').view('comercializacion').view('layout/footer');
     }
 
-    
     public function contacto(): string
     {
         return view('layout/navbar').view('contacto').view('layout/footer');

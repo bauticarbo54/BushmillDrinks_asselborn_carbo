@@ -4,16 +4,16 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class Usuario_Model extends Model
+class Categoria_Model extends Model
 {
-    protected $table = 'usuarios';
-    protected $primaryKey = 'id_usuario';
+    protected $table = 'categorias';
+    protected $primaryKey = 'id_categoria';
 
     protected $useAutoIncrement = true;
     protected $returnType = 'array';
     protected $useSoftDeletes = false;
 
-    protected $allowedFields = ['nombre', 'apellido', 'usuario', 'email', 'pass', 'perfil_id', 'baja'];
+    protected $allowedFields = ['categoria_nombre', 'categoria_descripcion'];
 
     protected $useTimestamps = false;
     protected $createdField = '';
