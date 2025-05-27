@@ -53,7 +53,7 @@ if ($validation->withRequest($request)->run() ){
         'mensaje_consulta' => $request->getPost('consulta') 
             ];
 
-               $consulta = new Consulta_model();
+                
                $consulta->insert($data);
 
               return redirect()->route('contact')->with('mensaje_consulta', 'Su consulta se envió exitosamente!');

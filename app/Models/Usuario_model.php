@@ -4,16 +4,16 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class Marca_Model extends Model
+class Usuario_model extends Model
 {
-    protected $table = 'marca';
-    protected $primaryKey = 'id_marca';
+    protected $table = 'usuarios';
+    protected $primaryKey = 'id_usuario';
 
     protected $useAutoIncrement = true;
     protected $returnType = 'array';
     protected $useSoftDeletes = false;
 
-    protected $allowedFields = ['marca_nombre'];
+    protected $allowedFields = ['nombre', 'apellido', 'usuario', 'email', 'pass', 'perfil_id', 'baja'];
 
     protected $useTimestamps = false;
     protected $createdField = '';

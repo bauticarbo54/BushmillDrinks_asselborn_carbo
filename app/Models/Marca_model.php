@@ -4,16 +4,16 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class Categoria_Model extends Model
+class Marca_model extends Model
 {
-    protected $table = 'categorias';
-    protected $primaryKey = 'id_categoria';
+    protected $table = 'marca';
+    protected $primaryKey = 'id_marca';
 
     protected $useAutoIncrement = true;
     protected $returnType = 'array';
     protected $useSoftDeletes = false;
 
-    protected $allowedFields = ['categoria_nombre', 'categoria_descripcion'];
+    protected $allowedFields = ['marca_nombre'];
 
     protected $useTimestamps = false;
     protected $createdField = '';
