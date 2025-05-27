@@ -7,12 +7,6 @@ use App\Models\Usuario_model;
 
 class Usuario_controller extends BaseController
 {
-
-    public function registro()
-    {
-        return view('registro');
-    }
-
     public function add_cliente()
     {
         $validation = \Config\Services::validation();
@@ -85,6 +79,28 @@ class Usuario_controller extends BaseController
             $data['titulo'] = 'Contacto';
             $data['validation'] = $validation->getErrors();
             return view('layout/navbar', $data).view('registro').view('layout/footer');
+        }
+    }
+
+    public function login()
+    {
+        $email = $this->request->getPost('email');
+        $password = $this->request->getPost('password');
+
+        $usuarioModel = new \App\Models\Usuario_model();
+        $usuario = $usuarioModel->where('email', $email)->first();
+
+        if ($usuario && password_verify($password, $usuario['pass'])) {
+            session()->set([
+                'id_usuario' => $usuario['id_usuario'],
+                'nombre'     => $usuario['nombre'],
+                'usuario'    => $usuario['usuario'],
+                'perfil_id'  => $usuario['perfil_id'],
+                'logueado'   => true
+            ]);
+            return redirect()->to('/');
+        } else {
+            return redirect()->to('/login')->with('error', 'Correo o contraseña inválidos.');
         }
     }
 
