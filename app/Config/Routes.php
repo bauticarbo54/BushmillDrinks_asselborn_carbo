@@ -15,3 +15,6 @@ $routes->get('terminos', 'Home::terminos');//okey
 $routes->get('login', 'Home::login');//okey
 $routes->get('registro', 'Home::registro');//okey
 $routes->get('productos', 'Home::productos');//okey
+
+$routes->post('form_contacto', 'contacto_controller::add_mensaje');
+

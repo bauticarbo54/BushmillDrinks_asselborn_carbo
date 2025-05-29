@@ -40,3 +40,7 @@ composer.lock
 .env.production
 .env.backup
 .env.*.backup
+
+#notas
+notasmias.txt
+sesiones.txt
