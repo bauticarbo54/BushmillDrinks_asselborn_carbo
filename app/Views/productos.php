@@ -2,7 +2,7 @@
         <h2 class="text-center mb-4">Nuestros Productos</h2>
 
         <!-- Categoría: Whisky -->
-        <div class="mb-4" id = "Whiskys">
+        <div class="mb-4 text-center" id = "Whiskys">
             <h4 class="mb-3">Whiskys</h4>
             <div class="accordion" id="accordionWhisky">
                 <div class="accordion-item">
@@ -25,7 +25,7 @@
         </div>
 
         <!-- Categoría: Cervezas -->
-        <div class="mb-4" id = "Cervezas">
+        <div class="mb-4 text-center" id = "Cervezas">
             <h4 class="mb-3">Cervezas</h4>
             <div class="accordion" id="accordionCerveza">
                 <div class="accordion-item">
@@ -48,7 +48,7 @@
         </div>
 
         <!-- Categoría: Vinos -->
-        <div class="mb-4" id = "Vinos">
+        <div class="mb-4 text-center" id = "Vinos">
             <h4 class="mb-3">Vinos</h4>
             <div class="accordion" id="accordionVino">
                 <div class="accordion-item">
@@ -71,7 +71,7 @@
         </div>
 
         <!-- Categoría: Aperitivos -->
-        <div class="mb-4" id = "Aperitivos">
+        <div class="mb-4 text-center" id = "Aperitivos">
             <h4 class="mb-3">Aperitivos</h4>
             <div class="accordion" id="accordionAperitivos">
                 <div class="accordion-item">
@@ -94,7 +94,7 @@
         </div>
 
         <!-- Categoría: Espumantes -->
-        <div class="mb-4" id = "Espumantes">
+        <div class="mb-4 text-center" id = "Espumantes">
             <h4 class="mb-3">Espumantes</h4>
             <div class="accordion" id="accordionEspumantes">
                 <div class="accordion-item">
@@ -117,7 +117,7 @@
         </div>
 
         <!-- Categoría: Gins -->
-        <div class="mb-4" id = "Gins">
+        <div class="mb-4 text-center" id = "Gins">
             <h4 class="mb-3">Gins</h4>
             <div class="accordion" id="accordionGins">
                 <div class="accordion-item">
@@ -140,7 +140,7 @@
         </div>
 
         <!-- Categoría: Vodkas -->
-        <div class="mb-4" id = "Vodkas">
+        <div class="mb-4 text-center" id = "Vodkas">
             <h4 class="mb-3">Vodkas</h4>
             <div class="accordion" id="accordionVodkas">
                 <div class="accordion-item">
@@ -163,7 +163,7 @@
         </div>
 
         <!-- Categoría: Tekilas -->
-        <div class="mb-4" id = "Tekilas">
+        <div class="mb-4 text-center" id = "Tekilas">
             <h4 class="mb-3">Tekilas</h4>
             <div class="accordion" id="accordionTekilas">
                 <div class="accordion-item">
@@ -186,7 +186,7 @@
         </div>
 
         <!-- Categoría: Sin Alcohol -->
-        <div class="mb-4" id = "SinAlcohol">
+        <div class="mb-4 text-center" id = "SinAlcohol">
             <h4 class="mb-3">Sin Alcohol</h4>
             <div class="accordion" id="accordionSinAlcohol">
                 <div class="accordion-item">

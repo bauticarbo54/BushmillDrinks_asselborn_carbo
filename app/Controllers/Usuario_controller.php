@@ -90,19 +90,28 @@ class Usuario_controller extends BaseController
         $usuarioModel = new \App\Models\Usuario_model();
         $usuario = $usuarioModel->where('email', $email)->first();
 
-        if ($usuario && password_verify($password, $usuario['pass'])) {
-            session()->set([
-                'id_usuario' => $usuario['id_usuario'],
-                'nombre'     => $usuario['nombre'],
-                'usuario'    => $usuario['usuario'],
-                'perfil_id'  => $usuario['perfil_id'],
-                'logueado'   => true
-            ]);
-            return redirect()->to('/');
+         if ($usuario && password_verify($password, $usuario['pass'])) {
+        session()->set([
+            'id_usuario' => $usuario['id_usuario'],
+            'nombre'     => $usuario['nombre'],
+            'usuario'    => $usuario['usuario'],
+            'perfil_id'  => $usuario['perfil_id'],
+            'logueado'   => true
+        ]);
+
+        // Redirigir según perfil_id
+        if ($usuario['perfil_id'] == 1) {
+            // Si es admin
+            return redirect()->to('/');  // Ruta para el dashboard admin
+        } else {
+            // Si es usuario normal
+            return redirect()->to('/');  // Ruta para la vista de usuarios
+        }
         } else {
             return redirect()->to('/login')->with('error', 'Correo o contraseña inválidos.');
         }
     }
+    
 
     public function logout()
     {

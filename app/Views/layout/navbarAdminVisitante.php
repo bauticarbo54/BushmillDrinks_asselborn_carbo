@@ -5,7 +5,7 @@
         <meta name = "viewport" content = "width= device-width, initial-scale = 1">
         <title>Inicio</title>
 
-        <link rel="stylesheet" href="/BushmillDrinks_asselborn_carbo/assets/css/estilos.css">
+        <link rel="stylesheet" href="ushmillDrinks_asselborn_carbo/public/assets/css/estilos.css">
         <link href = "assets/css/bootstrap.min.css" rel = "stylesheet" integrity ="" crossorigin ="">
         <script src = "assets/js/bootstrap.bundle.min.js" integrity ="" crossorigin =""></script>
     </head>
@@ -46,14 +46,17 @@
                         <li class="nav-item"><a class="nav-link" href="comercializacion">Comercialización</a></li>
                         <li class="nav-item"><a class="nav-link" href="contacto">Contacto</a></li>
                         <li class="nav-item"><a class="nav-link" href="terminos">Términos y Condiciones</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Ver Carrito</a></li>
+                        <li class="nav-item"><?php if (session()->has('usuario')): ?>
+                                                <a class="nav-link"> <?= esc(session()->get('usuario')) ?></a>
+                                            <?php endif; ?>
+                        </li>
                     </ul>
-                    <form class="d-flex" role="search">
-                        <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
-                        <button class="btn btn-outline-success me-2" type="submit">Buscar</button>
-                    </form>
-                    <div class="d-flex">
-                        <a href="login" class="btn btn-outline-secondary me-2" style="border-color: black; color: black;">Iniciar sesión</a>
-                        <a href="registro" class="btn btn-dark">Registrarse</a>
+                    <div class="d-flex gap-2">
+                        <a href="<?= base_url('volverAModoAdmin') ?>" class="btn btn-warning">
+                            Volver a modo administrador
+                        </a>
+                        <a href="<?= base_url('logout') ?>" class="btn btn-dark">Salir</a>
                     </div>
                 </div>
             </div>
