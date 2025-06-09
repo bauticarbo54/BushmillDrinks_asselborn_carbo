@@ -1,26 +1,38 @@
-<h2 class="text-2xl font-bold mb-4">Consultas de Usuarios</h2>
+<h1 class="text-center mb-4">Consultas de Clientes</h1>
 
-<?php if (!empty($consultas)): ?>
-    <table class="table-auto w-full border border-gray-200">
-        <thead>
-            <tr class="bg-gray-100">
-                <th>Nombre</th>
-                <th>Email</th>
-                <th>Mensaje</th>
-                <th>Fecha</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php foreach ($consultas as $consulta): ?>
-                <tr>
-                    <td><?= esc($consulta['nombre']) ?></td>
-                    <td><?= esc($consulta['email']) ?></td>
-                    <td><?= esc($consulta['mensaje']) ?></td>
-                    <td><?= esc($consulta['fecha']) ?></td>
-                </tr>
-            <?php endforeach ?>
-        </tbody>
-    </table>
-<?php else: ?>
-    <p>No hay consultas registradas.</p>
-<?php endif ?>
+<div class="container">
+    <?php if (session('mensaje')): ?>
+        <div class="alert alert-success">
+            <?= session('mensaje'); ?>
+        </div>
+    <?php endif; ?>
+
+    <?php if (empty($mensajes)): ?>
+        <div class="alert alert-info">No hay consultas por el momento.</div>
+    <?php else: ?>
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>#</th>
+                        <th>Nombre</th>
+                        <th>Correo</th>
+                        <th>Teléfono</th>
+                        <th>Consulta</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($mensajes as $mensaje): ?>
+                        <tr>
+                            <td><?= esc($mensaje['id_mensaje']) ?></td>
+                            <td><?= esc($mensaje['mensaje_nombre']) ?></td>
+                            <td><?= esc($mensaje['mensaje_mail']) ?></td>
+                            <td><?= esc($mensaje['mensaje_telefono']) ?></td>
+                            <td><?= esc($mensaje['mensaje_consulta']) ?></td>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+        </div>
+    <?php endif; ?>
+</div>

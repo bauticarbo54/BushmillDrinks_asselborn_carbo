@@ -1,13 +1,13 @@
-<h2 class="text-2xl font-bold mb-4">Lista de Bebidas</h2>
+<h2 class="h4 fw-bold mb-4">Lista de Bebidas</h2>
 
-<table class="table-auto w-full border">
-    <thead>
-        <tr class="bg-gray-100">
+<table class="table table-striped table-hover table-bordered align-middle">
+    <thead class="table-light">
+        <tr>
             <th>Nombre</th>
             <th>Marca</th>
             <th>Precio</th>
             <th>Stock</th>
-            <th>Acciones</th>
+            <th class="text-center">Acciones</th>
         </tr>
     </thead>
     <tbody>
@@ -15,13 +15,20 @@
             <tr>
                 <td><?= esc($producto['producto_nombre']) ?></td>
                 <td><?= esc($producto['marca_nombre']) ?></td>
-                <td>$<?= esc($producto['producto_precio']) ?></td>
+                <td>$<?= number_format($producto['producto_precio'], 2) ?></td>
                 <td><?= esc($producto['producto_stock']) ?></td>
-                <td>
-                    <a href="<?= base_url('producto_controller/editar/'.$producto['id']) ?>">Editar</a> |
-                    <a href="<?= base_url('producto_controller/eliminar/'.$producto['id']) ?>" onclick="return confirm('¿Seguro que deseas eliminar?')">Eliminar</a>
+                <td class="text-center">
+                    <a href="<?= base_url('gestionar_bebidas/'.$producto['id_producto']) ?>" 
+                       class="btn btn-sm btn-outline-primary me-2">
+                        Editar
+                    </a>
+                    <a href="<?= base_url('eliminar_bebida/'.$producto['id_producto']) ?>" 
+                       class="btn btn-sm btn-outline-danger"
+                       onclick="return confirm('¿Seguro que deseas eliminar esta bebida?')">
+                        Eliminar
+                    </a>
                 </td>
             </tr>
-        <?php endforeach ?>
+        <?php endforeach; ?>
     </tbody>
 </table>

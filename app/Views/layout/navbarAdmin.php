@@ -23,23 +23,25 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item"><a class="nav-link" aria-current="page" href="ver_consultas">Ver Consultas</a></li>
-                        <li class="nav-item"><a class="nav-link" href="listar_bebidas">Listar Bebidas</a></li>
-                        <li class="nav-item"><a class="nav-link" href="listar_ventas">Listar Ventas</a></li>
-                        <li class="nav-item"><a class="nav-link" href="agregar_bebida">Agregar Bebidas</a></li>
-                        <li class="nav-item"><a class="nav-link" href="gestionar_bebidas">Gestionar Bebidas</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">Usuario</a></li>
+                        <li class="nav-item"><a class="nav-link" href="<?= base_url('ver_consultas')?>">Ver Consultas</a></li>
+                        <li class="nav-item"><a class="nav-link" href="<?= base_url('listar_bebidas')?>">Listar Bebidas</a></li>
+                        <li class="nav-item"><a class="nav-link" href="<?= base_url('listar_ventas')?>">Listar Ventas</a></li>
+                        <li class="nav-item"><a class="nav-link" href="<?= base_url('agregar_bebida')?>">Agregar Bebidas</a></li>
+                        <li class="nav-item"><a class="nav-link" href="<?= base_url('gestionar_bebidas')?>">Gestionar Bebidas</a></li>
+                        <li class="nav-item"><?php if (session()->has('usuario')): ?>
+                                                <a class="nav-link"> <?= esc(session()->get('usuario')) ?></a>
+                                            <?php endif; ?>
+                        </li>
                     </ul>
                     <div class="d-flex gap-2">
-    <?php if (session()->get('modo_cliente')): ?>
-        <a href="<?= base_url('volverAModoAdmin') ?>" class="btn btn-warning">Volver a modo admin</a>
-    <?php else: ?>
-        <a href="<?= base_url('verComoCliente') ?>" class="btn btn-info">Ver como cliente</a>
-    <?php endif; ?>
+                        <?php if (session()->get('modo_cliente')): ?>
+                            <a href="<?= base_url('volverAModoAdmin') ?>" class="btn btn-warning">Volver a modo admin</a>
+                        <?php else: ?>
+                            <a href="<?= base_url('verComoCliente') ?>" class="btn btn-info">Ver como cliente</a>
+                        <?php endif; ?>
     
-    <a href="<?= base_url('logout') ?>" class="btn btn-dark">Salir</a>
-</div>
-
+                        <a href="<?= base_url('logout') ?>" class="btn btn-dark">Salir</a>
+                    </div>
                 </div>
             </div>
         </nav>
