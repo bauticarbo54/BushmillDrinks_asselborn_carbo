@@ -8,7 +8,7 @@
 
             <div class="container">
                 
-                <?php echo form_open('form_contacto'); ?>
+                <?php echo form_open('form_consulta'); ?>
                 <div class="row">
                     
                         <div class="col" style="margin-top: 20px;"> 

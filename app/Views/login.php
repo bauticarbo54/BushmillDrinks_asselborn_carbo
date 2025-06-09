@@ -1,7 +1,10 @@
  <div class="container d-flex align-items-center justify-content-center min-vh-100">
         <div class="card p-4 shadow rounded" style="max-width: 400px; width: 100%;">
             <h3 class="text-center mb-4">Iniciar Sesión</h3>
-            <form action="procesar_login.php" method="POST">
+            <?php if (session()->getFlashdata('error')): ?>
+                <div class="alert alert-danger"><?= session()->getFlashdata('error') ?></div>
+            <?php endif; ?>
+            <form action="<?= base_url('login') ?>" method="POST">
                 <div class="mb-3">
                     <label for="email" class="form-label">Correo electrónico</label>
                     <input type="email" class="form-control" id="email" name="email" placeholder="ejemplo@correo.com" required>

@@ -6,15 +6,22 @@ use CodeIgniter\Router\RouteCollection;
 /**
  * @var RouteCollection $routes
  */
-$routes->get('/', 'Home::index');//okey
-$routes->get('nosotros', 'Home::nosotros');//okey
-$routes->get('inicio', 'Home::index');//okey
-$routes->get('comercializacion', 'Home::comercializacion');//okey
-$routes->get('contacto', 'Home::contacto');//okey
-$routes->get('terminos', 'Home::terminos');//okey
-$routes->get('login', 'Home::login');//okey
-$routes->get('registro', 'Home::registro');//okey
-$routes->get('productos', 'Home::productos');//okey
 
-$routes->post('form_contacto', 'contacto_controller::add_mensaje');
+ //Paginas Públicas
+$routes->get('/', 'Home::index');
+$routes->get('nosotros', 'Home::nosotros');
+$routes->get('inicio', 'Home::index');
+$routes->get('comercializacion', 'Home::comercializacion');
+$routes->get('contacto', 'Home::contacto');
+$routes->get('terminos', 'Home::terminos');
+$routes->get('productos', 'Home::productos');
 
+//Autenticación
+$routes->get('login', 'Home::login');
+$routes->post('login', 'Usuario_controller::login');
+$routes->get('registro', 'Home::registro');
+$routes->get('logout', 'Usuario_controller::logout');
+
+//Formularios
+$routes->post('form_consulta', 'Usuario_controller::add_consulta');
+$routes->post('form_registro', 'Usuario_controller::add_cliente');
