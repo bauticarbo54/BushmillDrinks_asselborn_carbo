@@ -48,23 +48,29 @@ class Producto_controller extends BaseController
     }
 
     public function detalle($id)
-    {
-        $productoModel = new Producto_model();
-        $producto = $productoModel
-            ->select('productos.*, marca.marca_nombre, categorias.categoria_nombre')
-            ->join('marca', 'productos.marca_id = marca.id_marca')
-            ->join('categorias', 'productos.categoria_id = categorias.id_categoria')
-            ->where('productos.id_producto', $id)
-            ->first();
+{
+    $productoModel = new Producto_model();
+    $producto = $productoModel
+        ->select('productos.*, marca.marca_nombre, categorias.categoria_nombre')
+        ->join('marca', 'productos.marca_id = marca.id_marca')
+        ->join('categorias', 'productos.categoria_id = categorias.id_categoria')
+        ->where('productos.id_producto', $id)
+        ->first();
 
-        if (!$producto) {
-            return redirect()->to('/')->with('error', 'Producto no encontrado');
-        }
-
-        return view('layout/navbarAdmin')
-            . view('detalle_bebidas', ['producto' => $producto])
-            . view('layout/footer');
+    if (!$producto) {
+        return redirect()->to('/')->with('error', 'Producto no encontrado');
     }
+
+    $navbar = 'layout/navbar'; // Navbar por defecto (visitante)
+    if (session()->has('perfil_id')) {
+        $navbar = (session('perfil_id') == 1) ? 'layout/navbarAdmin' : 'layout/navbarCliente';
+    }
+
+    echo view($navbar);
+    echo view('detalle_bebidas', ['producto' => $producto]);
+    echo view('layout/footer');
+}
+
 
     public function listarBebidas()
     {

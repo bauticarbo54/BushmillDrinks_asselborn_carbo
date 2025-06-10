@@ -1,4 +1,4 @@
-<div class="container mt-5">
+<div class="container mt-5 mb-5">
     <div class="row g-5 align-items-center">
         <!-- Imagen del producto -->
         <div class="col-md-6">
@@ -20,7 +20,7 @@
             </ul>
 
             <?php if (session('perfil_id') == 2): ?>
-                <a href="<?= base_url('carrito/agregar/' . $producto['id']) ?>" class="btn btn-success btn-lg">
+                <a href="<?= base_url('' . $producto['id_producto']) ?>" class="btn btn-success btn-lg">
                     <i class="bi bi-cart-plus"></i> Agregar al carrito
                 </a>
             <?php endif; ?>
