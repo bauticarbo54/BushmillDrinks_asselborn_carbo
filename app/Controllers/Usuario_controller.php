@@ -201,6 +201,6 @@ class Usuario_controller extends BaseController
             $data['validation'] = $validation->getErrors();
             return view('layout/navbar', $data).view('contacto').view('layout/footer');
         }
-
     }
+
 }

@@ -10,7 +10,6 @@ class Producto_controller extends BaseController
 {
     public function catalogo()
     {
-        if (session('perfil_id') != 1) return redirect()->to('/');
         $productoModel = new Producto_model();
 
         $marca = $this->request->getGet('marca');
@@ -38,14 +37,18 @@ class Producto_controller extends BaseController
         $data['marcas'] = (new Marca_model())->findAll();
         $data['categorias'] = (new Categoria_model())->findAll();
 
-        return view('layout/navbarAdmin')
+        $navbar = 'layout/navbar'; // Por defecto (visitante)
+        if (session()->has('perfil_id')) {
+            $navbar = (session('perfil_id') == 1) ? 'layout/navbarAdmin' : 'layout/navbarCliente';
+        }
+
+        return view($navbar)
             . view('catalogo', $data)
             . view('layout/footer');
     }
 
     public function detalle($id)
     {
-        if (session('perfil_id') != 1) return redirect()->to('/');
         $productoModel = new Producto_model();
         $producto = $productoModel
             ->select('productos.*, marca.marca_nombre, categorias.categoria_nombre')
@@ -217,7 +220,7 @@ class Producto_controller extends BaseController
             'producto_nombre' => 'required|min_length[3]',
             'producto_descripcion' => 'required|min_length[5]',
             'producto_precio' => 'required|decimal',
-            'producto_stock' => 'required|integer',
+            'producto_stock' => 'required|is_natural',
             'producto_volumen' => 'required|integer',
             'producto_grado' => 'required|decimal',
             'marca_id' => 'required|integer',

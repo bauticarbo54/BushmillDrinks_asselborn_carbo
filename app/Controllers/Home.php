@@ -86,7 +86,7 @@ class Home extends BaseController
 
     public function productos(): string
     {
-        return view($this->obtenerNavbar()).view('productos').view('layout/footer');
+        return view($this->obtenerNavbar()).view('catalogo').view('layout/footer');
     }
 
 }
