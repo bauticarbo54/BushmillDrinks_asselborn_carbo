@@ -4,10 +4,11 @@
         <meta charset = "utf-8">
         <meta name = "viewport" content = "width= device-width, initial-scale = 1">
         <title>Inicio</title>
-
-        <link rel="stylesheet" href="/bushmillDrinks_asselborn_carbo/public/assets/css/estilos.css">
-        <link href = "assets/css/bootstrap.min.css" rel = "stylesheet" integrity ="" crossorigin ="">
-        <script src = "assets/js/bootstrap.bundle.min.js" integrity ="" crossorigin =""></script>
+    
+        <link rel="stylesheet" href="<?= base_url('assets/css/bootstrap.min.css') ?>">
+        <link rel="stylesheet" href="<?= base_url('assets/css/estilos.css') ?>">
+        <script src="<?= base_url('assets/js/bootstrap.bundle.min.js') ?>"></script>
+        
     </head>
 
     <body>
@@ -15,26 +16,31 @@
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
             <div class="container-fluid">
                 <a class="navbar-brand" href="inicio">
-                    <img src="assets/img/Logo.png" alt="Bootstrap" width="50" height="50">
+                    <img src="<?= base_url('assets/img/Logo.png') ?>" alt="Bootstrap" width="50" height="50">
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item"><a class="nav-link" aria-current="page" href="#">Ver Consultas</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">Listar Productos</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">Listar Ventas</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">Agregar Bebidas</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">Gestionar Bebidas</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">Usuario</a></li>
+                        <li class="nav-item"><a class="nav-link" href="<?= base_url('ver_consultas')?>">Ver Consultas</a></li>
+                        <li class="nav-item"><a class="nav-link" href="<?= base_url('listar_bebidas')?>">Listar Bebidas</a></li>
+                        <li class="nav-item"><a class="nav-link" href="<?= base_url('listar_ventas')?>">Listar Ventas</a></li>
+                        <li class="nav-item"><a class="nav-link" href="<?= base_url('agregar_bebida')?>">Agregar Bebidas</a></li>
+                        <li class="nav-item"><a class="nav-link" href="<?= base_url('gestionar_bebidas')?>">Gestionar Bebidas</a></li>
+                        <li class="nav-item"><?php if (session()->has('usuario')): ?>
+                                                <a class="nav-link"> <?= esc(session()->get('usuario')) ?></a>
+                                            <?php endif; ?>
+                        </li>
                     </ul>
-                    <form class="d-flex" role="search">
-                        <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
-                        <button class="btn btn-outline-success me-2" type="submit">Buscar</button>
-                    </form>
-                    <div class="d-flex">
-                        <a href="#" class="btn btn-dark">Salir</a>
+                    <div class="d-flex gap-2">
+                        <?php if (session()->get('modo_cliente')): ?>
+                            <a href="<?= base_url('volverAModoAdmin') ?>" class="btn btn-warning">Volver a modo admin</a>
+                        <?php else: ?>
+                            <a href="<?= base_url('verComoCliente') ?>" class="btn btn-info">Ver como cliente</a>
+                        <?php endif; ?>
+    
+                        <a href="<?= base_url('logout') ?>" class="btn btn-dark">Salir</a>
                     </div>
                 </div>
             </div>

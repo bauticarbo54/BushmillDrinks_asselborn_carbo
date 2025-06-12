@@ -5,7 +5,7 @@
         <meta name = "viewport" content = "width= device-width, initial-scale = 1">
         <title>Inicio</title>
 
-        <link rel="stylesheet" href="/bushmillDrinks_asselborn_carbo/public/assets/css/estilos.css">
+        <link rel="stylesheet" href="/BushmillDrinks_asselborn_carbo/assets/css/estilos.css">
         <link href = "assets/css/bootstrap.min.css" rel = "stylesheet" integrity ="" crossorigin ="">
         <script src = "assets/js/bootstrap.bundle.min.js" integrity ="" crossorigin =""></script>
     </head>

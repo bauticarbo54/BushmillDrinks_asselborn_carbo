@@ -6,15 +6,42 @@ class Home extends BaseController
 {
     /*Función que permite determinar si se usará el navbar de visitante o el navbar de cliente */
     private function obtenerNavbar(): string
-    {
-        $perfil = session()->get('perfil_id');
+{
+    $perfil = session()->get('perfil_id');
 
-        if (session()->get('logueado') && $perfil == 2) {
-                return 'layout/navbarCliente';
-        } 
-        else{
-            return 'layout/navbar'; 
+    if (session()->get('logueado')) {
+        if ($perfil == 1) {
+            // Admin en modo cliente
+            if (session()->get('modo_cliente')) {
+                return 'layout/navbarAdminVisitante';
+            }
+            // Admin en modo normal
+            return 'layout/navbarAdmin';
+        } elseif ($perfil == 2) {
+            return 'layout/navbarCliente';
         }
+    }
+
+    return 'layout/navbar'; // Navbar visitante
+}
+
+
+    public function verComoCliente()
+    {
+        if (session()->get('perfil_id') == 1) {
+            session()->set('modo_cliente', true);
+        }
+
+        return redirect()->to('/');
+    }
+
+    public function volverAModoAdmin()
+    {
+        if (session()->get('perfil_id') == 1) {
+            session()->remove('modo_cliente');
+        }
+
+        return redirect()->to('/');
     }
 
     public function index(): string
