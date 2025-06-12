@@ -19,6 +19,7 @@
                         <th>Correo</th>
                         <th>Teléfono</th>
                         <th>Consulta</th>
+                        <th class="text-center"></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -29,6 +30,13 @@
                             <td><?= esc($mensaje['mensaje_mail']) ?></td>
                             <td><?= esc($mensaje['mensaje_telefono']) ?></td>
                             <td><?= esc($mensaje['mensaje_consulta']) ?></td>
+                            <td class = text-center>
+                                <a href="<?= base_url('eliminar_consulta/'.$mensaje['id_mensaje']) ?>" 
+                                    class="btn btn-sm btn-outline-danger"
+                                    onclick="return confirm('¿Seguro que deseas eliminar esta consulta?')">
+                                    Eliminar
+                                </a>
+                            </td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>

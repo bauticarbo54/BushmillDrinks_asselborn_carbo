@@ -10,7 +10,6 @@ class Producto_controller extends BaseController
 {
     public function catalogo()
     {
-        if (session('perfil_id') != 1) return redirect()->to('/');
         $productoModel = new Producto_model();
 
         $marca = $this->request->getGet('marca');
@@ -38,30 +37,48 @@ class Producto_controller extends BaseController
         $data['marcas'] = (new Marca_model())->findAll();
         $data['categorias'] = (new Categoria_model())->findAll();
 
-        return view('layout/navbarAdmin')
+        $navbar = 'layout/navbar'; // Navbar por defecto (visitante)
+        if (session()->has('perfil_id')) {
+            if (session('perfil_id') == 1) {
+                $navbar = session('modo_cliente') ? 'layout/navbarAdminVisitante' : 'layout/navbarAdmin';
+            } elseif (session('perfil_id') == 2) {
+                $navbar = 'layout/navbarCliente';
+            }
+        }
+
+        return view($navbar)
             . view('catalogo', $data)
             . view('layout/footer');
     }
 
     public function detalle($id)
-    {
-        if (session('perfil_id') != 1) return redirect()->to('/');
-        $productoModel = new Producto_model();
-        $producto = $productoModel
-            ->select('productos.*, marca.marca_nombre, categorias.categoria_nombre')
-            ->join('marca', 'productos.marca_id = marca.id_marca')
-            ->join('categorias', 'productos.categoria_id = categorias.id_categoria')
-            ->where('productos.id_producto', $id)
-            ->first();
+{
+    $productoModel = new Producto_model();
+    $producto = $productoModel
+        ->select('productos.*, marca.marca_nombre, categorias.categoria_nombre')
+        ->join('marca', 'productos.marca_id = marca.id_marca')
+        ->join('categorias', 'productos.categoria_id = categorias.id_categoria')
+        ->where('productos.id_producto', $id)
+        ->first();
 
-        if (!$producto) {
-            return redirect()->to('/')->with('error', 'Producto no encontrado');
-        }
-
-        return view('layout/navbarAdmin')
-            . view('detalle_bebidas', ['producto' => $producto])
-            . view('layout/footer');
+    if (!$producto) {
+        return redirect()->to('/')->with('error', 'Producto no encontrado');
     }
+
+    $navbar = 'layout/navbar'; // Navbar por defecto (visitante)
+    if (session()->has('perfil_id')) {
+        if (session('perfil_id') == 1) {
+            $navbar = session('modo_cliente') ? 'layout/navbarAdminVisitante' : 'layout/navbarAdmin';
+        } elseif (session('perfil_id') == 2) {
+            $navbar = 'layout/navbarCliente';
+        }
+    }
+
+    echo view($navbar);
+    echo view('detalle_bebidas', ['producto' => $producto]);
+    echo view('layout/footer');
+}
+
 
     public function listarBebidas()
     {
@@ -217,7 +234,7 @@ class Producto_controller extends BaseController
             'producto_nombre' => 'required|min_length[3]',
             'producto_descripcion' => 'required|min_length[5]',
             'producto_precio' => 'required|decimal',
-            'producto_stock' => 'required|integer',
+            'producto_stock' => 'required|is_natural',
             'producto_volumen' => 'required|integer',
             'producto_grado' => 'required|decimal',
             'marca_id' => 'required|integer',

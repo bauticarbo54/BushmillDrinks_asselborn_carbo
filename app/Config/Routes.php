@@ -14,7 +14,8 @@ $routes->get('inicio', 'Home::index');
 $routes->get('comercializacion', 'Home::comercializacion');
 $routes->get('contacto', 'Home::contacto');
 $routes->get('terminos', 'Home::terminos');
-$routes->get('productos', 'Home::productos');
+$routes->get('productos', 'Producto_controller::catalogo');
+
 
 //Autenticación
 $routes->get('login', 'Home::login');
@@ -34,6 +35,9 @@ $routes->get('gestionar_bebidas', 'Producto_controller::gestionarBebidas');
 $routes->get('gestionar_bebidas/(:num)', "Producto_controller::editar/$1");
 $routes->post('actualizar_bebida/(:num)', 'Producto_controller::actualizarBebida/$1');
 $routes->get('ver_consultas', 'Mensaje_controller::verConsultas');
+$routes->get('eliminar_consulta/(:num)', "Mensaje_controller::eliminarConsulta/$1");
+$routes->get('detalle/(:num)', 'Producto_controller::detalle/$1');
+
 
 $routes->get('verComoCliente', 'Home::verComoCliente');
 $routes->get('volverAModoAdmin', 'Home::volverAModoAdmin');

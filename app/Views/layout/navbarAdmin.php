@@ -15,7 +15,7 @@
 
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
             <div class="container-fluid">
-                <a class="navbar-brand" href="inicio">
+                <a class="navbar-brand" href="<?= base_url('inicio')?>">
                     <img src="<?= base_url('assets/img/Logo.png') ?>" alt="Bootstrap" width="50" height="50">
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

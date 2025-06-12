@@ -74,4 +74,11 @@ class Mensaje_controller extends BaseController
                   .view('ver_consultas', ['mensajes' => $mensajes])
                   .view('layout/footer');
         }
+
+    public function eliminarConsulta($id)
+    {
+        $mensajesModel = new Mensajes_model();
+        $mensajesModel->delete($id);
+        return redirect()->to('/ver_consultas')->with('mensaje', 'Consulta eliminada exitosamente.');
+    }
 }
