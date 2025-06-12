@@ -37,9 +37,13 @@ class Producto_controller extends BaseController
         $data['marcas'] = (new Marca_model())->findAll();
         $data['categorias'] = (new Categoria_model())->findAll();
 
-        $navbar = 'layout/navbar'; // Por defecto (visitante)
+        $navbar = 'layout/navbar'; // Navbar por defecto (visitante)
         if (session()->has('perfil_id')) {
-            $navbar = (session('perfil_id') == 1) ? 'layout/navbarAdmin' : 'layout/navbarCliente';
+            if (session('perfil_id') == 1) {
+                $navbar = session('modo_cliente') ? 'layout/navbarAdminVisitante' : 'layout/navbarAdmin';
+            } elseif (session('perfil_id') == 2) {
+                $navbar = 'layout/navbarCliente';
+            }
         }
 
         return view($navbar)
@@ -63,7 +67,11 @@ class Producto_controller extends BaseController
 
     $navbar = 'layout/navbar'; // Navbar por defecto (visitante)
     if (session()->has('perfil_id')) {
-        $navbar = (session('perfil_id') == 1) ? 'layout/navbarAdmin' : 'layout/navbarCliente';
+        if (session('perfil_id') == 1) {
+            $navbar = session('modo_cliente') ? 'layout/navbarAdminVisitante' : 'layout/navbarAdmin';
+        } elseif (session('perfil_id') == 2) {
+            $navbar = 'layout/navbarCliente';
+        }
     }
 
     echo view($navbar);
