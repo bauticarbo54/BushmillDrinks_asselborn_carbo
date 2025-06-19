@@ -25,23 +25,27 @@
                         <li class="nav-item"><a class="nav-link" aria-current="page" href="<?= base_url('nosotros')?>">Nosotros</a></li>
                         <li class="nav-item"><a class="nav-link" href="<?= base_url('inicio#Ofertas')?>">Ofertas</a></li>
                         <li class="nav-item dropdown d-flex align-items-center">
-                            <a class= "nav-link" href = "<?= base_url('productos')?>">Productos</a>
-                            <a class="nav-link dropdown-toggle" href="#" id="categoriasDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"></a>
-                            <ul class="dropdown-menu" aria-labelledby="categoriasDropdown">
-                                <li><a class="dropdown-item" href="productos#Whiskys">Whiskys</a></li>
-                                <li><a class="dropdown-item" href="productos#Cervezas">Cervezas</a></li>
-                                <li><a class="dropdown-item" href="productos#Vinos">Vinos</a></li>
-                                <li><a class="dropdown-item" href="productos#Aperitivos">Aperitivos</a></li>
-                                <li><a class="dropdown-item" href="productos#Espumantes">Espumantes</a></li>
-                                <li><a class="dropdown-item" href="productos#Gins">Gins</a></li>
-                                <li><a class="dropdown-item" href="productos#Vodkas">Vodkas</a></li>
-                                <li><a class="dropdown-item" href="productos#Tekilas">Tekilas</a></li>
-                                <li><a class="dropdown-item" href="productos#SinAlcohol">Sin alcohol</a></li>
-                                <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="#">Tabaco</a></li>
-                                <li><a class="dropdown-item" href="#">Accesorios</a></li>
-                                <li><a class="dropdown-item" href="#">Cristalería</a></li>
-                            </ul>
+                            <a class="nav-link" href="<?= base_url('productos') ?>">Productos</a>
+                                <a class="nav-link dropdown-toggle" href="#" id="categoriasDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false"></a>
+                                <ul class="dropdown-menu" aria-labelledby="categoriasDropdown">
+                                    <?php if (isset($categorias) && is_array($categorias)): ?>
+                                    <?php foreach ($categorias as $categoria): 
+                                        $nombre = $categoria['categoria_nombre'] ?? '';
+                                        $id_categoria = strtolower($nombre);
+                                        $id_categoria = preg_replace('/[^a-z0-9]+/', '-', $id_categoria);
+                                        $id_categoria = trim($id_categoria, '-');
+                                    ?>
+                                    <li>
+                                        <a class="dropdown-item" href="<?= base_url('productos#' . $id_categoria) ?>">
+                                            <?= esc($nombre) ?>
+                                        </a>
+                                    </li>
+                                    <?php endforeach; ?>
+                                    <?php else: ?>
+                                        <li><span class="dropdown-item text-muted">Sin categorías</span></li>
+                                    <?php endif; ?>
+                                </ul>
                         </li>
                         <li class="nav-item"><a class="nav-link" href="<?= base_url('comercializacion')?>">Comercialización</a></li>
                         <li class="nav-item"><a class="nav-link" href="<?= base_url('contacto')?>">Contacto</a></li>

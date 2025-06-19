@@ -26,6 +26,7 @@
                         <li class="nav-item"><a class="nav-link" href="<?= base_url('ver_consultas')?>">Ver Consultas</a></li>
                         <li class="nav-item"><a class="nav-link" href="<?= base_url('listar_bebidas')?>">Listar Bebidas</a></li>
                         <li class="nav-item"><a class="nav-link" href="<?= base_url('listar_ventas')?>">Listar Ventas</a></li>
+                        <li class="nav-item"><a class="nav-link" href="<?= base_url('usuarios')?>">Gestionar Usuarios</a></li>
                         <li class="nav-item"><a class="nav-link" href="<?= base_url('agregar_bebida')?>">Agregar Bebidas</a></li>
                         <li class="nav-item"><a class="nav-link" href="<?= base_url('gestionar_bebidas')?>">Gestionar Bebidas</a></li>
                         <li class="nav-item"><?php if (session()->has('usuario')): ?>
