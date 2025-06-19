@@ -151,16 +151,17 @@ class Producto_controller extends BaseController
         $request = \Config\Services::request();
 
         $validation->setRules([
-            'producto_nombre'     => 'required|max_length[50]',
-            'producto_descripcion'=> 'required',
-            'producto_precio'     => 'required|decimal',
-            'producto_stock'      => 'required|integer',
-            'producto_imagen'     => 'uploaded[producto_imagen]|is_image[producto_imagen]|max_size[producto_imagen,2048]',
-            'marca_id'            => 'required|integer',
-            'producto_volumen'    => 'required|integer',
-            'producto_grado'      => 'required|decimal',
-            'categoria_id'        => 'required|integer'
+            'producto_nombre'      => 'required|max_length[50]',
+            'producto_descripcion' => 'required|min_length[10]',
+            'producto_precio'      => 'required|decimal|greater_than_equal_to[0]',
+            'producto_stock'       => 'required|integer|greater_than_equal_to[0]',
+            'producto_volumen'     => 'required|integer|greater_than_equal_to[0]',
+            'producto_grado'       => 'required|decimal|greater_than_equal_to[0]|less_than_equal_to[100]',
+            'producto_imagen'      => 'uploaded[producto_imagen]|is_image[producto_imagen]|max_size[producto_imagen,2048]',
+            'marca_id'             => 'required|is_natural_no_zero',
+            'categoria_id'         => 'required|is_natural_no_zero'
         ]);
+
 
         if ($validation->withRequest($request)->run() == false) {
             // Validación falló: mostrar formulario con errores
@@ -188,7 +189,8 @@ class Producto_controller extends BaseController
                 'marca_id'            => $this->request->getPost('marca_id'),
                 'producto_volumen'    => $this->request->getPost('producto_volumen'),
                 'producto_grado'      => $this->request->getPost('producto_grado'),
-                'categoria_id'        => $this->request->getPost('categoria_id')
+                'categoria_id'        => $this->request->getPost('categoria_id'),
+                'producto_oferta'     => $this->request->getPost('producto_oferta') ? 1 : 0
             ];
 
             $bebida = new Producto_model();
@@ -301,22 +303,21 @@ class Producto_controller extends BaseController
         }
 
         $validacion = $this->validate([
-        'producto_nombre' => 'required|min_length[3]',
-        'producto_descripcion' => 'required|min_length[5]',
-        'producto_precio' => 'required|decimal',
-        'producto_stock' => 'required|is_natural',
-        'producto_volumen' => 'required|integer',
-        'producto_grado' => 'required|decimal',
-        'marca_id' => 'required|integer',
-        'categoria_id' => 'required|integer',
-        'producto_imagen' => [
-        'uploaded[producto_imagen]',
-        'max_size[producto_imagen,2048]',
-        'is_image[producto_imagen]',
-        'mime_in[producto_imagen,image/jpg,image/jpeg,image/png,image/webp]'
-    ]
-]);
-
+            'producto_nombre'      => 'required|min_length[3]',
+            'producto_descripcion' => 'required|min_length[5]',
+            'producto_precio'      => 'required|decimal|greater_than_equal_to[0]',
+            'producto_stock'       => 'required|integer|greater_than_equal_to[0]',
+            'producto_volumen'     => 'required|integer|greater_than_equal_to[0]',
+            'producto_grado'       => 'required|decimal|greater_than_equal_to[0]|less_than_equal_to[100]',
+            'marca_id'             => 'required|is_natural_no_zero',
+            'categoria_id'         => 'required|is_natural_no_zero',
+            'producto_imagen'      => [
+                'uploaded[producto_imagen]',
+                'max_size[producto_imagen,2048]',
+                'is_image[producto_imagen]',
+                'mime_in[producto_imagen,image/jpg,image/jpeg,image/png,image/webp]'
+            ]
+        ]);
 
         $datos = [
             'producto_nombre' => $this->request->getPost('producto_nombre'),
@@ -327,6 +328,7 @@ class Producto_controller extends BaseController
             'producto_grado' => $this->request->getPost('producto_grado'),
             'marca_id' => $this->request->getPost('marca_id'),
             'categoria_id' => $this->request->getPost('categoria_id'),
+            'producto_oferta' => $this->request->getPost('producto_oferta') ? 1 : 0
         ];
 
         if (!$validacion) {
@@ -362,6 +364,24 @@ class Producto_controller extends BaseController
         $productoModel->update($id, $datos);
 
         return redirect()->to('listar_bebidas')->with('mensaje', 'Producto actualizado correctamente.');
+    }
+
+    public function ofertas()
+    {
+        if (session('perfil_id') != 1) return redirect()->to('/');
+            $productoModel = new Producto_model();
+            $categoriaModel = new Categoria_model();
+            $categorias = $categoriaModel->orderBy('categoria_nombre', 'ASC')->findAll();
+            $productosOferta = $productoModel
+                ->select('productos.*, marca.marca_nombre')
+                ->join('marca', 'productos.marca_id = marca.id_marca')
+                ->where('producto_estado', 1)
+                ->where('producto_oferta', 1)
+                ->findAll();
+
+        return view('layout/navbarAdmin', ['categorias' => $categorias])
+            . view('ofertas', ['productos' => $productosOferta])
+            . view('layout/footer');
     }
 
 }

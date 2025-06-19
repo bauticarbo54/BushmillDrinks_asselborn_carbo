@@ -60,12 +60,18 @@ abstract class BaseController extends Controller
     protected function renderizarConNavbar(string $vista, array $datos = []): string
     {
         $navbar = $this->obtenerNavbar();
-        $datosNavbar = ['categorias' => $this->obtenerCategoriasConProductosActivos()];
 
-        return view($navbar, $datosNavbar)
-            . view($vista, $datos)
-            . view('layout/footer');
+        // Combinar $datos con categorías para que estén disponibles en TODAS las vistas
+        $datosCombinados = array_merge(
+            ['categorias' => $this->obtenerCategoriasConProductosActivos()],
+            $datos
+        );
+
+    return view($navbar, $datosCombinados)
+        . view($vista, $datosCombinados)
+        . view('layout/footer');
     }
+
 
 
     protected function obtenerNavbar(): string

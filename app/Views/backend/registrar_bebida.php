@@ -50,6 +50,7 @@
             <?= form_input([
                 'type' => 'number',
                 'step' => '0.01',
+                'min' => '0',
                 'name' => 'producto_precio',
                 'id' => 'producto_precio',
                 'class' => 'form-control',
@@ -62,6 +63,7 @@
             <label for="producto_stock">Stock</label>
             <?= form_input([
                 'type' => 'number',
+                'min' => '0',
                 'name' => 'producto_stock',
                 'id' => 'producto_stock',
                 'class' => 'form-control',
@@ -73,6 +75,7 @@
             <label for="producto_volumen">Volumen (ml)</label>
             <?= form_input([
                 'type' => 'number',
+                'min' => '0',
                 'name' => 'producto_volumen',
                 'id' => 'producto_volumen',
                 'class' => 'form-control',
@@ -85,12 +88,33 @@
             <?= form_input([
                 'type' => 'number',
                 'step' => '0.1',
+                'min' => '0',
+                'max' => '100', 
                 'name' => 'producto_grado',
                 'id' => 'producto_grado',
                 'class' => 'form-control',
                 'value' => set_value('producto_grado', $producto['producto_grado'] ?? '')
             ]) ?>
         </div>
+
+        <div class="form-group">
+            <label for="producto_oferta">¿Está en oferta?</label>
+                <?php
+                    $oferta_opciones = [
+                    ''  => 'Seleccione una opción',
+                    '1' => 'Sí',
+                    '0' => 'No'
+                ];
+                echo form_dropdown(
+                'producto_oferta',
+                $oferta_opciones,
+                set_value('producto_oferta', $producto['producto_oferta'] ?? ''),
+                'class="form-control" id="producto_oferta"'
+                );
+                ?>
+        </div>
+
+
 
         <div class="form-group">
             <label for="producto_imagen">Imagen del producto</label>

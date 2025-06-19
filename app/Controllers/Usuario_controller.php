@@ -25,7 +25,7 @@ class Usuario_controller extends BaseController
                 'apellido' => 'required|max_length[50]|regex_match[/^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/]',
                 'usuario' => 'required|max_length[20]|is_unique[usuarios.usuario]',
                 'email' => 'required|valid_email|max_length[100]|is_unique[usuarios.email]',
-                'pass' => 'required|max_length[100]',
+                'pass' => 'required|min_length[5]|max_length[100]',
             ],
             [   // Errores
                 'nombre' => [
@@ -52,7 +52,8 @@ class Usuario_controller extends BaseController
 
                 'pass'   => [
                     "required"      => 'La contraseña es requerida',
-                    "max_length"    => 'La contraseña no debe superar los 100 caracteres'
+                    "max_length"    => 'La contraseña no debe superar los 100 caracteres',
+                    "min_length" => 'La contraseña debe tener al menos 5 caracteres',
                 ],
             ]
         );
@@ -81,26 +82,48 @@ class Usuario_controller extends BaseController
                     return redirect()->to('/');
                         
         }
-        else{
+        else {
             $data['titulo'] = 'Contacto';
-            $data['validation'] = $validation->getErrors();
-            return view('layout/navbar', $data).view('registro').view('layout/footer');
+            $data['validation'] = $validation; // PASÁS EL OBJETO, no el array
+            return view('layout/navbar', $data) . view('registro', $data) . view('layout/footer');
         }
+
     }
 
     public function login()
-    {
-        $email = $this->request->getPost('email');
-        $password = $this->request->getPost('password');
+{
+    $validation = \Config\Services::validation();
+    $request = \Config\Services::request();
 
-        $usuarioModel = new \App\Models\Usuario_model();
-        $usuario = $usuarioModel->where('email', $email)->first();
+    $validation->setRules([
+        'email' => 'required|valid_email',
+        'password' => 'required'
+    ], [
+        'email' => [
+            'required' => 'El correo electrónico es obligatorio',
+            'valid_email' => 'Debe ingresar un correo válido'
+        ],
+        'password' => [
+            'required' => 'La contraseña es obligatoria'
+        ]
+    ]);
 
-        if ($usuario && password_verify($password, $usuario['pass'])) {
-            if ($usuario['baja'] === 'si') {
-                // Usuario suspendido, no permitir login
-                return redirect()->to('/login')->with('error', 'Su cuenta está suspendida. Contacte al administrador.');
-            }
+    if (!$validation->withRequest($request)->run()) {
+        return view('login', [
+            'validation' => $validation
+        ]);
+    }
+
+    $email = $this->request->getPost('email');
+    $password = $this->request->getPost('password');
+
+    $usuarioModel = new \App\Models\Usuario_model();
+    $usuario = $usuarioModel->where('email', $email)->first();
+
+    if ($usuario && password_verify($password, $usuario['pass'])) {
+        if ($usuario['baja'] === 'si') {
+            return redirect()->to('/login')->with('error', 'Su cuenta está suspendida. Contacte al administrador.');
+        }
 
         session()->set([
             'id_usuario' => $usuario['id_usuario'],
@@ -110,16 +133,12 @@ class Usuario_controller extends BaseController
             'logueado'   => true
         ]);
 
-        // Redirigir según perfil_id
-        if ($usuario['perfil_id'] == 1) {
-            return redirect()->to('/');  // Admin
-        } else {
-            return redirect()->to('/');  // Usuario normal
-        }
-        } else {
-            return redirect()->to('/login')->with('error', 'Correo o contraseña inválidos.');
-        }
+        return redirect()->to('/');
+    } else {
+        return redirect()->to('/login')->with('error', 'Correo o contraseña inválidos.');
     }
+}
+
 
 
     public function logout()
@@ -272,6 +291,4 @@ class Usuario_controller extends BaseController
         $usuarioModel->delete($id);
         return redirect()->to('/usuarios');
     }
-
-
 }
