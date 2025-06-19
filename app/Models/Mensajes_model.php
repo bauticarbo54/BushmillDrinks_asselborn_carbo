@@ -13,7 +13,7 @@ class Mensajes_model extends Model
     protected $returnType = 'array';
     protected $useSoftDeletes = false;
 
-    protected $allowedFields = ['mensaje_nombre', 'mensaje_mail', 'mensaje_telefono', 'mensaje_consulta'];
+    protected $allowedFields = ['mensaje_nombre', 'mensaje_mail', 'mensaje_telefono', 'mensaje_consulta', 'mensaje_leido'];
 
     protected $useTimestamps = false;
     protected $createdField = '';

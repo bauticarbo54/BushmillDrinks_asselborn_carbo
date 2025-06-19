@@ -84,4 +84,31 @@ class Mensaje_controller extends BaseController
         $mensajesModel->delete($id);
         return redirect()->to('backend/ver_consultas')->with('mensaje', 'Consulta eliminada exitosamente.');
     }
+
+   public function marcar_leido($id) 
+    {
+        if (session('perfil_id') != 1) return redirect()->to('/');
+    
+        $mensajeModel = new \App\Models\Mensajes_model();
+    
+        // Depuración: Verificar si el registro existe
+        if (!$mensajeModel->find($id)) {
+            return redirect()->to('ver_consultas')->with('error', 'Consulta no encontrada');
+        }
+
+        // Obtener estado actual y alternarlo
+        $estadoActual = $mensajeModel->where('id_mensaje', $id)->first()['mensaje_leido'];
+        $nuevoEstado = $estadoActual ? 0 : 1;
+
+        // Actualizar con protección desactivada temporalmente
+        $mensajeModel->protect(false)->update($id, ['mensaje_leido' => $nuevoEstado]);
+    
+        // Verificar si se actualizó
+        $mensajeActualizado = $mensajeModel->find($id);
+        if ($mensajeActualizado['mensaje_leido'] != $nuevoEstado) {
+            log_message('error', "Fallo al actualizar mensaje ID: {$id}");
+        }
+
+        return redirect()->to('ver_consultas')->with('mensaje', 'Estado de lectura actualizado');
+    }
 }

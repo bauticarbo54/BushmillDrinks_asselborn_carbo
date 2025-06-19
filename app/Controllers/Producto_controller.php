@@ -14,83 +14,82 @@ class Producto_controller extends BaseController
         $this->renderizarConNavbar('nueva_plantilla');
     }
 
-
     public function catalogo()
-{
-    $productoModel = new Producto_model();
+    {
+        $productoModel = new Producto_model();
 
-    $marca = $this->request->getGet('marca');
-    $categoria = $this->request->getGet('categoria');
-    $precio_max = $this->request->getGet('precio_max');
+        $marca = $this->request->getGet('marca');
+        $categoria = $this->request->getGet('categoria');
+        $precio_max = $this->request->getGet('precio_max');
 
-    $builder = $productoModel->builder()
-        ->select('productos.*, marca.marca_nombre, categorias.categoria_nombre')
-        ->join('marca', 'productos.marca_id = marca.id_marca')
-        ->join('categorias', 'productos.categoria_id = categorias.id_categoria')
-        ->orderBy('categorias.categoria_nombre', 'ASC')
-        ->orderBy('producto_nombre', 'ASC')
-        ->where('productos.producto_estado', 1); // <- este es el filtro para productos habilitados
+        $builder = $productoModel->builder()
+            ->select('productos.*, marca.marca_nombre, categorias.categoria_nombre')
+            ->join('marca', 'productos.marca_id = marca.id_marca')
+            ->join('categorias', 'productos.categoria_id = categorias.id_categoria')
+            ->orderBy('categorias.categoria_nombre', 'ASC')
+            ->orderBy('producto_nombre', 'ASC')
+            ->where('productos.producto_estado', 1);
 
-    if (!empty($marca)) {
-        $builder->like('marca.marca_nombre', $marca);
-    }
-
-    if (!empty($categoria)) {
-        $builder->like('categorias.categoria_nombre', $categoria);
-    }
-
-    if (!empty($precio_max)) {
-        $builder->where('productos.producto_precio <=', $precio_max);
-    }
-
-    $data['productos'] = $builder->get()->getResultArray();
-    $data['marcas'] = (new Marca_model())->findAll();
-    $data['categorias'] = (new Categoria_model())->orderBy('categoria_nombre', 'ASC')->findAll();
-
-    $navbar = 'layout/navbar'; // Navbar por defecto (visitante)
-    if (session()->has('perfil_id')) {
-        if (session('perfil_id') == 1) {
-            $navbar = session('modo_cliente') ? 'layout/navbarAdminVisitante' : 'layout/navbarAdmin';
-        } elseif (session('perfil_id') == 2) {
-            $navbar = 'layout/navbarCliente';
+        if (!empty($marca)) {
+            $builder->like('marca.marca_nombre', $marca);
         }
-    }
 
-    return view($navbar, ['categorias' => $data['categorias']])
-        . view('catalogo', $data)
-        . view('layout/footer');
-}
+        if (!empty($categoria)) {
+            $builder->like('categorias.categoria_nombre', $categoria);
+        }
+
+        if (!empty($precio_max)) {
+            $builder->where('productos.producto_precio <=', $precio_max);
+        }
+
+        $data['productos'] = $builder->get()->getResultArray();
+        $data['marcas'] = (new Marca_model())->findAll();
+        $data['categorias'] = (new Categoria_model())->orderBy('categoria_nombre', 'ASC')->findAll();
+
+        $navbar = 'layout/navbar';
+        if (session()->has('perfil_id')) {
+            if (session('perfil_id') == 1) {
+                $navbar = session('modo_cliente') ? 'layout/navbarAdminVisitante' : 'layout/navbarAdmin';
+            } elseif (session('perfil_id') == 2) {
+                $navbar = 'layout/navbarCliente';
+            }
+        }
+
+        return view($navbar, ['categorias' => $data['categorias']])
+            . view('catalogo', $data)
+            . view('layout/footer');
+    }
 
 
     public function detalle($id)
-{
-    $productoModel = new Producto_model();
-    $categorias = (new Categoria_model())->orderBy('categoria_nombre', 'ASC')->findAll();
-    $producto = $productoModel
-        ->select('productos.*, marca.marca_nombre, categorias.categoria_nombre')
-        ->join('marca', 'productos.marca_id = marca.id_marca')
-        ->join('categorias', 'productos.categoria_id = categorias.id_categoria')
-        ->where('productos.id_producto', $id)
-        ->where('productos.producto_estado', 1)
-        ->first();
+    {
+        $productoModel = new Producto_model();
+        $categorias = (new Categoria_model())->orderBy('categoria_nombre', 'ASC')->findAll();
+        $producto = $productoModel
+            ->select('productos.*, marca.marca_nombre, categorias.categoria_nombre')
+            ->join('marca', 'productos.marca_id = marca.id_marca')
+            ->join('categorias', 'productos.categoria_id = categorias.id_categoria')
+            ->where('productos.id_producto', $id)
+            ->where('productos.producto_estado', 1)
+            ->first();
 
-    if (!$producto) {
-        return redirect()->to('/')->with('error', 'Producto no encontrado');
-    }
-
-    $navbar = 'layout/navbar'; // Navbar por defecto (visitante)
-    if (session()->has('perfil_id')) {
-        if (session('perfil_id') == 1) {
-            $navbar = session('modo_cliente') ? 'layout/navbarAdminVisitante' : 'layout/navbarAdmin';
-        } elseif (session('perfil_id') == 2) {
-            $navbar = 'layout/navbarCliente';
+        if (!$producto) {
+            return redirect()->to('/')->with('error', 'Producto no encontrado');
         }
-    }
 
-    echo view($navbar, ['categorias' => $categorias]);
-    echo view('backend/detalle_bebidas', ['producto' => $producto]);
-    echo view('layout/footer');
-}
+        $navbar = 'layout/navbar';
+        if (session()->has('perfil_id')) {
+            if (session('perfil_id') == 1) {
+                $navbar = session('modo_cliente') ? 'layout/navbarAdminVisitante' : 'layout/navbarAdmin';
+            } elseif (session('perfil_id') == 2) {
+                $navbar = 'layout/navbarCliente';
+            }
+        }
+
+        echo view($navbar, ['categorias' => $categorias]);
+        echo view('backend/detalle_bebidas', ['producto' => $producto]);
+        echo view('layout/footer');
+    }
 
 
     public function listarBebidas()
@@ -147,59 +146,64 @@ class Producto_controller extends BaseController
     public function registrarBebida()
     {
         if (session('perfil_id') != 1) return redirect()->to('/');
+
         $validation = \Config\Services::validation();
         $request = \Config\Services::request();
 
         $validation->setRules([
-            'producto_nombre'      => 'required|max_length[50]',
+            'producto_nombre' => 'required|max_length[50]',
             'producto_descripcion' => 'required|min_length[10]',
-            'producto_precio'      => 'required|decimal|greater_than_equal_to[0]',
-            'producto_stock'       => 'required|integer|greater_than_equal_to[0]',
-            'producto_volumen'     => 'required|integer|greater_than_equal_to[0]',
-            'producto_grado'       => 'required|decimal|greater_than_equal_to[0]|less_than_equal_to[100]',
-            'producto_imagen'      => 'uploaded[producto_imagen]|is_image[producto_imagen]|max_size[producto_imagen,2048]',
-            'marca_id'             => 'required|is_natural_no_zero',
-            'categoria_id'         => 'required|is_natural_no_zero'
+            'producto_precio' => 'required|decimal|greater_than_equal_to[0]',
+            'producto_stock' => 'required|integer|greater_than_equal_to[0]',
+            'producto_volumen' => 'required|integer|greater_than_equal_to[0]',
+            'producto_grado' => 'required|decimal|greater_than_equal_to[0]|less_than_equal_to[100]',
+            'producto_imagen' => 'uploaded[producto_imagen]|is_image[producto_imagen]|max_size[producto_imagen,2048]',
+            'marca_id' => 'required|is_natural_no_zero',
+            'categoria_id' => 'required|is_natural_no_zero'
         ]);
 
-
-        if ($validation->withRequest($request)->run() == false) {
-            // Validación falló: mostrar formulario con errores
-            $marca = new Marca_model();
-            $categoria = new Categoria_model();
-
+        if (!$validation->withRequest($request)->run()) {
             $data['validation'] = $validation->getErrors();
-            $data['categorias'] = $categoria->findAll();
-            $data['marcas'] = $marca->findAll();
-            $data['titulo'] = 'Agregar bebida';
-
-            return view('layout/navbarAdmin').view('backend/registrar_bebida', $data).view('layout/footer');
-        } else {
-        // Validación OK: procesar imagen, insertar y redirigir
-            $img = $this->request->getFile('producto_imagen');
-            $nombre_aleatorio = $img->getRandomName();
-            $img->move(ROOTPATH . 'assets/upload', $nombre_aleatorio);
-
-            $data = [
-                'producto_nombre'     => $this->request->getPost('producto_nombre'),
-                'producto_descripcion'=> $this->request->getPost('producto_descripcion'),
-                'producto_precio'     => $this->request->getPost('producto_precio'),
-                'producto_stock'      => $this->request->getPost('producto_stock'),
-                'producto_imagen'     => $nombre_aleatorio,
-                'marca_id'            => $this->request->getPost('marca_id'),
-                'producto_volumen'    => $this->request->getPost('producto_volumen'),
-                'producto_grado'      => $this->request->getPost('producto_grado'),
-                'categoria_id'        => $this->request->getPost('categoria_id'),
-                'producto_oferta'     => $this->request->getPost('producto_oferta') ? 1 : 0
-            ];
-
-            $bebida = new Producto_model();
-            $bebida->insert($data);
-
-            return redirect()->to('agregar_bebida')->with('mensaje', "La bebida se registró correctamente!");
+            $data['marcas'] = (new Marca_model())->findAll();
+            $data['categorias'] = (new Categoria_model())->orderBy('categoria_nombre', 'ASC')->findAll();
+            return view('layout/navbarAdmin')
+                . view('backend/registrar_bebida', $data)
+                . view('layout/footer');
         }
 
+        $img = $this->request->getFile('producto_imagen');
+        $nombre_aleatorio = $img->getRandomName();
+        $img->move(ROOTPATH . 'assets/upload', $nombre_aleatorio);
+
+        $precio = $this->request->getPost('producto_precio');
+        $oferta = $this->request->getPost('producto_oferta');
+        $descuento = $this->request->getPost('producto_descuento');
+
+        $precio_oferta = null;
+        if ($oferta === 1 && $descuento > 0 && $descuento <= 100) {
+            $precio_oferta = round($precio * (1 - $descuento / 100), 2);
+        }
+
+        $data = [
+            'producto_nombre' => $this->request->getPost('producto_nombre'),
+            'producto_descripcion' => $this->request->getPost('producto_descripcion'),
+            'producto_precio' => $precio,
+            'producto_oferta_precio' => $precio_oferta,
+            'producto_stock' => $this->request->getPost('producto_stock'),
+            'producto_imagen' => $nombre_aleatorio,
+            'marca_id' => $this->request->getPost('marca_id'),
+            'producto_volumen' => $this->request->getPost('producto_volumen'),
+            'producto_grado' => $this->request->getPost('producto_grado'),
+            'categoria_id' => $this->request->getPost('categoria_id'),
+            'producto_oferta' => $oferta ? 1 : 0
+        ];
+
+        $bebida = new Producto_model();
+        $bebida->insert($data);
+
+        return redirect()->to('agregar_bebida')->with('mensaje', "La bebida se registró correctamente!");
     }
+
 
     public function editar($id)
     {
@@ -295,7 +299,7 @@ class Producto_controller extends BaseController
     {
         helper(['form', 'url']);
         if (session('perfil_id') != 1) return redirect()->to('/');
-        $productoModel = new \App\Models\Producto_model();
+        $productoModel = new Producto_model();
 
         $producto = $productoModel->find($id);
         if (!$producto) {
@@ -303,57 +307,43 @@ class Producto_controller extends BaseController
         }
 
         $validacion = $this->validate([
-            'producto_nombre'      => 'required|min_length[3]',
+            'producto_nombre' => 'required|min_length[3]',
             'producto_descripcion' => 'required|min_length[5]',
-            'producto_precio'      => 'required|decimal|greater_than_equal_to[0]',
-            'producto_stock'       => 'required|integer|greater_than_equal_to[0]',
-            'producto_volumen'     => 'required|integer|greater_than_equal_to[0]',
-            'producto_grado'       => 'required|decimal|greater_than_equal_to[0]|less_than_equal_to[100]',
-            'marca_id'             => 'required|is_natural_no_zero',
-            'categoria_id'         => 'required|is_natural_no_zero',
-            'producto_imagen'      => [
-                'uploaded[producto_imagen]',
-                'max_size[producto_imagen,2048]',
-                'is_image[producto_imagen]',
-                'mime_in[producto_imagen,image/jpg,image/jpeg,image/png,image/webp]'
-            ]
+            'producto_precio' => 'required|decimal|greater_than_equal_to[0]',
+            'producto_stock' => 'required|integer|greater_than_equal_to[0]',
+            'producto_volumen' => 'required|integer|greater_than_equal_to[0]',
+            'producto_grado' => 'required|decimal|greater_than_equal_to[0]|less_than_equal_to[100]',
+            'marca_id' => 'required|is_natural_no_zero',
+            'categoria_id' => 'required|is_natural_no_zero',
         ]);
+
+        $precio = (float) $this->request->getPost('producto_precio');
+        $oferta = $this->request->getPost('producto_oferta') ? 1 : 0;
+        $descuento = (int) $this->request->getPost('producto_descuento');
+
+        $precio_oferta = null;
+            if ($oferta === 1 && $descuento > 0 && $descuento <= 100) {
+                $precio_oferta = round($precio * (1 - $descuento / 100), 2);
+        }
 
         $datos = [
             'producto_nombre' => $this->request->getPost('producto_nombre'),
             'producto_descripcion' => $this->request->getPost('producto_descripcion'),
-            'producto_precio' => $this->request->getPost('producto_precio'),
+            'producto_precio' => $precio,
             'producto_stock' => $this->request->getPost('producto_stock'),
             'producto_volumen' => $this->request->getPost('producto_volumen'),
             'producto_grado' => $this->request->getPost('producto_grado'),
             'marca_id' => $this->request->getPost('marca_id'),
             'categoria_id' => $this->request->getPost('categoria_id'),
-            'producto_oferta' => $this->request->getPost('producto_oferta') ? 1 : 0
+            'producto_oferta' => $oferta,
+            'producto_oferta_precio' => $precio_oferta
         ];
 
-        if (!$validacion) {
-            // Si no se subió nueva imagen, quitar validación de imagen
-            if ($this->request->getFile('producto_imagen')->getError() == 4) {
-                unset($_POST['producto_imagen']);
-                $productoModel->update($id, $datos);
-                return redirect()->to('gestionar_bebidas')->with('mensaje', 'Producto actualizado sin cambiar imagen.');
-            } else {
-                return view('layout/navbarAdmin', ['categorias' => (new Categoria_model())->orderBy('categoria_nombre', 'ASC')->findAll()]).view('backend/registrar_bebida', [
-                    'validation' => $this->validator->getErrors(),
-                    'producto' => $producto,
-                    'marcas' => (new Marca_model())->findAll(),
-                    'categorias' => (new Categoria_model())->orderBy('categoria_nombre', 'ASC')->findAll()
-                ]).view('layout/footer');
-            }
-        }
-
-        // Procesar imagen nueva si fue subida
         $imagen = $this->request->getFile('producto_imagen');
         if ($imagen->isValid() && !$imagen->hasMoved()) {
             $nombreImagen = $imagen->getRandomName();
             $imagen->move('assets/upload', $nombreImagen);
 
-            // Opcional: eliminar imagen anterior si existe
             if (!empty($producto['producto_imagen']) && file_exists('assets/upload/' . $producto['producto_imagen'])) {
                 unlink('assets/upload/' . $producto['producto_imagen']);
             }
@@ -365,6 +355,7 @@ class Producto_controller extends BaseController
 
         return redirect()->to('gestionar_bebidas')->with('mensaje', 'Producto actualizado correctamente.');
     }
+
 
     public function ofertas()
     {

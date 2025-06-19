@@ -7,6 +7,8 @@ use App\Models\Categoria_model;
 use App\Models\Ventas_model;
 use App\Models\Detalle_ventas_model;
 use App\Models\Detalle_envio_model;
+use App\Models\Usuario_model;
+use DateTime;
 
 class Carrito_controller extends BaseController{
 
@@ -72,7 +74,7 @@ class Carrito_controller extends BaseController{
             $navbar = 'layout/navbarCliente';
         }
         }       
-        return view($navbar).view('confirmar_compra_form').view('layout/footer');
+        return view($navbar).view('backend/confirmar_compra_form').view('layout/footer');
     }
 
     public function confirmar_compra(){
@@ -129,7 +131,7 @@ class Carrito_controller extends BaseController{
 
 
             // Devolver la vista con los errores
-            return view($navbar).view('confirmar_compra_form', ['validation' => $validation]).view('layout/footer');
+            return view($navbar).view('backend/confirmar_compra_form', ['validation' => $validation]).view('layout/footer');
         }
 
         $data = [
@@ -219,18 +221,93 @@ class Carrito_controller extends BaseController{
         if (session('perfil_id') != 1) return redirect()->to('/');
 
         $ventaModel = new Ventas_model();
-        $ventas = $ventaModel
-            ->select('ventas.id_venta, ventas.venta_fecha, ventas.id_cliente,
-                    detalle_envio.envio_mail, detalle_envio.envio_direccion, detalle_envio.envio_codigo,
-                    detalle_ventas.id_producto, detalle_ventas.detalle_cantidad, detalle_ventas.detalle_precio')
-            ->join('detalle_envio', 'detalle_envio.id_venta = ventas.id_venta')
-            ->join('detalle_ventas', 'detalle_ventas.id_venta = ventas.id_venta')
-            ->orderBy('ventas.venta_fecha', 'DESC')
-            ->findAll();
+        $detalleVentaModel = new Detalle_ventas_model();
+        $detalleEnvioModel = new Detalle_envio_model();
+        $productoModel = new Producto_model();
+        $usuarioModel = new Usuario_model(); // Asumo que tienes este modelo
+
+        // Obtener parámetros de fecha si existen
+        $fechaInicio = $this->request->getGet('fecha_inicio');
+        $fechaFin = $this->request->getGet('fecha_fin');
+
+        // Consulta base
+        $ventaModel->orderBy('venta_fecha', 'DESC');
+
+        // Aplicar filtros de fecha si existen
+        if (!empty($fechaInicio)) {
+            $fechaInicioObj = DateTime::createFromFormat('d/m/Y', $fechaInicio);
+            if ($fechaInicioObj) {
+                $fechaInicio = $fechaInicioObj->format('Y-m-d');
+                $ventaModel->where('DATE(venta_fecha) >=', $fechaInicio);
+            }
+        }
+
+        if (!empty($fechaFin)) {
+            $fechaFinObj = DateTime::createFromFormat('d/m/Y', $fechaFin);
+            if ($fechaFinObj) {
+                $fechaFin = $fechaFinObj->format('Y-m-d 23:59:59'); // incluir todo ese día
+                $ventaModel->where('venta_fecha <=', $fechaFin);
+            }
+        }
+
+        // Obtener todas las ventas
+        $ventas = $ventaModel->orderBy('venta_fecha', 'DESC')->findAll();
+
+        $ventasAgrupadas = [];
+    
+        foreach ($ventas as $venta) {
+            // Obtener detalles de envío
+            $envio = $detalleEnvioModel->where('id_venta', $venta['id_venta'])->first();
+        
+            // Obtener detalles de productos vendidos
+            $detalles = $detalleVentaModel->where('id_venta', $venta['id_venta'])->findAll();
+        
+            // Obtener información del cliente
+            $cliente = $usuarioModel->find($venta['id_cliente']);
+        
+            // Procesar productos
+            $productosVenta = [];
+            $totalVenta = 0;
+        
+            foreach ($detalles as $detalle) {
+                $producto = $productoModel->find($detalle['id_producto']);
+                $subtotal = $detalle['detalle_cantidad'] * $detalle['detalle_precio'];
+            
+                $productosVenta[] = [
+                    'id_producto' => $detalle['id_producto'],
+                    'nombre' => $producto ? $producto['producto_nombre'] : 'Producto eliminado',
+                    'cantidad' => $detalle['detalle_cantidad'],
+                    'precio_unitario' => $detalle['detalle_precio'],
+                    'subtotal' => $subtotal
+                ];
+            
+                $totalVenta += $subtotal;
+            }
+        
+            $ventasAgrupadas[$venta['id_venta']] = [
+                'id_venta' => $venta['id_venta'],
+                'fecha' => $venta['venta_fecha'],
+                'cliente_nombre' => $cliente ? ($cliente['nombre'] . ' ' . $cliente['apellido']) : 'Cliente no encontrado',
+                'cliente_email' => $cliente ? $cliente['email'] : '',
+                'envio_mail' => $envio['envio_mail'] ?? '',
+                'envio_direccion' => $envio ? 
+                    ($envio['envio_direccion'] . ', ' . $envio['envio_ciudad'] . ', ' . $envio['envio_provincia']) : 
+                    'Dirección no especificada',
+                'envio_codigo' => $envio['envio_codigo'] ?? '',
+                'total' => $totalVenta,
+                'productos' => $productosVenta
+            ];
+        }
+
+        $data = [
+            'ventasAgrupadas' => $ventasAgrupadas,
+            'fechaInicio' => $fechaInicio,
+            'fechaFin' => $fechaFin
+        ];
 
         return view('layout/navbarAdmin')
-            . view('listar_ventas', ['ventas' => $ventas])
-            . view('layout/footer');
+             . view('backend/listar_ventas', $data)
+             . view('layout/footer');
     }
 
     public function actualizar_cantidad()

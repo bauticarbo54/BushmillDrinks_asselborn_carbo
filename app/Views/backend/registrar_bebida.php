@@ -115,7 +115,20 @@
                 ?>
         </div>
 
-
+        <div class="form-group d-none" id="grupo_descuento">
+            <label for="producto_descuento">Porcentaje de descuento (%)</label>
+                <?= form_input([
+                    'type' => 'number',
+                    'min' => '1',
+                    'max' => '100',
+                    'step' => '1',
+                    'name' => 'producto_descuento',
+                    'id' => 'producto_descuento',
+                    'class' => 'form-control',
+                    'placeholder' => 'Ej: 20',
+                    'value' => set_value('producto_descuento', $producto['producto_descuento'] ?? '')
+                ]) ?>
+        </div>
 
         <div class="form-group">
             <label for="producto_imagen">Imagen del producto</label>
@@ -160,3 +173,24 @@
     </div>
 </div>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const selectOferta = document.getElementById('producto_oferta');
+    const grupoDescuento = document.getElementById('grupo_descuento');
+
+    function toggleDescuento() {
+        if (selectOferta.value === '1') {
+            grupoDescuento.classList.remove('d-none');
+        } else {
+            grupoDescuento.classList.add('d-none');
+        }
+    }
+
+    // Ejecutar al cargar
+    toggleDescuento();
+
+    // Ejecutar al cambiar
+    selectOferta.addEventListener('change', toggleDescuento);
+});
+</script>

@@ -138,13 +138,27 @@
                     <div class="card-body">
                         <h5 class="card-title"><?= esc($producto['producto_nombre']) ?></h5>
                         <p class="card-text"><?= esc($producto['producto_descripcion']) ?></p>
-                        <p class="card-text"><small class="text-body-secondary">$<?= number_format($producto['producto_precio'], 2, ',', '.') ?></small></p>
+                        <p class="card-text">
+                            <?php if ($producto['producto_oferta'] == 1 && !empty($producto['producto_oferta_precio'])): ?>
+                                <span class="text-muted text-decoration-line-through">
+                                    $<?= number_format($producto['producto_precio'], 2, ',', '.') ?>
+                                </span><br>
+                                <span class="text-danger fw-bold">
+                                    $<?= number_format($producto['producto_oferta_precio'], 2, ',', '.') ?>
+                                </span>
+                            <?php else: ?>
+                                <span>
+                                    $<?= number_format($producto['producto_precio'], 2, ',', '.') ?>
+                                </span>
+                            <?php endif; ?>
+                        </p>
                     </div>
                 </div>
             </div>
         <?php endforeach; ?>
     </div>
 </section>
+
 
 
 

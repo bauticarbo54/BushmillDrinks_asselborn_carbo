@@ -34,6 +34,7 @@ $routes->get('eliminar_bebida/(:num)', "Producto_controller::eliminar/$1");
 $routes->get('ver_consultas', 'Mensaje_controller::verConsultas');
 $routes->get('eliminar_consulta/(:num)', "Mensaje_controller::eliminarConsulta/$1");
 $routes->get('detalle/(:num)', 'Producto_controller::detalle/$1');
+$routes->get('marcar_leido/(:num)', 'Mensaje_controller::marcar_leido/$1');
 
 // Gestión de bebidas (Admin)
 $routes->get('gestionar_bebidas', 'Producto_controller::gestionarBebidas');
@@ -45,7 +46,6 @@ $routes->post('actualizar_bebida/(:num)', 'Producto_controller::actualizarBebida
 $routes->get('usuarios', 'Usuario_controller::listarUsuarios');
 $routes->get('suspender_usuario/(:num)', 'Usuario_controller::suspenderUsuario/$1');
 $routes->get('habilitar_usuario/(:num)', 'Usuario_controller::habilitarUsuario/$1');
-$routes->get('cambiar_tipo_usuario/(:num)', 'Usuario_controller::cambiarTipo/$1');
 $routes->get('eliminar_usuario/(:num)', 'Usuario_controller::eliminarUsuario/$1');
 
 $routes->get('editar_perfil', 'Usuario_controller::editar_perfil');
