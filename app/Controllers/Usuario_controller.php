@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Models\Mensajes_model;
 use App\Models\Usuario_model;
+use App\Models\Categoria_model;
 
 class Usuario_controller extends BaseController
 {
@@ -415,6 +416,7 @@ class Usuario_controller extends BaseController
         } else {
             $data['validation'] = $validation->getErrors();
             $data['usuario'] = $usuarioModel->find($id_usuario);
+            $data['categorias'] = (new Categoria_model())->orderBy('categoria_nombre', 'ASC')->findAll();
             return view('layout/navbarCliente', $data)
                 .view('backend/editar_perfil', $data)
                 .view('layout/footer');

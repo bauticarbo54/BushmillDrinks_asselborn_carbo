@@ -1,12 +1,13 @@
 <div class="container mt-4">
     <h1 class="text-center mb-4">Gestión de Bebidas</h1>
 
-    <?php if(session()->getFlashdata('mensaje')): ?>
-        <div class="alert alert-<?= session()->getFlashdata('tipo_mensaje') ?> alert-dismissible fade show" role="alert">
-            <?= session()->getFlashdata('mensaje') ?>
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
-        </div>
-    <?php endif; ?>
+   <?php if (session()->getFlashdata('mensaje')): ?>
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <?= session()->getFlashdata('mensaje') ?>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+<?php endif; ?>
+
 
     <?= form_open('gestionar_bebidas', ['method' => 'get', 'class' => 'row g-3 mb-3']) ?>
     <div class="row g-2">
