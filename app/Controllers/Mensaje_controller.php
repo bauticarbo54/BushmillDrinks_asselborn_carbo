@@ -7,8 +7,11 @@ use App\Models\Mensajes_model;
 class Mensaje_controller extends BaseController
 {   
 
-    protected $helpers = ['form'];  
-    
+    public function index()
+    {
+        $this->renderizarConNavbar('nueva_plantilla');
+    }
+
     public function add_consulta()
     {
         // Cargar modelo Mensajes_model
@@ -23,7 +26,7 @@ class Mensaje_controller extends BaseController
         ],
         [   // Errores
             'mensaje_nombre' => [
-                    'required' => 'El nombre es requerido',
+                    'required' => 'El nombre es obligatorio',
                     'regex_match'  => 'El nombre solo puede contener letras y espacios',
             ],
             'mensaje_mail' => [
@@ -43,19 +46,8 @@ class Mensaje_controller extends BaseController
         
         // Validar
         if (!$validation->withRequest($this->request)->run()) {
-            
-            $navbar = 'layout/navbar'; // Navbar por defecto (visitante)
-            if (session()->has('perfil_id')) {
-                if (session('perfil_id') == 1) {
-                $navbar = session('modo_cliente') ? 'layout/navbarAdminVisitante' : 'layout/navbarAdmin';
-                } elseif (session('perfil_id') == 2) {
-                    $navbar = 'layout/navbarCliente';
-                }
-            }
-
-
             // Devolver la vista con los errores
-            return view($navbar).view('contacto', [
+            return view('layout/navbar').view('contacto', [
                 'validation' => $validation]).view('layout/footer');
         }
 
@@ -82,7 +74,7 @@ class Mensaje_controller extends BaseController
             $mensajes = $mensajeModel->findAll();
 
             return view('layout/navbarAdmin')
-                  .view('ver_consultas', ['mensajes' => $mensajes])
+                  .view('backend/ver_consultas', ['mensajes' => $mensajes])
                   .view('layout/footer');
         }
 
@@ -90,6 +82,6 @@ class Mensaje_controller extends BaseController
     {
         $mensajesModel = new Mensajes_model();
         $mensajesModel->delete($id);
-        return redirect()->to('/ver_consultas')->with('mensaje', 'Consulta eliminada exitosamente.');
+        return redirect()->to('backend/ver_consultas')->with('mensaje', 'Consulta eliminada exitosamente.');
     }
 }

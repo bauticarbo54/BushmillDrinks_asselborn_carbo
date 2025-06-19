@@ -4,28 +4,6 @@ namespace App\Controllers;
 
 class Home extends BaseController
 {
-    /*Función que permite determinar si se usará el navbar de visitante o el navbar de cliente */
-    private function obtenerNavbar(): string
-{
-    $perfil = session()->get('perfil_id');
-
-    if (session()->get('logueado')) {
-        if ($perfil == 1) {
-            // Admin en modo cliente
-            if (session()->get('modo_cliente')) {
-                return 'layout/navbarAdminVisitante';
-            }
-            // Admin en modo normal
-            return 'layout/navbarAdmin';
-        } elseif ($perfil == 2) {
-            return 'layout/navbarCliente';
-        }
-    }
-
-    return 'layout/navbar'; // Navbar visitante
-}
-
-
     public function verComoCliente()
     {
         if (session()->get('perfil_id') == 1) {
@@ -46,48 +24,46 @@ class Home extends BaseController
 
     public function index(): string
     {
-        return view($this->obtenerNavbar()).view('nueva_plantilla').view('layout/footer');
+        return $this->renderizarConNavbar('nueva_plantilla');
     }
 
     public function nosotros(): string
     {
-        return view($this->obtenerNavbar()).view('quienesSomos').view('layout/footer');
+        return $this->renderizarConNavbar('quienesSomos');
     }
 
     public function inicio(): string
     {
-        return view($this->obtenerNavbar()).view('nueva_plantilla').view('layout/footer');
+        return $this->renderizarConNavbar('nueva_plantilla');
     }
 
     public function comercializacion(): string
     {
-        return view($this->obtenerNavbar()).view('comercializacion').view('layout/footer');
+        return $this->renderizarConNavbar('comercializacion');
     }
 
     public function contacto(): string
     {
-        return view($this->obtenerNavbar()).view('contacto').view('layout/footer');
+        return $this->renderizarConNavbar('contacto');
     }
-    
+
     public function terminos(): string
     {
-        return view($this->obtenerNavbar()).view('terminos').view('layout/footer');
+        return $this->renderizarConNavbar('terminos');
     }
-    
+
     public function login(): string
     {
-        return view($this->obtenerNavbar()).view('login').view('layout/footer');
+        return $this->renderizarConNavbar('login');
     }
 
     public function registro(): string
     {
-        return view($this->obtenerNavbar()).view('registro').view('layout/footer');
+        return $this->renderizarConNavbar('registro');
     }
 
     public function productos(): string
     {
-        return view($this->obtenerNavbar()).view('catalogo').view('layout/footer');
+        return $this->renderizarConNavbar('catalogo');
     }
-
 }
-

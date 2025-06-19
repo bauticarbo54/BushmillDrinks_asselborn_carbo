@@ -31,13 +31,22 @@ $routes->get('agregar_bebida', 'Producto_controller::agregarBebida');
 $routes->post('insertar_bebida', 'Producto_controller::registrarBebida');
 $routes->get('listar_bebidas', 'Producto_controller::listarBebidas');
 $routes->get('eliminar_bebida/(:num)', "Producto_controller::eliminar/$1");
-$routes->get('gestionar_bebidas', 'Producto_controller::gestionarBebidas');
-$routes->get('gestionar_bebidas/(:num)', "Producto_controller::editar/$1");
-$routes->post('actualizar_bebida/(:num)', 'Producto_controller::actualizarBebida/$1');
 $routes->get('ver_consultas', 'Mensaje_controller::verConsultas');
 $routes->get('eliminar_consulta/(:num)', "Mensaje_controller::eliminarConsulta/$1");
 $routes->get('detalle/(:num)', 'Producto_controller::detalle/$1');
 
+// Gestión de bebidas (Admin)
+$routes->get('gestionar_bebidas', 'Producto_controller::gestionarBebidas');
+$routes->get('editar_bebida/(:num)', 'Producto_controller::editar/$1');
+$routes->get('deshabilitar_bebida/(:num)', 'Producto_controller::deshabilitar/$1');
+$routes->get('habilitar_bebida/(:num)', 'Producto_controller::habilitar/$1');
+$routes->post('actualizar_bebida/(:num)', 'Producto_controller::actualizarBebida/$1');
+
+$routes->get('usuarios', 'Usuario_controller::listarUsuarios');
+$routes->get('suspender_usuario/(:num)', 'Usuario_controller::suspenderUsuario/$1');
+$routes->get('habilitar_usuario/(:num)', 'Usuario_controller::habilitarUsuario/$1');
+$routes->get('cambiar_tipo_usuario/(:num)', 'Usuario_controller::cambiarTipo/$1');
+$routes->get('eliminar_usuario/(:num)', 'Usuario_controller::eliminarUsuario/$1');
 
 $routes->get('verComoCliente', 'Home::verComoCliente');
 $routes->get('volverAModoAdmin', 'Home::volverAModoAdmin');

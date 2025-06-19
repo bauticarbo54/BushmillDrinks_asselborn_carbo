@@ -7,6 +7,13 @@ use App\Models\Usuario_model;
 
 class Usuario_controller extends BaseController
 {
+
+    public function index()
+    {
+        $this->renderizarConNavbar('nueva_plantilla');
+    }
+
+
     public function add_cliente()
     {
         $validation = \Config\Services::validation();
@@ -18,8 +25,7 @@ class Usuario_controller extends BaseController
                 'apellido' => 'required|max_length[50]|regex_match[/^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/]',
                 'usuario' => 'required|max_length[20]|is_unique[usuarios.usuario]',
                 'email' => 'required|valid_email|max_length[100]|is_unique[usuarios.email]',
-                'pass' => 'required|max_length[100]|matches[confirmar_pass]',
-                'confirmar_pass' => 'required|matches[pass]',
+                'pass' => 'required|max_length[100]',
             ],
             [   // Errores
                 'nombre' => [
@@ -46,14 +52,8 @@ class Usuario_controller extends BaseController
 
                 'pass'   => [
                     "required"      => 'La contraseña es requerida',
-                    "max_length"    => 'La contraseña no debe superar los 100 caracteres',
-                    "matches" => 'Las contraseñas no coinciden'
+                    "max_length"    => 'La contraseña no debe superar los 100 caracteres'
                 ],
-
-                'confirmar_pass' => [
-                    "required" => 'Debe completar este campo',
-                    "matches" => 'Las contraseñas no coinciden'
-                ]
             ]
         );
 
@@ -84,8 +84,7 @@ class Usuario_controller extends BaseController
         else{
             $data['titulo'] = 'Contacto';
             $data['validation'] = $validation->getErrors();
-            return view('layout/navbar', $data).view('registro', [
-                'validation' => $validation]).view('layout/footer');
+            return view('layout/navbar', $data).view('registro').view('layout/footer');
         }
     }
 
@@ -97,7 +96,12 @@ class Usuario_controller extends BaseController
         $usuarioModel = new \App\Models\Usuario_model();
         $usuario = $usuarioModel->where('email', $email)->first();
 
-         if ($usuario && password_verify($password, $usuario['pass'])) {
+        if ($usuario && password_verify($password, $usuario['pass'])) {
+            if ($usuario['baja'] === 'si') {
+                // Usuario suspendido, no permitir login
+                return redirect()->to('/login')->with('error', 'Su cuenta está suspendida. Contacte al administrador.');
+            }
+
         session()->set([
             'id_usuario' => $usuario['id_usuario'],
             'nombre'     => $usuario['nombre'],
@@ -108,17 +112,15 @@ class Usuario_controller extends BaseController
 
         // Redirigir según perfil_id
         if ($usuario['perfil_id'] == 1) {
-            // Si es admin
-            return redirect()->to('/');  // Ruta para el dashboard admin
+            return redirect()->to('/');  // Admin
         } else {
-            // Si es usuario normal
-            return redirect()->to('/');  // Ruta para la vista de usuarios
+            return redirect()->to('/');  // Usuario normal
         }
         } else {
             return redirect()->to('/login')->with('error', 'Correo o contraseña inválidos.');
         }
     }
-    
+
 
     public function logout()
     {
@@ -209,5 +211,67 @@ class Usuario_controller extends BaseController
             return view('layout/navbar', $data).view('contacto').view('layout/footer');
         }
     }
+
+    public function listarUsuarios()
+    {
+        $usuarioModel = new Usuario_model();
+        $perfil = $this->request->getGet('perfil');
+        $email = $this->request->getGet('email');
+
+        $query = $usuarioModel;
+
+        if (!empty($perfil)) {
+            $query = $query->where('perfil_id', $perfil);
+        }
+
+        if (!empty($email)) {
+            $query = $query->like('email', $email);
+        }
+
+        $data['usuarios'] = $query->findAll();
+
+        return view('layout/navbarAdmin')
+            . view('backend/listar_usuarios', $data)
+            . view('layout/footer');
+    }
+
+
+    public function suspenderUsuario($id)
+    {
+        $usuarioModel = new Usuario_model();
+        $usuarioModel->update($id, ['baja' => 'si']);
+        return redirect()->to('/usuarios');
+    }
+
+    public function habilitarUsuario($id)
+    {
+        $usuarioModel = new Usuario_model();
+        $usuarioModel->update($id, ['baja' => 'no']);
+        return redirect()->to('/usuarios');
+    }
+
+    public function cambiarTipo($id)
+    {
+        $usuarioModel = new Usuario_model();
+        $usuario = $usuarioModel->find($id);
+    
+        // Cambiar entre admin (1) y usuario (2)
+        $nuevoTipo = ($usuario['perfil_id'] == 1) ? 2 : 1;
+        $usuarioModel->update($id, ['perfil_id' => $nuevoTipo]);
+        return redirect()->to('/usuarios');
+    }
+
+    public function eliminarUsuario($id)
+    {
+        // Evita que un admin se elimine a sí mismo
+        if (session('id_usuario') == $id) {
+            return redirect()->to('/usuarios')->with('error', 'No puedes eliminar tu propia cuenta.');
+        }
+
+        $usuarioModel = new Usuario_model();
+        $usuarioModel->delete($id);
+        return redirect()->to('/usuarios');
+    }
+
 
 }
