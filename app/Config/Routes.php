@@ -42,3 +42,13 @@ $routes->get('detalle/(:num)', 'Producto_controller::detalle/$1');
 $routes->get('verComoCliente', 'Home::verComoCliente');
 $routes->get('volverAModoAdmin', 'Home::volverAModoAdmin');
 
+//carrito de compras
+$routes->get('ver_carrito', 'Carrito_controller::ver_carrito');
+$routes->post('agregar_carrito', 'Carrito_controller::agregar_carrito');
+$routes->get('eliminar_item/(:any)', 'Carrito_controller::eliminar_item/$1');
+$routes->get('vaciar_carrito', 'Carrito_controller::vaciar_carrito');
+$routes->get('ordenar_compra', 'Carrito_controller::ordenar_compra');
+$routes->post('confirmar_compra', 'Carrito_controller::confirmar_compra');
+$routes->get('guardar_venta', 'Carrito_controller::guardar_venta');
+
+$routes->get('listar_ventas','Carrito_controller::listar_ventas');

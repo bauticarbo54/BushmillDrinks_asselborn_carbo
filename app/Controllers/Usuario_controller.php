@@ -18,7 +18,8 @@ class Usuario_controller extends BaseController
                 'apellido' => 'required|max_length[50]|regex_match[/^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/]',
                 'usuario' => 'required|max_length[20]|is_unique[usuarios.usuario]',
                 'email' => 'required|valid_email|max_length[100]|is_unique[usuarios.email]',
-                'pass' => 'required|max_length[100]',
+                'pass' => 'required|max_length[100]|matches[confirmar_pass]',
+                'confirmar_pass' => 'required|matches[pass]',
             ],
             [   // Errores
                 'nombre' => [
@@ -45,8 +46,14 @@ class Usuario_controller extends BaseController
 
                 'pass'   => [
                     "required"      => 'La contraseña es requerida',
-                    "max_length"    => 'La contraseña no debe superar los 100 caracteres'
+                    "max_length"    => 'La contraseña no debe superar los 100 caracteres',
+                    "matches" => 'Las contraseñas no coinciden'
                 ],
+
+                'confirmar_pass' => [
+                    "required" => 'Debe completar este campo',
+                    "matches" => 'Las contraseñas no coinciden'
+                ]
             ]
         );
 
@@ -77,7 +84,8 @@ class Usuario_controller extends BaseController
         else{
             $data['titulo'] = 'Contacto';
             $data['validation'] = $validation->getErrors();
-            return view('layout/navbar', $data).view('registro').view('layout/footer');
+            return view('layout/navbar', $data).view('registro', [
+                'validation' => $validation]).view('layout/footer');
         }
     }
 

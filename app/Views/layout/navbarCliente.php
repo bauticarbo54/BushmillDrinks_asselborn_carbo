@@ -46,7 +46,7 @@
                         <li class="nav-item"><a class="nav-link" href="<?= base_url('comercializacion')?>">Comercialización</a></li>
                         <li class="nav-item"><a class="nav-link" href="<?= base_url('contacto')?>">Contacto</a></li>
                         <li class="nav-item"><a class="nav-link" href="<?= base_url('terminos')?>">Términos y Condiciones</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">Ver Carrito</a></li>
+                        <li class="nav-item"><a class="nav-link" href="ver_carrito">Ver Carrito</a></li>
                         <li class="nav-item"><?php if (session()->has('usuario')): ?>
                                                 <a class="nav-link"> <?= esc(session()->get('usuario')) ?></a>
                                             <?php endif; ?>

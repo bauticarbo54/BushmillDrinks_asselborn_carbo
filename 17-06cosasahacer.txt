@@ -1,0 +1,6 @@
+-arreglar navbar carrito con el if de navbar -->OK
+
+perfil usuario:
+	-función modificar perfil
+	-listar compras-> mismo que listar ventas del perfil administrador
+	

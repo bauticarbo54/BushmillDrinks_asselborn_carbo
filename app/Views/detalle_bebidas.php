@@ -19,11 +19,27 @@
                 <li class="list-group-item"><strong>Stock disponible:</strong> <?= esc($producto['producto_stock']) ?></li>
             </ul>
 
-            <?php if (session('perfil_id') == 2): ?>
-                <a href="<?= base_url('' . $producto['id_producto']) ?>" class="btn btn-success btn-lg">
-                    <i class="bi bi-cart-plus"></i> Agregar al carrito
-                </a>
-            <?php endif; ?>
+            <?php if(session('perfil_id') == 2){
+                                                echo form_open('agregar_carrito');
+                                                    echo form_hidden('id', $producto['id_producto']);
+                                                    echo form_hidden('nombre', $producto['producto_nombre']);
+                                                    echo form_hidden('precio', $producto['producto_precio']);
+                                                    echo form_submit('agregar', 'Agregar al carrito', "class='btn btn-success btn-xl'");
+                                                echo form_close();
+
+                                            }else{
+                                            ?>
+                                                <span class="d-inlines-block" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-content="Debe iniciar sesion!">
+                                                    <button class="btn btn-success mx-2" type="button" disabled>Agregar al carrito</button>
+                                                </span>
+                                                <?php
+                                            }
+                                            ?>
         </div>
     </div>
 </div>
+
+<script>
+    const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]');
+    const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl));
+</script>

@@ -47,7 +47,7 @@
                             <div class="card-body">
                                 <h5 class="card-title">Whiskys</h5>
                                 <p class="card-text">Tenemos las mejores opciones de whiskys nacionales e importados</p>
-                                <a href="#" class="btn btn-dark">Ver más</a>
+                                <a href="productos#" class="btn btn-dark">Ver más</a>
                             </div>
                         </div>
                     </div>

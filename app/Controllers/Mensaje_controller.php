@@ -23,7 +23,7 @@ class Mensaje_controller extends BaseController
         ],
         [   // Errores
             'mensaje_nombre' => [
-                    'required' => 'El nombre es obligatorio',
+                    'required' => 'El nombre es requerido',
                     'regex_match'  => 'El nombre solo puede contener letras y espacios',
             ],
             'mensaje_mail' => [
@@ -43,8 +43,19 @@ class Mensaje_controller extends BaseController
         
         // Validar
         if (!$validation->withRequest($this->request)->run()) {
+            
+            $navbar = 'layout/navbar'; // Navbar por defecto (visitante)
+            if (session()->has('perfil_id')) {
+                if (session('perfil_id') == 1) {
+                $navbar = session('modo_cliente') ? 'layout/navbarAdminVisitante' : 'layout/navbarAdmin';
+                } elseif (session('perfil_id') == 2) {
+                    $navbar = 'layout/navbarCliente';
+                }
+            }
+
+
             // Devolver la vista con los errores
-            return view('layout/navbar').view('contacto', [
+            return view($navbar).view('contacto', [
                 'validation' => $validation]).view('layout/footer');
         }
 

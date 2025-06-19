@@ -27,7 +27,25 @@
                                     <div class="card-body d-flex flex-column">
                                         <h5 class="card-title text-dark"><?= esc($producto['producto_nombre']) ?></h5>
                                         <p class="card-text mb-2 text-muted">$<?= esc($producto['producto_precio']) ?></p>
-                                        <a href="<?= base_url('detalle/' . $producto['id_producto']) ?>" class="btn btn-outline-dark btn-sm mt-auto">Ver más</a>
+                                        <div class ="d-flex justify-content-center">
+                                            <a href="<?= base_url('detalle/' . $producto['id_producto']) ?>" class="btn btn-outline-dark mt-auto mx-2">Ver más</a>
+                                            <?php if(session('perfil_id') == 2){
+                                                echo form_open('agregar_carrito');
+                                                    echo form_hidden('id', $producto['id_producto']);
+                                                    echo form_hidden('nombre', $producto['producto_nombre']);
+                                                    echo form_hidden('precio', $producto['producto_precio']);
+                                                    echo form_submit('agregar', 'Agregar', "class='btn btn-success mx-2'");
+                                                echo form_close();
+
+                                            }else{
+                                            ?>
+                                                <span class="d-inlines-block" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-content="Debe iniciar sesion!">
+                                                    <button class="btn btn-success mx-2" type="button" disabled>Agregar</button>
+                                                </span>
+                                                <?php
+                                            }
+                                            ?>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -40,4 +58,8 @@
     </div>
 </div>
 
+<script>
+    const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]');
+    const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl));
+</script>
 
