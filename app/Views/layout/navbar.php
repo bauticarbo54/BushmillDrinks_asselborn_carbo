@@ -54,10 +54,6 @@
                 <li class="nav-item"><a class="nav-link" href="<?= base_url('contacto') ?>">Contacto</a></li>
                 <li class="nav-item"><a class="nav-link" href="<?= base_url('terminos') ?>">Términos y Condiciones</a></li>
             </ul>
-            <form class="d-flex" role="search">
-                <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
-                <button class="btn btn-outline-success me-2" type="submit">Buscar</button>
-            </form>
             <div class="d-flex">
                 <a href="<?= base_url('login') ?>" class="btn btn-outline-secondary me-2"
                    style="border-color: black; color: black;">Iniciar sesión</a>

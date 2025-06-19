@@ -56,10 +56,6 @@
                                             <?php endif; ?>
                         </li>
                     </ul>
-                    <form class="d-flex" role="search">
-                        <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
-                        <button class="btn btn-outline-success me-2" type="submit">Buscar</button>
-                    </form>
                     <div class="d-flex">
                         <a href="<?= base_url('logout') ?>" class="btn btn-dark">Salir</a>
                     </div>

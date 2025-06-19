@@ -299,7 +299,7 @@ class Producto_controller extends BaseController
 
         $producto = $productoModel->find($id);
         if (!$producto) {
-            return redirect()->to('listar_bebidas')->with('mensaje', 'Producto no encontrado.');
+            return redirect()->to('gestionar_bebidas')->with('mensaje', 'Producto no encontrado.');
         }
 
         $validacion = $this->validate([
@@ -336,7 +336,7 @@ class Producto_controller extends BaseController
             if ($this->request->getFile('producto_imagen')->getError() == 4) {
                 unset($_POST['producto_imagen']);
                 $productoModel->update($id, $datos);
-                return redirect()->to('listar_bebidas')->with('mensaje', 'Producto actualizado sin cambiar imagen.');
+                return redirect()->to('gestionar_bebidas')->with('mensaje', 'Producto actualizado sin cambiar imagen.');
             } else {
                 return view('layout/navbarAdmin', ['categorias' => (new Categoria_model())->orderBy('categoria_nombre', 'ASC')->findAll()]).view('backend/registrar_bebida', [
                     'validation' => $this->validator->getErrors(),
@@ -363,7 +363,7 @@ class Producto_controller extends BaseController
 
         $productoModel->update($id, $datos);
 
-        return redirect()->to('listar_bebidas')->with('mensaje', 'Producto actualizado correctamente.');
+        return redirect()->to('gestionar_bebidas')->with('mensaje', 'Producto actualizado correctamente.');
     }
 
     public function ofertas()
