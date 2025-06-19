@@ -51,18 +51,22 @@
                         <li class="nav-item"><a class="nav-link" href="<?= base_url('contacto')?>">Contacto</a></li>
                         <li class="nav-item"><a class="nav-link" href="<?= base_url('terminos')?>">Términos y Condiciones</a></li>
                         <li class="nav-item"><a class="nav-link" href="<?= base_url('ver_carrito')?>">Ver Carrito</a></li>
-                        <li class="nav-item"><?php if (session()->has('usuario')): ?>
-                                                <a class="nav-link" href="<?= base_url('editar_perfil')?>"> <?= esc(session()->get('usuario')) ?></a>
-                                            <?php endif; ?>
-                        </li>
                     </ul>
-                    <div class="d-flex">
-                        <a href="<?= base_url('logout') ?>" class="btn btn-dark">Salir</a>
+
+                    <div class="dropdown ms-auto">
+                        <a href="#" class="d-flex align-items-center text-dark text-decoration-none dropdown-toggle" id="dropdownUser" data-bs-toggle="dropdown" aria-expanded="false">
+                            <img src="https://www.gravatar.com/avatar/?d=mp&s=32" class="rounded-circle" alt="avatar">
+                            <strong><?= esc(session()->get('usuario')) ?></strong>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end text-small" aria-labelledby="dropdownUser">
+                            <li><a class="dropdown-item" href="<?= base_url('editar_perfil')?>">Editar Perfil</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="<?= base_url('logout') ?>">Cerrar sesión</a></li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </nav>
-
         <!-- Cartel de Promociones -->
         <div class="promo-banner">
             <div class="promo-text">

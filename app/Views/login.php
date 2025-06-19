@@ -14,7 +14,7 @@
                        id="email" 
                        name="email" 
                        value="<?= set_value('email') ?>" 
-                       placeholder="ejemplo@correo.com" required>
+                       placeholder="ejemplo@correo.com">
                 <?php if (isset($validation) && $validation->hasError('email')): ?>
                     <small class="text-danger"><?= $validation->getError('email') ?></small>
                 <?php endif; ?>
@@ -25,7 +25,7 @@
                 <input type="password" 
                        class="form-control <?= isset($validation) && $validation->hasError('password') ? 'is-invalid' : '' ?>" 
                        id="password" 
-                       name="password" required>
+                       name="password">
                 <?php if (isset($validation) && $validation->hasError('password')): ?>
                     <small class="text-danger"><?= $validation->getError('password') ?></small>
                 <?php endif; ?>

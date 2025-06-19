@@ -32,7 +32,7 @@
 
             <div class="mb-3">
                 <label for="nombre" class="form-label">Nombre</label>
-                <input type="text" class="form-control" name="nombre" value="<?= old('nombre', $usuario['nombre']) ?>" required>
+                <input type="text" class="form-control" name="nombre" value="<?= old('nombre', $usuario['nombre']) ?>">
                 <?php if (isset($validation['nombre'])): ?>
                     <small class="text-danger"><?= esc($validation['nombre']) ?></small>
                 <?php endif; ?>
@@ -40,7 +40,7 @@
 
             <div class="mb-3">
                 <label for="apellido" class="form-label">Apellido</label>
-                <input type="text" class="form-control" name="apellido" value="<?= old('apellido', $usuario['apellido']) ?>" required>
+                <input type="text" class="form-control" name="apellido" value="<?= old('apellido', $usuario['apellido']) ?>">
                 <?php if (isset($validation['apellido'])): ?>
                     <small class="text-danger"><?= esc($validation['apellido']) ?></small>
                 <?php endif; ?>
@@ -48,7 +48,7 @@
 
             <div class="mb-3">
                 <label for="usuario" class="form-label">Nombre de Usuario</label>
-                <input type="text" class="form-control" name="usuario" value="<?= old('usuario', $usuario['usuario']) ?>" required>
+                <input type="text" class="form-control" name="usuario" value="<?= old('usuario', $usuario['usuario']) ?>">
                 <?php if (isset($validation['usuario'])): ?>
                     <small class="text-danger"><?= esc($validation['usuario']) ?></small>
                 <?php endif; ?>
@@ -56,7 +56,7 @@
 
             <div class="mb-3">
                 <label for="email" class="form-label">Correo electrónico</label>
-                <input type="email" class="form-control" name="email" value="<?= old('email', $usuario['email']) ?>" required>
+                <input type="email" class="form-control" name="email" value="<?= old('email', $usuario['email']) ?>">
                 <?php if (isset($validation['email'])): ?>
                     <small class="text-danger"><?= esc($validation['email']) ?></small>
                 <?php endif; ?>
