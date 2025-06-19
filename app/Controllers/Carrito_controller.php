@@ -13,6 +13,7 @@ class Carrito_controller extends BaseController{
     // Ver carrito
     public function ver_carrito()
         {
+        if (session('perfil_id') != 2) return redirect()->to('/');
         //navbar personalizado
         $navbar = 'layout/navbar'; // Navbar por defecto (visitante)
         if (session()->has('perfil_id')) {
@@ -31,6 +32,7 @@ class Carrito_controller extends BaseController{
     // Agregar producto al carrito
     public function agregar_carrito()
         {
+        if (session('perfil_id') != 2) return redirect()->to('/');
         $cart = \Config\Services::cart();
         $request= \Config\Services::request();
 
@@ -47,12 +49,14 @@ class Carrito_controller extends BaseController{
     }
 
     public function eliminar_item($rowid){
+        if (session('perfil_id') != 2) return redirect()->to('/');
         $cart = \Config\Services::cart();
         $cart->remove($rowid);
         return redirect()->to('ver_carrito');
     }
 
     public function vaciar_carrito(){
+        if (session('perfil_id') != 2) return redirect()->to('/');
         $cart = \Config\Services::cart();
         $cart->destroy();  
         return redirect()->to('ver_carrito'); 
@@ -72,6 +76,7 @@ class Carrito_controller extends BaseController{
     }
 
     public function confirmar_compra(){
+        if (session('perfil_id') != 2) return redirect()->to('/');
 
         $validation = \Config\Services::validation();
 
@@ -141,6 +146,7 @@ class Carrito_controller extends BaseController{
     }
     
     public function guardar_venta(){
+        if (session('perfil_id') != 2) return redirect()->to('/');
         $cart = \Config\Services::cart();
         $venta = new Ventas_model();
         $detalle = new Detalle_ventas_model();
@@ -229,6 +235,7 @@ class Carrito_controller extends BaseController{
 
     public function actualizar_cantidad()
     {
+        if (session('perfil_id') != 2) return redirect()->to('/');
         $cart = \Config\Services::cart();
         $rowid = $this->request->getPost('rowid');
         $accion = $this->request->getPost('accion');
