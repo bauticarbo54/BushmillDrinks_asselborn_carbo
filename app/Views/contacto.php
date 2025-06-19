@@ -15,28 +15,28 @@
                 <div class="col" style="margin-top: 20px;"> 
                     <div class="mb-3">
                         <label for="nombre" class="form-label">Nombre</label>
-                        <input type="text" class="form-control" id="nombre" name="mensaje_nombre" placeholder="Tu nombre" required value="<?=set_value('mensaje_nombre')?>">
+                        <input type="text" class="form-control" id="nombre" name="mensaje_nombre" placeholder="Tu nombre" value="<?=set_value('mensaje_nombre')?>">
                         <?php if (isset($validation) && $validation->hasError('mensaje_nombre')): ?>
                             <small class="text-danger"><?= $validation->getError('mensaje_nombre') ?></small>
                         <?php endif; ?>
                     </div>
                     <div class="mb-3">
                         <label for="email" class="form-label">Dirección de Email</label>
-                        <input type="email" class="form-control" id="email" name="mensaje_mail" placeholder="nombre@ejemplo.com" required value="<?=set_value('mensaje_mail')?>">
+                        <input type="email" class="form-control" id="email" name="mensaje_mail" placeholder="nombre@ejemplo.com" value="<?=set_value('mensaje_mail')?>">
                         <?php if (isset($validation) && $validation->hasError('mensaje_mail')): ?>
                             <small class="text-danger"><?= $validation->getError('mensaje_mail') ?></small>
                         <?php endif; ?>
                     </div>
                     <div class="mb-3">
                         <label for="telefono" class="form-label">Número de teléfono</label>
-                        <input type="tel" class="form-control" id="telefono" name="mensaje_telefono" placeholder="Ejemplo: 3794 123456" required value="<?=set_value('mensaje_telefono')?>">
+                        <input type="tel" class="form-control" id="telefono" name="mensaje_telefono" placeholder="Ejemplo: 3794 123456" value="<?=set_value('mensaje_telefono')?>">
                         <?php if (isset($validation) && $validation->hasError('mensaje_telefono')): ?>
                             <small class="text-danger"><?= $validation->getError('mensaje_telefono') ?></small>
                         <?php endif; ?>
                     </div>
                     <div class="mb-3">
                         <label for="consulta" class="form-label">Comentarios</label>
-                        <textarea class="form-control" id="consulta" name="mensaje_consulta" rows="3" required value="<?=set_value('mensaje_consulta')?>"></textarea>
+                        <textarea class="form-control" id="consulta" name="mensaje_consulta" rows="3" value="<?=set_value('mensaje_consulta')?>"></textarea>
                         <?php if (isset($validation) && $validation->hasError('mensaje_consulta')): ?>
                             <small class="text-danger"><?= $validation->getError('mensaje_consulta') ?></small>
                         <?php endif; ?>
