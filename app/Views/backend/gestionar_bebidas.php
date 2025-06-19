@@ -1,5 +1,5 @@
 <div class="container mt-4">
-    <h2>Gestión de Bebidas</h2>
+    <h1 class="text-center mb-4">Gestión de Bebidas</h1>
 
     <?php if(session()->getFlashdata('mensaje')): ?>
         <div class="alert alert-<?= session()->getFlashdata('tipo_mensaje') ?> alert-dismissible fade show" role="alert">

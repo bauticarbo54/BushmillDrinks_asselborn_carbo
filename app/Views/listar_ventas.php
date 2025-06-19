@@ -1,4 +1,5 @@
-<h2 class="text-2xl font-bold mb-4">Historial de Ventas</h2>
+<div class = "container mt-4">
+<h1 class="text-center mb-4">Historial de Ventas</h1>
 
 <?php if (!empty($ventas)): ?>
     <table class="table table-striped table-hover table-bordered align-middle">
@@ -27,7 +28,7 @@
                     <td><?= esc($venta['venta_fecha']) ?></td>
                     <td><?= esc($venta['id_producto']) ?></td>
                     <td><?= esc($venta['detalle_cantidad']) ?></td>
-                    <td>$<?= esc($venta['detalle_precio']) ?></td>
+                    <td>$<?= number_format($venta['detalle_precio'], 2, ',', '.') ?></td>
                 </tr>
             <?php endforeach ?>
         </tbody>
@@ -35,3 +36,4 @@
 <?php else: ?>
     <p>No hay ventas registradas.</p>
 <?php endif ?>
+</div>

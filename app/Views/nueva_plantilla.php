@@ -47,7 +47,7 @@
                             <div class="card-body">
                                 <h5 class="card-title">Whiskys</h5>
                                 <p class="card-text">Tenemos las mejores opciones de whiskys nacionales e importados</p>
-                                <a href="productos#whiskys" class="btn btn-dark">Ver más</a>
+                                <a href="productos#whiskys" class="btn btn-dark d-block mx-auto">Ver más</a>
                             </div>
                         </div>
                     </div>
@@ -59,7 +59,7 @@
                             <div class="card-body">
                                 <h5 class="card-title">Cervezas</h5>
                                 <p class="card-text">Contamos con amplia variedad en cervezas industriales y artesanales</p>
-                                <a href="productos#cervezas" class="btn btn-dark">Ver más</a>
+                                <a href="productos#cervezas" class="btn btn-dark d-block mx-auto">Ver más</a>
                             </div>
                         </div>
                     </div>
@@ -71,7 +71,7 @@
                             <div class="card-body">
                                 <h5 class="card-title">Vinos</h5>
                                 <p class="card-text">Explora la gran variedad de vinos que te estan esperando</p>
-                                <a href="productos#vinos" class="btn btn-dark">Ver más</a>
+                                <a href="productos#vinos" class="btn btn-dark d-block mx-auto">Ver más</a>
                             </div>
                         </div>
                     </div>
@@ -85,7 +85,7 @@
                             <div class="card-body">
                                 <h5 class="card-title">Aperitivos</h5>
                                 <p class="card-text">Encontra el aperitivo que mas te guste</p>
-                                <a href="productos#aperitivos" class="btn btn-dark">Ver más</a>
+                                <a href="productos#aperitivos" class="btn btn-dark d-block mx-auto">Ver más</a>
                             </div>
                         </div>
                     </div>
@@ -97,7 +97,7 @@
                             <div class="card-body">
                                 <h5 class="card-title">Espumantes</h5>
                                 <p class="card-text">Brinda donde sea con nuestros espumantes</p>
-                                <a href="productos#espumantes" class="btn btn-dark">Ver más</a>
+                                <a href="productos#espumantes" class="btn btn-dark d-block mx-auto">Ver más</a>
                             </div>
                         </div>
                     </div>
@@ -108,8 +108,8 @@
                             <img src="assets/img/GinCat.png" class="card-img-top img-fluid" alt="Producto 6">
                             <div class="card-body">
                                 <h5 class="card-title">Gin</h5>
-                                <p class="card-text">Disfruta de un buen trago con los Gines que tenemos para vos</p>
-                                <a href="productos#gin" class="btn btn-dark">Ver más</a>
+                                <p class="card-text">Disfruta de los diversos Gin's que tenemos para vos</p>
+                                <a href="productos#gins" class="btn btn-dark d-block mx-auto">Ver más</a>
                             </div>
                         </div>
                     </div>

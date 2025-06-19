@@ -1,3 +1,4 @@
+<div class = "container mt-4">
 <h1 class="text-center mb-4">Consultas de Clientes</h1>
 
 <div class="container">
@@ -43,4 +44,5 @@
             </table>
         </div>
     <?php endif; ?>
+</div>
 </div>

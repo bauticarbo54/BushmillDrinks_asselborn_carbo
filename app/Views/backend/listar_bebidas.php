@@ -1,5 +1,5 @@
 <div class="container mt-4">
-<h2>Lista de Bebidas</h2>
+<h1 class="text-center mb-4">Lista de Bebidas</h1>
 
 <?= form_open('listar_bebidas', ['method' => 'get', 'class' => 'mb-4']) ?>
 <div class="row g-2">

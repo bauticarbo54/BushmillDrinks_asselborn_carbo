@@ -37,7 +37,7 @@ foreach ($productos as $producto) {
                                     <img src="<?= base_url('assets/upload/' . $producto['producto_imagen']) ?>" class="card-img-top rounded-top-4" alt="<?= esc($producto['producto_nombre']) ?>" style="object-fit: cover; height: 200px;">
                                     <div class="card-body d-flex flex-column">
                                         <h5 class="card-title text-dark"><?= esc($producto['producto_nombre']) ?></h5>
-                                        <p class="card-text mb-2 text-muted">$<?= esc($producto['producto_precio']) ?></p>
+                                        <p class="card-text mb-2 text-muted">$<?= number_format($producto['producto_precio'], 2, ',', '.') ?></p>
                                         <div class="d-flex justify-content-center">
                                             <a href="<?= base_url('detalle/' . $producto['id_producto']) ?>" class="btn btn-outline-dark mt-auto mx-2">Ver más</a>
                                             <?php if(session('perfil_id') == 2): ?>

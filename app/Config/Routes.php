@@ -48,6 +48,10 @@ $routes->get('habilitar_usuario/(:num)', 'Usuario_controller::habilitarUsuario/$
 $routes->get('cambiar_tipo_usuario/(:num)', 'Usuario_controller::cambiarTipo/$1');
 $routes->get('eliminar_usuario/(:num)', 'Usuario_controller::eliminarUsuario/$1');
 
+$routes->get('editar_perfil', 'Usuario_controller::editar_perfil');
+$routes->post('actualizar_perfil', 'Usuario_controller::actualizar_perfil');
+
+
 $routes->get('verComoCliente', 'Home::verComoCliente');
 $routes->get('volverAModoAdmin', 'Home::volverAModoAdmin');
 
@@ -59,5 +63,8 @@ $routes->get('vaciar_carrito', 'Carrito_controller::vaciar_carrito');
 $routes->get('ordenar_compra', 'Carrito_controller::ordenar_compra');
 $routes->post('confirmar_compra', 'Carrito_controller::confirmar_compra');
 $routes->get('guardar_venta', 'Carrito_controller::guardar_venta');
+$routes->post('actualizar_cantidad', 'Carrito_controller::actualizar_cantidad');
+$routes->get('confirmacion_compra', 'Carrito_controller::confirmacion_compra');
+
 
 $routes->get('listar_ventas','Carrito_controller::listar_ventas');

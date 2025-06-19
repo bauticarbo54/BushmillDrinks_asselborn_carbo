@@ -1,4 +1,5 @@
-<h1 class="text-center"><?= isset($producto) ? 'Editar Bebida' : 'Registro de Bebida' ?></h1>
+<div class="container mt-4">
+<h1 class="text-center mb-4"><?= isset($producto) ? 'Editar Bebida' : 'Registro de Bebida' ?></h1>
 
 <div class="container">
     <div class="w-50 mx-auto">
@@ -157,4 +158,5 @@
 
         <?= form_close(); ?>
     </div>
+</div>
 </div>

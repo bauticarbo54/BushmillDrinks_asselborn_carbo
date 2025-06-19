@@ -191,8 +191,22 @@ class Carrito_controller extends BaseController{
         }
 
         $cart->destroy();
-        return redirect()->route('inicio');
-    }
+
+        $usuario = [
+            'nombre' => session('nombre'),
+            'apellido' => session('apellido'),
+            'email' => session('email')
+        ];
+
+        return view('layout/navbarCliente')
+             . view('backend/confirmacion_compra', [
+                    'usuario' => $usuario,
+                    'envio' => $datos_envio,
+                    'carrito' => $cart1
+                ])
+             . view('layout/footer');
+
+        }
     
     public function listar_ventas()
     {
@@ -212,4 +226,31 @@ class Carrito_controller extends BaseController{
             . view('listar_ventas', ['ventas' => $ventas])
             . view('layout/footer');
     }
+
+    public function actualizar_cantidad()
+    {
+        $cart = \Config\Services::cart();
+        $rowid = $this->request->getPost('rowid');
+        $accion = $this->request->getPost('accion');
+
+        $item = $cart->getItem($rowid);
+        if (!$item) {
+            return redirect()->back()->with('error', 'Producto no encontrado');
+        }
+
+        $nuevaCantidad = $item['qty'];
+        if ($accion == 'sumar') {
+            $nuevaCantidad += 1;
+        } elseif ($accion == 'restar' && $item['qty'] > 1) {
+            $nuevaCantidad -= 1;
+        }
+
+        $cart->update([
+            'rowid' => $rowid,
+            'qty' => $nuevaCantidad
+        ]);
+
+    return redirect()->back();
+    }
+
 }

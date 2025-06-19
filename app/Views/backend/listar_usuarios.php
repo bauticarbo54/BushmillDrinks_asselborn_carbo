@@ -1,5 +1,5 @@
-<div class="container mt-5">
-    <h2 class="mb-4">Listado de Usuarios</h2>
+<div class="container mt-4">
+    <h1 class="text-center mb-4">Listado de Usuarios</h1>
 
     <!-- Formulario de búsqueda y filtros -->
     <form method="get" action="<?= site_url('usuarios') ?>" class="row g-3 mb-4">
