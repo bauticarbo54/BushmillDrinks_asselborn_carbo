@@ -68,3 +68,4 @@ $routes->get('confirmacion_compra', 'Carrito_controller::confirmacion_compra');
 
 
 $routes->get('listar_ventas','Carrito_controller::listar_ventas');
+$routes->get('listar_compras', 'Carrito_controller::historial_cliente');

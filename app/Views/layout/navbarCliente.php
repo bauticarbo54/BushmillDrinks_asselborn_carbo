@@ -51,6 +51,7 @@
                         <li class="nav-item"><a class="nav-link" href="<?= base_url('contacto')?>">Contacto</a></li>
                         <li class="nav-item"><a class="nav-link" href="<?= base_url('terminos')?>">Términos y Condiciones</a></li>
                         <li class="nav-item"><a class="nav-link" href="<?= base_url('ver_carrito')?>">Ver Carrito</a></li>
+                        <li class="nav-item"><a class="nav-link" href="<?= base_url('listar_compras') ?>">Mis Compras</a></li>
                     </ul>
 
                     <div class="dropdown ms-auto">

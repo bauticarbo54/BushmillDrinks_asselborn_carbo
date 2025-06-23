@@ -38,7 +38,7 @@
                         <?php if (session()->get('modo_cliente')): ?>
                             <a href="<?= base_url('volverAModoAdmin') ?>" class="btn btn-warning">Volver a modo admin</a>
                         <?php else: ?>
-                            <a href="<?= base_url('verComoCliente') ?>" class="btn btn-info">Ver como cliente</a>
+                            <a href="<?= base_url('verComoCliente') ?>" class="btn btn-info">Ver como visitante</a>
                         <?php endif; ?>
     
                         <a href="<?= base_url('logout') ?>" class="btn btn-dark">Salir</a>

@@ -2,7 +2,18 @@
 
 <div class="container mt-5">
     <h1 class="text-center mb-4">🛒 Carrito de Compras</h1>
+    <?php if (session()->getFlashdata('mensaje_carrito')): ?>
+        <div class="alert alert-success text-center">
+            <?= session('mensaje_carrito') ?>
+        </div>
+    <?php endif; ?>
+
     <a href="<?= base_url('productos'); ?>" class="btn btn-outline-primary mb-4">← Seguir comprando</a>
+    <?php if (session()->getFlashdata('error_stock')): ?>
+        <div class="alert alert-danger text-center">
+            <?= session()->getFlashdata('error_stock') ?>
+        </div>
+    <?php endif; ?>
 
     <?php if ($cart->contents() == NULL): ?>
         <div class="alert alert-danger text-center">¡No tiene productos en el carrito!</div>
@@ -24,7 +35,15 @@
                     <tr>
                         <td><?= $i++; ?></td>
                         <td><?= esc($item['name']); ?></td>
-                        <td>$<?= number_format($item['price'], 2); ?></td>
+                        <td>
+                            <?php if (isset($item['options']['precio_original']) && $item['options']['precio_original'] > $item['price']): ?>
+                                <span class="text-muted text-decoration-line-through">$<?= number_format($item['options']['precio_original'], 2); ?></span><br>
+                                <span class="text-success fw-bold">$<?= number_format($item['price'], 2); ?></span>
+                            <?php else: ?>
+                                $<?= number_format($item['price'], 2); ?>
+                            <?php endif; ?>
+                        </td>
+
                         <td>
                             <form action="<?= base_url('actualizar_cantidad'); ?>" method="post" class="d-flex justify-content-center align-items-center gap-1">
                                 <input type="hidden" name="rowid" value="<?= $item['rowid']; ?>">

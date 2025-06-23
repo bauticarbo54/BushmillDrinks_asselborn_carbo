@@ -33,22 +33,46 @@ class Carrito_controller extends BaseController{
 
     // Agregar producto al carrito
     public function agregar_carrito()
-        {
-        if (session('perfil_id') != 2) return redirect()->to('/');
-        $cart = \Config\Services::cart();
-        $request= \Config\Services::request();
+{
+    if (session('perfil_id') != 2) return redirect()->to('/');
 
-        $data = array(
-            'id'=>$request->getPost('id'),
-            'name'=>$request->getPost('nombre'),
-            'price'=>$request->getPost('precio'),
-            'qty'=>1
-        );
-        $cart->insert($data);
-        //tiene que ir un mensaje de agregado al carrito
-        return redirect()->route('ver_carrito');
+    $cart = \Config\Services::cart();
+    $request = \Config\Services::request();
+    $productoModel = new \App\Models\Producto_model();
 
+    // Buscar el producto en base al ID
+    $producto = $productoModel->find($request->getPost('id'));
+
+    // Verificación de existencia y stock
+    if (!$producto || $producto['producto_stock'] < 1) {
+        session()->setFlashdata('error_stock', 'Este producto no tiene stock disponible.');
+        return redirect()->back();
     }
+
+    // Usar precio de oferta si corresponde
+    $precio = ($producto['producto_oferta'] && $producto['producto_oferta_precio'] !== null)
+        ? $producto['producto_oferta_precio']
+        : $producto['producto_precio'];
+
+    // Preparar datos para el carrito
+    $data = [
+        'id'    => $producto['id_producto'],
+        'name'  => $producto['producto_nombre'],
+        'price' => $precio,
+        'qty'   => 1,
+        'options' => [
+            'precio_original' => $producto['producto_precio']
+        ]
+    ];
+
+    $cart->insert($data);
+
+    // Mensaje de éxito
+    session()->setFlashdata('mensaje_carrito', '¡Producto agregado al carrito!');
+
+    return redirect()->route('ver_carrito');
+}
+
 
     public function eliminar_item($rowid){
         if (session('perfil_id') != 2) return redirect()->to('/');
@@ -157,13 +181,14 @@ class Carrito_controller extends BaseController{
 
         $cart1 = $cart->contents();
 
-        foreach ($cart1 as $item){
+        foreach ($cart1 as $item) {
             $producto = $productos->where('id_producto', $item['id'])->first();
-            if($producto['producto_stock'] < $item['qty']){
-                //insertar alert de producto sin stock
-                return redirect()->route('ver_carrito');
-            }
+                if ($producto['producto_stock'] < $item['qty']) {
+                    session()->setFlashdata('error_stock', 'El producto "' . esc($producto['producto_nombre']) . '" no tiene suficiente stock.');
+                        return redirect()->route('ver_carrito');
+                }
         }
+
 
         $data = array(  
             'id_cliente' => session('id_usuario'),
@@ -336,5 +361,68 @@ class Carrito_controller extends BaseController{
 
     return redirect()->back();
     }
+
+    public function historial_cliente()
+{
+    if (session('perfil_id') != 2) return redirect()->to('/');
+
+    $ventaModel = new \App\Models\Ventas_model();
+    $detalleModel = new \App\Models\Detalle_ventas_model();
+    $envioModel = new \App\Models\Detalle_envio_model();
+    $productoModel = new \App\Models\Producto_model();
+
+    $usuario_id = session('id_usuario');
+
+    // Traer todas las ventas de este usuario
+    $ventas_raw = $ventaModel
+        ->where('id_cliente', $usuario_id)
+        ->orderBy('venta_fecha', 'DESC')
+        ->findAll();
+
+    $ventas = [];
+
+    foreach ($ventas_raw as $venta) {
+        // Detalles de la venta
+        $detalles = $detalleModel
+            ->where('id_venta', $venta['id_venta'])
+            ->findAll();
+
+        // Información de envío
+        $envio = $envioModel
+            ->where('id_venta', $venta['id_venta'])
+            ->first();
+
+        $productos = [];
+        foreach ($detalles as $detalle) {
+            $producto = $productoModel->find($detalle['id_producto']);
+            $nombre_producto = $producto['producto_nombre'] ?? 'Nombre no disponible';
+
+            $cantidad = $detalle['detalle_cantidad'];
+            $precio_unitario = $detalle['detalle_precio'];
+            $subtotal = $cantidad * $precio_unitario;
+
+            $productos[] = [
+                'nombre' => $nombre_producto,
+                'cantidad' => $cantidad,
+                'precio_unitario' => $precio_unitario,
+                'subtotal' => $subtotal
+            ];
+        }
+
+        $ventas[] = [
+            'id_venta' => $venta['id_venta'],
+            'fecha' => $venta['venta_fecha'],
+            // Si no tienes total guardado, lo calculamos sumando los subtotales
+            'total' => array_sum(array_column($productos, 'subtotal')),
+            'envio_direccion' => $envio['envio_direccion'] ?? 'No registrado',
+            'envio_codigo' => $envio['envio_codigo'] ?? '-',
+            'envio_mail' => $envio['envio_mail'] ?? '-',
+            'productos' => $productos
+        ];
+    }
+
+    return view('layout/navbarCliente').view('backend/listar_compras_cliente', ['ventas' => $ventas]). view('layout/footer');
+}
+
 
 }

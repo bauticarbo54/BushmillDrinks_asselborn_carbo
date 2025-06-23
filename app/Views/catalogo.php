@@ -14,7 +14,17 @@ foreach ($productos as $producto) {
 
 <div class="container mt-5">
     <h2 class="mb-4 text-center fw-bold">Nuestras Bebidas</h2>
+    <?php if (session()->getFlashdata('error_stock')): ?>
+                <div class="alert alert-danger">
+                    <?= session()->getFlashdata('error_stock') ?>
+                </div>
+            <?php endif; ?>
 
+            <?php if (session()->getFlashdata('mensaje')): ?>
+                <div class="alert alert-success">
+                    <?= session()->getFlashdata('mensaje') ?>
+                </div>
+            <?php endif; ?>
     <div class="accordion" id="accordionCategorias">
         <?php
         $indice = 0;
@@ -37,15 +47,26 @@ foreach ($productos as $producto) {
                                     <img src="<?= base_url('assets/upload/' . $producto['producto_imagen']) ?>" class="card-img-top rounded-top-4" alt="<?= esc($producto['producto_nombre']) ?>" style="object-fit: cover; height: 200px;">
                                     <div class="card-body d-flex flex-column">
                                         <h5 class="card-title text-dark"><?= esc($producto['producto_nombre']) ?></h5>
-                                        <p class="card-text mb-2 text-muted">$<?= number_format($producto['producto_precio'], 2, ',', '.') ?></p>
+                                        <?php if ($producto['producto_oferta'] && $producto['producto_oferta_precio'] !== null): ?>
+                                            <p class="card-text mb-2">
+                                                <span class="text-muted text-decoration-line-through">$<?= number_format($producto['producto_precio'], 2, ',', '.') ?></span><br>
+                                                <span class="fw-bold text-success">$<?= number_format($producto['producto_oferta_precio'], 2, ',', '.') ?></span>
+                                            </p>
+                                        <?php else: ?>
+                                            <p class="card-text mb-2 fw-semibold">$<?= number_format($producto['producto_precio'], 2, ',', '.') ?></p>
+                                        <?php endif; ?>
+
                                         <div class="d-flex justify-content-center">
                                             <a href="<?= base_url('detalle/' . $producto['id_producto']) ?>" class="btn btn-outline-dark mt-auto mx-2">Ver más</a>
                                             <?php if(session('perfil_id') == 2): ?>
                                                 <?= form_open('agregar_carrito') ?>
                                                     <?= form_hidden('id', $producto['id_producto']) ?>
                                                     <?= form_hidden('nombre', $producto['producto_nombre']) ?>
-                                                    <?= form_hidden('precio', $producto['producto_precio']) ?>
+                                                    <?= form_hidden('precio', $producto['producto_oferta'] && $producto['producto_oferta_precio'] !== null
+                                                        ? $producto['producto_oferta_precio']
+                                                        : $producto['producto_precio']) ?>
                                                     <?= form_submit('agregar', 'Agregar', "class='btn btn-success mx-2'") ?>
+                                                    <?= form_hidden('precio', $producto) ?>
                                                 <?= form_close() ?>
                                             <?php else: ?>
                                                 <span class="d-inline-block" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-content="Debe iniciar sesión!">
