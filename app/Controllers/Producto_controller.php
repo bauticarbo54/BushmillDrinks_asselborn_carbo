@@ -155,28 +155,109 @@ class Producto_controller extends BaseController
     $descuento = $request->getPost('producto_descuento');
 
     // Reglas básicas
-    $rules = [
-        'producto_nombre' => 'required|max_length[50]',
-        'producto_descripcion' => 'required|min_length[10]',
-        'producto_precio' => 'required|decimal|greater_than_equal_to[0]',
-        'producto_stock' => 'required|integer|greater_than_equal_to[0]',
-        'producto_volumen' => 'required|integer|greater_than_equal_to[0]',
-        'producto_grado' => 'required|decimal|greater_than_equal_to[0]|less_than_equal_to[100]',
-        'producto_imagen' => 'uploaded[producto_imagen]|is_image[producto_imagen]|max_size[producto_imagen,2048]',
-        'marca_id' => 'required|is_natural_no_zero',
-        'categoria_id' => 'required|is_natural_no_zero',
-        'producto_oferta' => 'required|in_list[0,1]'
-    ];
+    $reglas = [
+    'producto_nombre' => [
+        'rules' => 'required|min_length[3]',
+        'errors' => [
+            'required' => 'El nombre de la bebida es obligatorio.',
+            'min_length' => 'El nombre debe tener al menos 3 caracteres.'
+        ]
+    ],
+    'producto_descripcion' => [
+        'rules' => 'required|min_length[5]',
+        'errors' => [
+            'required' => 'La descripción es obligatoria.',
+            'min_length' => 'La descripción debe tener al menos 5 caracteres.'
+        ]
+    ],
+    'producto_precio' => [
+        'rules' => 'required|decimal|greater_than_equal_to[0]',
+        'errors' => [
+            'required' => 'El precio es obligatorio.',
+            'decimal' => 'El precio debe ser un número decimal.',
+            'greater_than_equal_to' => 'El precio no puede ser negativo.'
+        ]
+    ],
+    'producto_stock' => [
+        'rules' => 'required|integer|greater_than_equal_to[0]',
+        'errors' => [
+            'required' => 'El stock es obligatorio.',
+            'integer' => 'El stock debe ser un número entero.',
+            'greater_than_equal_to' => 'El stock no puede ser negativo.'
+        ]
+    ],
+    'producto_volumen' => [
+        'rules' => 'required|integer|greater_than_equal_to[0]',
+        'errors' => [
+            'required' => 'El volumen es obligatorio.',
+            'integer' => 'El volumen debe ser un número entero.',
+            'greater_than_equal_to' => 'El volumen no puede ser negativo.'
+        ]
+    ],
+    'producto_grado' => [
+        'rules' => 'required|decimal|greater_than_equal_to[0]|less_than_equal_to[100]',
+        'errors' => [
+            'required' => 'El grado alcohólico es obligatorio.',
+            'decimal' => 'Debe ingresar un número decimal para el grado.',
+            'greater_than_equal_to' => 'El grado alcohólico no puede ser menor que 0.',
+            'less_than_equal_to' => 'El grado alcohólico no puede ser mayor a 100.'
+        ]
+    ],
+    'marca_id' => [
+        'rules' => 'required|is_natural_no_zero',
+        'errors' => [
+            'required' => 'Debe seleccionar una marca.',
+            'is_natural_no_zero' => 'La marca seleccionada no es válida.'
+        ]
+    ],
+    
+    'categoria_id' => [
+        'rules' => 'required|is_natural_no_zero',
+        'errors' => [
+            'required' => 'Debe seleccionar una categoría.',
+            'is_natural_no_zero' => 'La categoría seleccionada no es válida.'
+        ]
+    ],
+    'producto_imagen' => [
+    'rules' => 'uploaded[producto_imagen]|is_image[producto_imagen]|max_size[producto_imagen,2048]',
+    'errors' => [
+        'uploaded' => 'Debe subir una imagen del producto.',
+        'is_image' => 'El archivo debe ser una imagen válida (jpg, png, etc.).',
+        'max_size' => 'La imagen no debe superar los 2 MB.'
+    ]
+    ],
+    'producto_oferta' => [
+        'rules' => 'required|in_list[0,1]',
+        'errors' => [
+            'required' => 'Debe indicar si el producto está en oferta.',
+            'in_list' => 'Opción de oferta no válida.'
+        ]
+    ]
+];
 
-    // Validar descuento si hay oferta
+    // Regla condicional para descuento
     if ($oferta == '1') {
-        $rules['producto_descuento'] = 'required|integer|greater_than_equal_to[1]|less_than_equal_to[100]';
-    } else {
-        $rules['producto_descuento'] = 'permit_empty|integer|greater_than_equal_to[1]|less_than_equal_to[100]';
-        $descuento = null; // aseguro que sea null si no está en oferta
-    }
+    $reglas['producto_descuento'] = [
+        'rules' => 'required|integer|greater_than_equal_to[1]|less_than_equal_to[100]',
+        'errors' => [
+            'required' => 'Debe ingresar un porcentaje de descuento.',
+            'integer' => 'El porcentaje de descuento debe ser un número entero.',
+            'greater_than_equal_to' => 'El descuento debe ser al menos 1%.',
+            'less_than_equal_to' => 'El descuento no puede superar el 100%.'
+        ]
+    ];
+} else {
+    $reglas['producto_descuento'] = [
+        'rules' => 'permit_empty|integer|greater_than_equal_to[1]|less_than_equal_to[100]',
+        'errors' => [
+            'integer' => 'El porcentaje de descuento debe ser un número entero válido.',
+            'greater_than_equal_to' => 'El descuento debe ser al menos 1%.',
+            'less_than_equal_to' => 'El descuento no puede superar el 100%.'
+        ]
+    ];
+}
 
-    $validation->setRules($rules);
+    $validation->setRules($reglas);
 
     if (!$validation->withRequest($request)->run()) {
         $data['validation'] = $validation->getErrors();
@@ -375,6 +456,13 @@ class Producto_controller extends BaseController
             'greater_than_equal_to' => 'El grado alcohólico no puede ser menor que 0.',
             'less_than_equal_to' => 'El grado alcohólico no puede ser mayor a 100.'
         ]
+    ],
+    'producto_imagen' => [
+    'rules' => 'permit_empty|is_image[producto_imagen]|max_size[producto_imagen,2048]',
+    'errors' => [
+        'is_image' => 'El archivo debe ser una imagen válida.',
+        'max_size' => 'La imagen no debe superar los 2 MB.'
+    ]
     ],
     'producto_oferta' => [
         'rules' => 'required|in_list[0,1]',
