@@ -126,7 +126,7 @@
                     'id' => 'producto_descuento',
                     'class' => 'form-control',
                     'placeholder' => 'Ej: 20',
-                    'value' => set_value('producto_descuento', $producto['producto_descuento'] ?? '')
+                    'value' => set_value('producto_descuento', $producto['producto_descuento'] ?? ''),
                 ]) ?>
         </div>
 
