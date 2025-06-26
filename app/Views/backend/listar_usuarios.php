@@ -60,8 +60,7 @@
                                         <a href="<?= site_url('habilitar_usuario/' . $usuario['id_usuario']) ?>" class="btn btn-sm btn-success mb-1">Habilitar</a>
                                     <?php else: ?>
                                         <a href="<?= site_url('suspender_usuario/' . $usuario['id_usuario']) ?>" class="btn btn-sm btn-warning mb-1">Suspender</a>
-                                    <?php endif; ?>
-                                    <a href="<?= site_url('eliminar_usuario/' . $usuario['id_usuario']) ?>" class="btn btn-sm btn-danger mb-1" onclick="return confirm('¿Estás seguro de eliminar este usuario?')">Eliminar</a>
+                                    <?php endif; ?> 
                                 <?php else: ?>
                                     <span class="text-muted fst-italic">Tu cuenta</span>
                                 <?php endif; ?>
