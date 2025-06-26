@@ -110,9 +110,9 @@ class Usuario_controller extends BaseController
     ]);
 
     if (!$validation->withRequest($request)->run()) {
-        return view('login', [
+        return view('layout/navbar').view('login', [
             'validation' => $validation
-        ]);
+        ]).view('layout/footer');
     }
 
     $email = $this->request->getPost('email');

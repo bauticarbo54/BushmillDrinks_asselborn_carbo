@@ -18,7 +18,7 @@
         <div class="mb-3">
             <label for="apellido" class="form-label">Apellido</label>
             <input type="text" class="form-control <?= isset($validation) && $validation->hasError('apellido') ? 'is-invalid' : '' ?>" 
-                id="apellido" name="apellido" value="<?= set_value('apellido') ?>" required>
+                id="apellido" name="apellido" value="<?= set_value('apellido') ?>">
             <?php if (isset($validation) && $validation->hasError('apellido')): ?>
                 <small class="text-danger"><?= $validation->getError('apellido') ?></small>
             <?php endif; ?>
@@ -27,7 +27,7 @@
         <div class="mb-3">
             <label for="usuario" class="form-label">Nombre de Usuario</label>
             <input type="text" class="form-control <?= isset($validation) && $validation->hasError('usuario') ? 'is-invalid' : '' ?>" 
-                id="usuario" name="usuario" value="<?= set_value('usuario') ?>" required>
+                id="usuario" name="usuario" value="<?= set_value('usuario') ?>">
             <?php if (isset($validation) && $validation->hasError('usuario')): ?>
                 <small class="text-danger"><?= $validation->getError('usuario') ?></small>
             <?php endif; ?>
@@ -36,7 +36,7 @@
         <div class="mb-3">
             <label for="email" class="form-label">Correo electrónico</label>
             <input type="email" class="form-control <?= isset($validation) && $validation->hasError('email') ? 'is-invalid' : '' ?>" 
-                id="email" name="email" value="<?= set_value('email') ?>" placeholder="ejemplo@correo.com" required>
+                id="email" name="email" value="<?= set_value('email') ?>" placeholder="ejemplo@correo.com">
             <?php if (isset($validation) && $validation->hasError('email')): ?>
                 <small class="text-danger"><?= $validation->getError('email') ?></small>
             <?php endif; ?>
@@ -45,7 +45,7 @@
         <div class="mb-3">
             <label for="password" class="form-label">Contraseña</label>
             <input type="password" class="form-control <?= isset($validation) && $validation->hasError('pass') ? 'is-invalid' : '' ?>" 
-                id="pass" name="pass" required>
+                id="pass" name="pass">
             <?php if (isset($validation) && $validation->hasError('pass')): ?>
                 <small class="text-danger"><?= $validation->getError('pass') ?></small>
             <?php endif; ?>
@@ -54,7 +54,7 @@
         <div class="mb-3">
             <label for="confirmar" class="form-label">Confirmar contraseña</label>
             <input type="password" class="form-control <?= isset($validation) && $validation->hasError('confirmar_pass') ? 'is-invalid' : '' ?>" 
-                id="confirmar_pass" name="confirmar_pass" required>
+                id="confirmar_pass" name="confirmar_pass">
             <?php if (isset($validation) && $validation->hasError('confirmar_pass')): ?>
                 <small class="text-danger"><?= $validation->getError('confirmar_pass') ?></small>
             <?php endif; ?>

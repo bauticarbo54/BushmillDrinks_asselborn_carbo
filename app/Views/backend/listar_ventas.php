@@ -49,7 +49,6 @@
     </div>
 
     <?php if (!empty($ventasAgrupadas)): ?>
-        <!-- Resto de tu código para mostrar ventas... -->
     <?php else: ?>
         <div class="alert alert-info text-center py-4">
             <?php if (!empty($fechaInicio) || !empty($fechaFin)): ?>
@@ -76,7 +75,7 @@
                                     <span class="badge bg-primary me-3">#<?= $venta['id_venta'] ?></span>
                                     <div>
                                         <h6 class="mb-0 fw-bold"><?= $venta['cliente_nombre'] ?></h6>
-                                        <small class="text-muted"><?= date('d/m/Y H:i', strtotime($venta['fecha'])) ?></small>
+                                        <small class="text-muted"><?= date('d/m/Y', strtotime($venta['fecha'])) ?></small>
                                     </div>
                                 </div>
                                 <span class="badge bg-success fs-6">$<?= number_format($venta['total'], 2, ',', '.') ?></span>
@@ -154,9 +153,6 @@
 
 <!-- jQuery (requerido por Bootstrap Datepicker) -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-<!-- Bootstrap JS (si no lo tenés ya cargado) -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 <!-- Bootstrap Datepicker JS y CSS -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.10.0/css/bootstrap-datepicker.min.css" rel="stylesheet">

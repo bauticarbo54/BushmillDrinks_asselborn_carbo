@@ -21,7 +21,7 @@ class Mensaje_controller extends BaseController
         $validation->setRules([
             'mensaje_nombre' => 'required|max_length[50]|regex_match[/^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/]',
             'mensaje_mail' => 'required|valid_email|max_length[100]',
-            'mensaje_telefono' => 'permit_empty|regex_match[/^\+?[0-9\s\-\(\)]{7,20}$/]',
+            'mensaje_telefono' => 'required|regex_match[/^\+?[0-9\s\-\(\)]{7,20}$/]',
             'mensaje_consulta' => 'required|max_length[254]|min_length[10]',
         ],
         [   // Errores

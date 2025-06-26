@@ -14,7 +14,7 @@
                             <div class="d-flex justify-content-between w-100 pe-3 align-items-center">
                                 <div>
                                     <h6 class="mb-0 fw-bold">Compra #<?= $venta['id_venta'] ?></h6>
-                                    <small class="text-muted"><?= date('d/m/Y H:i', strtotime($venta['fecha'])) ?></small>
+                                    <small class="text-muted"><?= date('d/m/Y', strtotime($venta['fecha'])) ?></small>
                                 </div>
                                 <span class="badge bg-success fs-6">$<?= number_format($venta['total'], 2, ',', '.') ?></span>
                             </div>
