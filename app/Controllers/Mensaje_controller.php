@@ -9,7 +9,14 @@ class Mensaje_controller extends BaseController
 
     public function index()
     {
-        $this->renderizarConNavbar('nueva_plantilla');
+        $productoModel = new \App\Models\Producto_model();
+        $productos = $productoModel
+            ->select('productos.*, marca.marca_nombre')
+            ->join('marca', 'productos.marca_id = marca.id_marca')
+            ->where('producto_estado', 1)
+            ->where('producto_oferta', 1)
+            ->findAll();
+        $this->renderizarConNavbar('nueva_plantilla', ['productos' => $productos]);
     }
 
     public function add_consulta()
